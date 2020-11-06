@@ -185,9 +185,17 @@ Public Class frmRole
             End If
             If intResult = -1 Then 'Rold ID was not unique when adding a new record
                 MessageBox.Show("Role ID must be unique, Unable to save role record", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                tslStatus.Text = "Error"
             End If
         Catch ex As Exception
-
+            MessageBox.Show("Unable to save role record : " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            tslStatus.Text = "Error"
         End Try
+        Me.Cursor = Cursors.Default
+
+        blnReloading = True
+        LoadRoles() 'Reload so that a newly saved record will appear in the list
+        chkNew.Checked = False
+        grpRoles.Enabled = True 'Incase it was disabled for a new record
     End Sub
 End Class

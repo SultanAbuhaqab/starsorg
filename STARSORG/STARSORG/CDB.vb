@@ -85,6 +85,7 @@ Public Class CDB
         End If
 
         objSQLCommand = New SqlCommand(strSP, objSQLConn)
+        objSQLCommand.CommandType = CommandType.StoredProcedure
 
         If Not params Is Nothing Then 'Add each parameter into the command object
             For Each p As SqlParameter In params
