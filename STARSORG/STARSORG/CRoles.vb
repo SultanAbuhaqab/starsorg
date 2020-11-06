@@ -31,7 +31,29 @@ Public Class CRoles
     End Function
 
     Public Function GetAllRoles() As SqlDataReader
-        Return myDB.GetDataReaderBySP("sp_getAllRoles", Nothing)
+        Dim objDR As SqlDataReader
+        objDR = myDB.GetDataReaderBySP("sp_getAllRoles", Nothing)
+        Return objDR
+    End Function
+
+    Public Function GetRoleByRoleID(strID As String) As CRole
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("roleID", strID))
+        FillObject(myDB.GetDataReaderBySP("sp_getRoleByRoleID", params))
+        Return _Role
+    End Function
+
+    Private Function FillObject(objDR As SqlDataReader) As CRole
+        If objDR.Read Then
+            With _Role
+                .RoleID = objDR.Item("RoleID")
+                .RoleDescription = objDR.Item("RoleDescription")
+            End With
+        Else
+            'No record was returned, Nothing else to do
+        End If
+
+        Return _Role
     End Function
 
 End Class

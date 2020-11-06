@@ -81,7 +81,7 @@ Public Class frmRole
             Loop
             objDR.Close()
         Catch ex As Exception
-            MessageBox.Show("Error occured while loading roles", "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error occured while loading roles " & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
         If objRoles.CurrentObject.RoleID <> "" Then
@@ -99,5 +99,36 @@ Public Class frmRole
         ClearScreenControls(Me)
         LoadRoles()
         grpEdit.Enabled = False
+    End Sub
+
+    Private Sub lstRoles_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstRoles.SelectedIndexChanged
+        If blnClearing Then
+            Exit Sub
+        End If
+
+        If blnReloading Then
+            Exit Sub
+        End If
+
+        If lstRoles.SelectedIndex = -1 Then
+            Exit Sub
+        End If
+
+        chkNew.Checked = False
+
+        LoadSelectedRecord()
+        grpEdit.Enabled = True
+    End Sub
+
+    Private Sub LoadSelectedRecord()
+        Try
+            objRoles.GetRoleByRoleID(lstRoles.SelectedItem.ToString)
+            With objRoles.CurrentObject
+                txtRoleID.Text = .RoleID
+                txtDesc.Text = .RoleDescription
+            End With
+        Catch ex As Exception
+            MessageBox.Show("Error loading role values: " & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class
