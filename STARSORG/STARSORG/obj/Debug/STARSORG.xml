@@ -22,12 +22,57 @@ STARSORG
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:STARSORG.My.Resources.Resources.courses">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:STARSORG.My.Resources.Resources.events">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:STARSORG.My.Resources.Resources.help">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:STARSORG.My.Resources.Resources.home">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:STARSORG.My.Resources.Resources.logout">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:STARSORG.My.Resources.Resources.member">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:STARSORG.My.Resources.Resources.roles">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:STARSORG.My.Resources.Resources.rsvp">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:STARSORG.My.Resources.Resources.semesters">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:STARSORG.My.Resources.Resources.STARS_National_LOGO">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:STARSORG.My.Resources.Resources.tutors">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
