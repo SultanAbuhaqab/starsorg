@@ -1,4 +1,6 @@
 ﻿Public Class frmMain
+    Private RoleInfo As frmRole
+
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvents.MouseEnter,
         tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogout.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter,
         tsbSemester.MouseEnter, tsbTutor.MouseEnter
@@ -26,6 +28,7 @@
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+        RoleInfo = New frmRole
 
         Try
             myDB.OpenDB()
@@ -55,5 +58,46 @@
         End If
 
         Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub tsbRole_Click(sender As Object, e As EventArgs) Handles tsbRole.Click
+        Me.Hide()
+        RoleInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+
+    Private Sub PerformNextAction()
+        'Get the next action specified on the child form, and then simulate the click of the button here
+        Select Case intNextAction
+            Case ACTION_COURSE
+                tsbCourse.PerformClick()
+            Case ACTION_EVENT
+                tsbEvents.PerformClick()
+            Case ACTION_HELP
+                tsbHelp.PerformClick()
+            Case ACTION_HOME
+                tsbHome.PerformClick()
+            Case ACTION_LOGOUT
+                tsbLogout.PerformClick()
+            Case ACTION_MEMBER
+                tsbMember.PerformClick()
+            Case ACTION_NONE
+                'Nothing to do here
+            Case ACTION_ROLE
+                tsbRole.PerformClick()
+            Case ACTION_RSVP
+                tsbRSVP.PerformClick()
+            Case ACTION_SEMESTER
+                tsbSemester.PerformClick()
+            Case ACTION_TUTOR
+                tsbTutor.PerformClick()
+            Case Else
+                MessageBox.Show("Unexpected case value in Form Main PerformNextAction", "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Select
+    End Sub
+
+    Private Sub tsbLogout_Click(sender As Object, e As EventArgs) Handles tsbLogout.Click
+        EndProgram()
     End Sub
 End Class
