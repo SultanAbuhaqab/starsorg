@@ -70,5 +70,34 @@ Public Class frmRole
     End Sub
 #End Region
 
+    Private Sub LoadRoles()
+        Dim objDR As SqlDataReader
+        lstRoles.Items.Clear()
 
+        Try
+            objDR = objRoles.GetAllRoles()
+            Do While objDR.Read
+                lstRoles.Items.Add(objDR.Item("RoleID"))
+            Loop
+            objDR.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error occured while loading roles", "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        If objRoles.CurrentObject.RoleID <> "" Then
+            lstRoles.SelectedIndex = lstRoles.FindStringExact(objRoles.CurrentObject.RoleID)
+        End If
+
+        blnReloading = False
+    End Sub
+
+    Private Sub frmRole_Load(sender As Object, e As EventArgs) Handles Me.Load
+        objRoles = New CRoles
+    End Sub
+
+    Private Sub frmRole_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        ClearScreenControls(Me)
+        LoadRoles()
+        grpEdit.Enabled = False
+    End Sub
 End Class

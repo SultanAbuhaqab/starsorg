@@ -30,4 +30,8 @@ Public Class CRoles
         Return _Role.Save()
     End Function
 
+    Public Function GetAllRoles() As SqlDataReader
+        Return myDB.GetDataReaderBySP("sp_getAllRoles", Nothing)
+    End Function
+
 End Class
