@@ -1,0 +1,12 @@
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\bin\Debug\STARSORG.exe.config
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\bin\Debug\STARSORG.exe
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\bin\Debug\STARSORG.pdb
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\bin\Debug\STARSORG.xml
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\obj\Debug\STARSORG.vbprojAssemblyReference.cache
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\obj\Debug\STARSORG.frmMain.resources
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\obj\Debug\STARSORG.Resources.resources
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\obj\Debug\STARSORG.vbproj.GenerateResource.cache
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\obj\Debug\STARSORG.vbproj.CoreCompileInputs.cache
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\obj\Debug\STARSORG.exe
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\obj\Debug\STARSORG.xml
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\obj\Debug\STARSORG.pdb
