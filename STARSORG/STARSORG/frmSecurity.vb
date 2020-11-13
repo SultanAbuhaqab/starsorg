@@ -2,6 +2,7 @@
 
 Public Class frmSecurity
     Private objSecurities As CSecurities
+    Private strSecurityAction As String = ""
 
 #Region "Toolbar Stuff"
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvents.MouseEnter,
@@ -90,7 +91,7 @@ Public Class frmSecurity
 
 #Region "Supported Security Actions"
     Private Const ADD_USER As String = "Add User"
-    Private Const EDIT_USER As String = "Update Security Role"
+    Private Const UPDATE_ROLE As String = "Update Security Role"
     Private Const RESET_PASSWORD As String = "Reset Password"
 #End Region
 
@@ -115,7 +116,7 @@ Public Class frmSecurity
     Private Sub LoadComboBoxes()
         If cboActions.Items.Count = 0 Then
             cboActions.Items.Add(ADD_USER)
-            cboActions.Items.Add(EDIT_USER)
+            cboActions.Items.Add(UPDATE_ROLE)
             cboActions.Items.Add(RESET_PASSWORD)
         End If
 
@@ -191,5 +192,41 @@ Public Class frmSecurity
         Catch ex As Exception
             MessageBox.Show("Error while loading user: " & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub cboActions_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboActions.SelectedIndexChanged
+        Dim cboSelectedAction As ComboBox
+        Dim strSelectedAction As String
+        cboSelectedAction = DirectCast(sender, ComboBox)
+        strSelectedAction = cboSelectedAction.SelectedItem.ToString
+
+        If strSelectedAction = strSecurityAction Then
+            Exit Sub
+        End If
+
+        strSecurityAction = strSelectedAction
+
+        UpdateManageUserForm()
+    End Sub
+
+    Private Sub UpdateManageUserForm()
+
+        grpManageUser.Enabled = True
+
+        Select Case strSecurityAction
+            Case ADD_USER
+                ClearScreenControls(grpManageUser)
+            Case UPDATE_ROLE
+                txtPID.Enabled = False
+                txtPassword.Enabled = False
+                txtPasswordConfirm.Enabled = False
+                txtUserID.Enabled = False
+            Case RESET_PASSWORD
+                txtPID.Enabled = False
+                txtUserID.Enabled = False
+                cboSecRole.Enabled = False
+            Case Else
+                MessageBox.Show("Invalid security action selected : " & strSecurityAction, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Select
     End Sub
 End Class
