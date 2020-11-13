@@ -14,7 +14,7 @@
     Public Const ACTION_TUTOR As Integer = 8
     Public Const ACTION_HELP As Integer = 9
     Public Const ACTION_LOGOUT As Integer = 10
-    Public Const ACTION_ADMIN As Integer = 11
+    Public Const ACTION_SECURITY As Integer = 11
 #End Region
 
     Public intNextAction As Integer

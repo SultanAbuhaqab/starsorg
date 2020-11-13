@@ -3,14 +3,14 @@
 
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter,
         tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogout.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter,
-        tsbSemester.MouseEnter, tsbTutor.MouseEnter, tsbAdmin.MouseEnter
+        tsbSemester.MouseEnter, tsbTutor.MouseEnter, tsbSecurity.MouseEnter
         'We need to do this only because we are not putting our images in the Image property of the toolbar buttons
         ToolStripMouseEnter(sender)
     End Sub
 
     Private Sub tsbProxy_MouseLeave(sender As Object, e As EventArgs) Handles tsbCourse.MouseLeave, tsbEvent.MouseLeave,
         tsbHelp.MouseLeave, tsbHome.MouseLeave, tsbLogout.MouseLeave, tsbMember.MouseLeave, tsbRole.MouseLeave, tsbRSVP.MouseLeave,
-        tsbSemester.MouseLeave, tsbTutor.MouseLeave, tsbAdmin.MouseLeave
+        tsbSemester.MouseLeave, tsbTutor.MouseLeave, tsbSecurity.MouseLeave
         'We need to do this only because we are not putting our images in the Image property of the toolbar buttons
         ToolStripMouseLeave(sender)
     End Sub
