@@ -76,6 +76,8 @@
     <Compile Include="CDB.vb" />
     <Compile Include="CRole.vb" />
     <Compile Include="CRoles.vb" />
+    <Compile Include="CSecurities.vb" />
+    <Compile Include="CSecurity.vb" />
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
