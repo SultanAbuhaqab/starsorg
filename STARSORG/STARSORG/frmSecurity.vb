@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmSecurity
+    Private objSecurities As CSecurities
 
 #Region "Toolbar Stuff"
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvents.MouseEnter,
@@ -101,13 +102,14 @@ Public Class frmSecurity
 #End Region
 
     Private Sub frmSecurity_Load(sender As Object, e As EventArgs) Handles Me.Load
-
+        objSecurities = New CSecurities
     End Sub
 
     Private Sub frmSecurity_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         LoadComboBoxes()
         ClearScreenControls(Me)
-        'grpManageUser.Enabled = False
+        LoadUsers()
+        grpManageUser.Enabled = False
     End Sub
 
     Private Sub LoadComboBoxes()
@@ -126,6 +128,49 @@ Public Class frmSecurity
     End Sub
 
     Private Sub LoadUsers()
+        Dim objDR As SqlDataReader
+        Dim strFullName As String
+        Dim strFirstCharacter As String
+        Dim strUserID As String
 
+        tvwUsers.Nodes.Clear()
+
+        Try
+            objDR = objSecurities.GetAllSecurities()
+
+            Do While objDR.Read
+                Dim parentNode() As TreeNode
+
+                strUserID = objDR("UserID")
+                strFullName = StrConv(objDR.Item("FNAME"), vbProperCase) & ", " & StrConv(objDR.Item("LNAME"), vbProperCase) & "<" & strUserID & ">"
+                strFirstCharacter = strFullName.Substring(0, 1)
+
+                parentNode = tvwUsers.Nodes.Find(strFirstCharacter, True)
+
+                If parentNode.Length > 0 Then
+                    parentNode(0).Nodes.Add(strUserID, strFullName)
+                Else
+                    Dim newParentNode As TreeNode
+                    newParentNode = tvwUsers.Nodes.Add(strFirstCharacter, strFirstCharacter)
+                    newParentNode.Nodes.Add(strUserID, strFullName)
+                End If
+            Loop
+
+            objDR.Close()
+
+            If objSecurities.CurrentObject.UserID <> "" Then
+                Dim currentNode() As TreeNode
+                currentNode = tvwUsers.Nodes.Find(objSecurities.CurrentObject.UserID, True)
+
+                If currentNode.Length > 0 Then
+                    tvwUsers.SelectedNode = currentNode(0)
+                End If
+            End If
+
+            tvwUsers.ExpandAll()
+            tvwUsers.Refresh()
+        Catch ex As Exception
+            MessageBox.Show("Error occured while loading users " & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class
