@@ -1,5 +1,6 @@
 ﻿Public Class frmMain
     Private RoleInfo As frmRole
+    Private SecurityInfo As frmSecurity
 
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter,
         tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogout.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter,
@@ -17,6 +18,7 @@
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         RoleInfo = New frmRole
+        SecurityInfo = New frmSecurity
 
         Try
             myDB.OpenDB()
@@ -48,13 +50,6 @@
         Me.Cursor = Cursors.Default
     End Sub
 
-    Private Sub tsbRole_Click(sender As Object, e As EventArgs) Handles tsbRole.Click
-        Me.Hide()
-        RoleInfo.ShowDialog()
-        Me.Show()
-        PerformNextAction()
-    End Sub
-
     Private Sub PerformNextAction()
         'Get the next action specified on the child form, and then simulate the click of the button here
         Select Case intNextAction
@@ -76,6 +71,8 @@
                 tsbRole.PerformClick()
             Case ACTION_RSVP
                 tsbRSVP.PerformClick()
+            Case ACTION_SECURITY
+                tsbSecurity.PerformClick()
             Case ACTION_SEMESTER
                 tsbSemester.PerformClick()
             Case ACTION_TUTOR
@@ -85,7 +82,23 @@
         End Select
     End Sub
 
+#Region "Toolbar Click Handlers"
+    Private Sub tsbRole_Click(sender As Object, e As EventArgs) Handles tsbRole.Click
+        Me.Hide()
+        RoleInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+
     Private Sub tsbLogout_Click(sender As Object, e As EventArgs) Handles tsbLogout.Click
         EndProgram()
     End Sub
+
+    Private Sub tsbSecurity_Click(sender As Object, e As EventArgs) Handles tsbSecurity.Click
+        Me.Hide()
+        SecurityInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+#End Region
 End Class

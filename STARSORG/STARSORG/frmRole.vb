@@ -20,11 +20,6 @@ Public Class frmRole
         ToolStripMouseLeave(sender)
     End Sub
 
-    Private Sub tsbAdmin_Click(sender As Object, e As EventArgs) Handles tsbSecurity.Click
-        intNextAction = ACTION_SECURITY
-        Me.Hide()
-    End Sub
-
     Private Sub tsbCourse_Click(sender As Object, e As EventArgs) Handles tsbCourse.Click
         intNextAction = ACTION_COURSE
         Me.Hide()
@@ -61,6 +56,11 @@ Public Class frmRole
 
     Private Sub tsbRSVP_Click(sender As Object, e As EventArgs) Handles tsbRSVP.Click
         intNextAction = ACTION_RSVP
+        Me.Hide()
+    End Sub
+
+    Private Sub tsbAdmin_Click(sender As Object, e As EventArgs) Handles tsbSecurity.Click
+        intNextAction = ACTION_SECURITY
         Me.Hide()
     End Sub
 

@@ -1,3 +1,131 @@
-﻿Public Class frmSecurity
+﻿Imports System.Data.SqlClient
 
+Public Class frmSecurity
+
+#Region "Toolbar Stuff"
+    Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvents.MouseEnter,
+        tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogout.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter,
+        tsbSemester.MouseEnter, tsbTutor.MouseEnter, tsbSecurity.MouseEnter
+        'We need to do this only because we are not putting our images in the Image property of the toolbar buttons
+        ToolStripMouseEnter(sender)
+    End Sub
+
+    Private Sub tsbProxy_MouseLeave(sender As Object, e As EventArgs) Handles tsbCourse.MouseLeave, tsbEvents.MouseLeave,
+        tsbHelp.MouseLeave, tsbHome.MouseLeave, tsbLogout.MouseLeave, tsbMember.MouseLeave, tsbRole.MouseLeave, tsbRSVP.MouseLeave,
+        tsbSemester.MouseLeave, tsbTutor.MouseLeave, tsbSecurity.MouseLeave
+        'We need to do this only because we are not putting our images in the Image property of the toolbar buttons
+        ToolStripMouseLeave(sender)
+    End Sub
+
+    Private Sub tsbCourse_Click(sender As Object, e As EventArgs) Handles tsbCourse.Click
+        intNextAction = ACTION_COURSE
+        Me.Hide()
+    End Sub
+
+    Private Sub tsbEvents_Click(sender As Object, e As EventArgs) Handles tsbEvents.Click
+        intNextAction = ACTION_EVENT
+        Me.Hide()
+    End Sub
+
+    Private Sub tsbHelp_Click(sender As Object, e As EventArgs) Handles tsbHelp.Click
+        intNextAction = ACTION_HELP
+        Me.Hide()
+    End Sub
+
+    Private Sub tsbHome_Click(sender As Object, e As EventArgs) Handles tsbHome.Click
+        intNextAction = ACTION_HOME
+        Me.Hide()
+    End Sub
+
+    Private Sub tsbLogout_Click(sender As Object, e As EventArgs) Handles tsbLogout.Click
+        intNextAction = ACTION_LOGOUT
+        Me.Hide()
+    End Sub
+
+    Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
+        intNextAction = ACTION_MEMBER
+        Me.Hide()
+    End Sub
+
+    Private Sub tsbRole_Click(sender As Object, e As EventArgs) Handles tsbRole.Click
+        intNextAction = ACTION_ROLE
+        Me.Hide()
+    End Sub
+
+    Private Sub tsbRSVP_Click(sender As Object, e As EventArgs) Handles tsbRSVP.Click
+        intNextAction = ACTION_RSVP
+        Me.Hide()
+    End Sub
+    Private Sub tsbAdmin_Click(sender As Object, e As EventArgs) Handles tsbSecurity.Click
+        'No action needed as we already on security page
+    End Sub
+
+    Private Sub tsbSemester_Click(sender As Object, e As EventArgs) Handles tsbSemester.Click
+        intNextAction = ACTION_SEMESTER
+        Me.Hide()
+    End Sub
+
+    Private Sub tsbTutor_Click(sender As Object, e As EventArgs) Handles tsbTutor.Click
+        intNextAction = ACTION_TUTOR
+        Me.Hide()
+    End Sub
+#End Region
+
+#Region "Textboxes"
+    Private Sub txtBoxes_GotFocus(sender As Object, e As EventArgs) Handles txtPID.GotFocus, txtUserID.GotFocus, txtPassword.GotFocus,
+        txtPasswordConfirm.GotFocus
+        Dim txtBox As TextBox
+        txtBox = DirectCast(sender, TextBox)
+        txtBox.SelectAll()
+    End Sub
+
+    Private Sub txtBoxes_LostFocus(sender As Object, e As EventArgs) Handles txtPID.LostFocus, txtUserID.LostFocus, txtPassword.LostFocus,
+            txtPasswordConfirm.LostFocus
+        Dim txtBox As TextBox
+        txtBox = DirectCast(sender, TextBox)
+        txtBox.DeselectAll()
+    End Sub
+#End Region
+
+#Region "Supported Security Actions"
+    Private Const ADD_USER As String = "Add User"
+    Private Const EDIT_USER As String = "Edit User"
+    Private Const RESET_PASSWORD As String = "Reset Password"
+#End Region
+
+#Region "Supported Security Roles"
+    Private Const ADMIN As String = "ADMIN"
+    Private Const OFFICER As String = "OFFICER"
+    Private Const MEMBER As String = "MEMBER"
+    Private Const GUEST As String = "GUEST"
+#End Region
+
+    Private Sub frmSecurity_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+    End Sub
+
+    Private Sub frmSecurity_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        LoadComboBoxes()
+        ClearScreenControls(Me)
+        'grpManageUser.Enabled = False
+    End Sub
+
+    Private Sub LoadComboBoxes()
+        If cboActions.Items.Count = 0 Then
+            cboActions.Items.Add(ADD_USER)
+            cboActions.Items.Add(EDIT_USER)
+            cboActions.Items.Add(RESET_PASSWORD)
+        End If
+
+        If cboSecRole.Items.Count = 0 Then
+            cboSecRole.Items.Add(ADMIN)
+            cboSecRole.Items.Add(OFFICER)
+            cboSecRole.Items.Add(MEMBER)
+            cboSecRole.Items.Add(GUEST)
+        End If
+    End Sub
+
+    Private Sub LoadUsers()
+
+    End Sub
 End Class

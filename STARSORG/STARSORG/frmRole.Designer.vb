@@ -437,6 +437,7 @@ Partial Class frmRole
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Name = "frmRole"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Member Roles"
         Me.grpNew.ResumeLayout(False)
         Me.grpNew.PerformLayout()

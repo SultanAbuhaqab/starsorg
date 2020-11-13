@@ -11,3 +11,4 @@ D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\S
 D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\obj\Debug\STARSORG.xml
 D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\obj\Debug\STARSORG.pdb
 D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\obj\Debug\STARSORG.frmRole.resources
+D:\Development\VisualStudio\WindowsProgramming\project-SultanAbuhaqab\STARSORG\STARSORG\obj\Debug\STARSORG.frmSecurity.resources
