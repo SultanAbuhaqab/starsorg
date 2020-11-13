@@ -24,4 +24,23 @@ Public Class CSecurities
         Return objDR
     End Function
 
+    Public Function GetSecurityByUserID(strUserID As String) As CSecurity
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("UserID", strUserID))
+        Return FillObject(myDB.GetDataReaderBySP("sp_getSecurityByUserID", params))
+    End Function
+
+    Private Function FillObject(objDR As SqlDataReader) As CSecurity
+        If objDR.Read Then
+            With _Security
+                .PID = objDR.Item("PID")
+                .UserID = objDR.Item("UserID")
+                .SecRole = objDR.Item("SecRole")
+                .Password = objDR.Item("Password")
+            End With
+        End If
+        objDR.Close()
+        Return _Security
+    End Function
+
 End Class

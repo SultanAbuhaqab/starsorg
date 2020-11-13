@@ -90,7 +90,7 @@ Public Class frmSecurity
 
 #Region "Supported Security Actions"
     Private Const ADD_USER As String = "Add User"
-    Private Const EDIT_USER As String = "Edit User"
+    Private Const EDIT_USER As String = "Update Security Role"
     Private Const RESET_PASSWORD As String = "Reset Password"
 #End Region
 
@@ -171,6 +171,25 @@ Public Class frmSecurity
             tvwUsers.Refresh()
         Catch ex As Exception
             MessageBox.Show("Error occured while loading users " & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub tvwUsers_NodeMouseClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles tvwUsers.NodeMouseClick
+        Dim userNode As TreeNode = DirectCast(e.Node, TreeNode)
+        LoadSelectedUser(userNode.Name)
+    End Sub
+
+    Private Sub LoadSelectedUser(strUserId As String)
+        Try
+            objSecurities.GetSecurityByUserID(strUserId)
+
+            With objSecurities.CurrentObject
+                txtPID.Text = .PID
+                txtUserID.Text = .UserID
+                cboSecRole.SelectedItem = .SecRole
+            End With
+        Catch ex As Exception
+            MessageBox.Show("Error while loading user: " & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 End Class
