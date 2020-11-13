@@ -23,7 +23,21 @@ Partial Class frmRole
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.grpNew = New System.Windows.Forms.GroupBox()
+        Me.chkNew = New System.Windows.Forms.CheckBox()
+        Me.grpRoles = New System.Windows.Forms.GroupBox()
+        Me.lstRoles = New System.Windows.Forms.ListBox()
+        Me.grpEdit = New System.Windows.Forms.GroupBox()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.txtDesc = New System.Windows.Forms.TextBox()
+        Me.txtRoleID = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.tslStatus = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbHome = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
@@ -46,38 +60,154 @@ Partial Class frmRole
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.grpNew = New System.Windows.Forms.GroupBox()
-        Me.chkNew = New System.Windows.Forms.CheckBox()
-        Me.grpRoles = New System.Windows.Forms.GroupBox()
-        Me.lstRoles = New System.Windows.Forms.ListBox()
-        Me.grpEdit = New System.Windows.Forms.GroupBox()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.txtDesc = New System.Windows.Forms.TextBox()
-        Me.txtRoleID = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.tslStatus = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.ToolStrip1.SuspendLayout()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.tsbAdmin = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
         Me.grpNew.SuspendLayout()
         Me.grpRoles.SuspendLayout()
         Me.grpEdit.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'ToolStrip1
+        'Label1
         '
-        Me.ToolStrip1.AutoSize = False
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator6, Me.tsbHome, Me.ToolStripSeparator5, Me.tsbMember, Me.ToolStripSeparator3, Me.tsbRole, Me.ToolStripSeparator2, Me.tsbEvents, Me.ToolStripSeparator11, Me.tsbRSVP, Me.ToolStripSeparator4, Me.tsbCourse, Me.ToolStripSeparator9, Me.tsbSemester, Me.ToolStripSeparator7, Me.tsbTutor, Me.ToolStripSeparator10, Me.ToolStripSeparator8, Me.tsbLogout, Me.ToolStripSeparator12, Me.tsbHelp, Me.ToolStripSeparator1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(800, 50)
-        Me.ToolStrip1.TabIndex = 2
-        Me.ToolStrip1.Text = "ToolStrip1"
+        Me.Label1.BackColor = System.Drawing.Color.White
+        Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(29, 81)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(740, 36)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "ROLES"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'grpNew
+        '
+        Me.grpNew.Controls.Add(Me.chkNew)
+        Me.grpNew.Location = New System.Drawing.Point(29, 131)
+        Me.grpNew.Name = "grpNew"
+        Me.grpNew.Size = New System.Drawing.Size(306, 53)
+        Me.grpNew.TabIndex = 4
+        Me.grpNew.TabStop = False
+        Me.grpNew.Text = "New Role"
+        '
+        'chkNew
+        '
+        Me.chkNew.AutoSize = True
+        Me.chkNew.Location = New System.Drawing.Point(16, 20)
+        Me.chkNew.Name = "chkNew"
+        Me.chkNew.Size = New System.Drawing.Size(95, 17)
+        Me.chkNew.TabIndex = 0
+        Me.chkNew.Text = "Add New Role"
+        Me.chkNew.UseVisualStyleBackColor = True
+        '
+        'grpRoles
+        '
+        Me.grpRoles.Controls.Add(Me.lstRoles)
+        Me.grpRoles.Location = New System.Drawing.Point(29, 191)
+        Me.grpRoles.Name = "grpRoles"
+        Me.grpRoles.Size = New System.Drawing.Size(306, 162)
+        Me.grpRoles.TabIndex = 5
+        Me.grpRoles.TabStop = False
+        Me.grpRoles.Text = "ROLES"
+        '
+        'lstRoles
+        '
+        Me.lstRoles.FormattingEnabled = True
+        Me.lstRoles.Location = New System.Drawing.Point(16, 20)
+        Me.lstRoles.Name = "lstRoles"
+        Me.lstRoles.Size = New System.Drawing.Size(274, 121)
+        Me.lstRoles.TabIndex = 0
+        '
+        'grpEdit
+        '
+        Me.grpEdit.Controls.Add(Me.btnSave)
+        Me.grpEdit.Controls.Add(Me.btnCancel)
+        Me.grpEdit.Controls.Add(Me.txtDesc)
+        Me.grpEdit.Controls.Add(Me.txtRoleID)
+        Me.grpEdit.Controls.Add(Me.Label3)
+        Me.grpEdit.Controls.Add(Me.Label2)
+        Me.grpEdit.Location = New System.Drawing.Point(355, 131)
+        Me.grpEdit.Name = "grpEdit"
+        Me.grpEdit.Size = New System.Drawing.Size(414, 222)
+        Me.grpEdit.TabIndex = 6
+        Me.grpEdit.TabStop = False
+        Me.grpEdit.Text = "Edit Role"
+        '
+        'btnSave
+        '
+        Me.btnSave.Location = New System.Drawing.Point(212, 178)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(75, 23)
+        Me.btnSave.TabIndex = 5
+        Me.btnSave.Text = "Save"
+        Me.btnSave.UseVisualStyleBackColor = True
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Location = New System.Drawing.Point(311, 178)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancel.TabIndex = 4
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = True
+        '
+        'txtDesc
+        '
+        Me.txtDesc.Location = New System.Drawing.Point(118, 93)
+        Me.txtDesc.MaxLength = 100
+        Me.txtDesc.Multiline = True
+        Me.txtDesc.Name = "txtDesc"
+        Me.txtDesc.Size = New System.Drawing.Size(268, 71)
+        Me.txtDesc.TabIndex = 3
+        '
+        'txtRoleID
+        '
+        Me.txtRoleID.Location = New System.Drawing.Point(118, 40)
+        Me.txtRoleID.MaxLength = 15
+        Me.txtRoleID.Name = "txtRoleID"
+        Me.txtRoleID.Size = New System.Drawing.Size(268, 20)
+        Me.txtRoleID.TabIndex = 2
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(31, 124)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(60, 13)
+        Me.Label3.TabIndex = 1
+        Me.Label3.Text = "Description"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(31, 43)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(43, 13)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "Role ID"
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tslStatus})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 360)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(800, 22)
+        Me.StatusStrip1.TabIndex = 7
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'tslStatus
+        '
+        Me.tslStatus.AutoSize = False
+        Me.tslStatus.Name = "tslStatus"
+        Me.tslStatus.Size = New System.Drawing.Size(755, 17)
+        Me.tslStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'errP
+        '
+        Me.errP.ContainerControl = Me
         '
         'ToolStripSeparator6
         '
@@ -266,143 +396,32 @@ Partial Class frmRole
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(10, 50)
         '
-        'Label1
+        'ToolStrip1
         '
-        Me.Label1.BackColor = System.Drawing.Color.White
-        Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(29, 81)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(740, 36)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "ROLES"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolStrip1.AutoSize = False
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator6, Me.tsbHome, Me.ToolStripSeparator5, Me.tsbMember, Me.ToolStripSeparator3, Me.tsbRole, Me.ToolStripSeparator2, Me.tsbAdmin, Me.ToolStripSeparator10, Me.tsbEvents, Me.ToolStripSeparator11, Me.tsbRSVP, Me.ToolStripSeparator4, Me.tsbCourse, Me.ToolStripSeparator9, Me.tsbSemester, Me.ToolStripSeparator7, Me.tsbTutor, Me.ToolStripSeparator13, Me.ToolStripSeparator8, Me.tsbLogout, Me.ToolStripSeparator12, Me.tsbHelp, Me.ToolStripSeparator1})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(800, 50)
+        Me.ToolStrip1.TabIndex = 2
+        Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'grpNew
+        'tsbAdmin
         '
-        Me.grpNew.Controls.Add(Me.chkNew)
-        Me.grpNew.Location = New System.Drawing.Point(29, 131)
-        Me.grpNew.Name = "grpNew"
-        Me.grpNew.Size = New System.Drawing.Size(306, 53)
-        Me.grpNew.TabIndex = 4
-        Me.grpNew.TabStop = False
-        Me.grpNew.Text = "New Role"
+        Me.tsbAdmin.AutoSize = False
+        Me.tsbAdmin.BackgroundImage = Global.STARSORG.My.Resources.Resources.admin
+        Me.tsbAdmin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbAdmin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbAdmin.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbAdmin.Name = "tsbAdmin"
+        Me.tsbAdmin.Size = New System.Drawing.Size(48, 48)
+        Me.tsbAdmin.Text = "ADMIN"
         '
-        'chkNew
+        'ToolStripSeparator13
         '
-        Me.chkNew.AutoSize = True
-        Me.chkNew.Location = New System.Drawing.Point(16, 20)
-        Me.chkNew.Name = "chkNew"
-        Me.chkNew.Size = New System.Drawing.Size(95, 17)
-        Me.chkNew.TabIndex = 0
-        Me.chkNew.Text = "Add New Role"
-        Me.chkNew.UseVisualStyleBackColor = True
-        '
-        'grpRoles
-        '
-        Me.grpRoles.Controls.Add(Me.lstRoles)
-        Me.grpRoles.Location = New System.Drawing.Point(29, 191)
-        Me.grpRoles.Name = "grpRoles"
-        Me.grpRoles.Size = New System.Drawing.Size(306, 162)
-        Me.grpRoles.TabIndex = 5
-        Me.grpRoles.TabStop = False
-        Me.grpRoles.Text = "ROLES"
-        '
-        'lstRoles
-        '
-        Me.lstRoles.FormattingEnabled = True
-        Me.lstRoles.Location = New System.Drawing.Point(16, 20)
-        Me.lstRoles.Name = "lstRoles"
-        Me.lstRoles.Size = New System.Drawing.Size(274, 121)
-        Me.lstRoles.TabIndex = 0
-        '
-        'grpEdit
-        '
-        Me.grpEdit.Controls.Add(Me.btnSave)
-        Me.grpEdit.Controls.Add(Me.btnCancel)
-        Me.grpEdit.Controls.Add(Me.txtDesc)
-        Me.grpEdit.Controls.Add(Me.txtRoleID)
-        Me.grpEdit.Controls.Add(Me.Label3)
-        Me.grpEdit.Controls.Add(Me.Label2)
-        Me.grpEdit.Location = New System.Drawing.Point(355, 131)
-        Me.grpEdit.Name = "grpEdit"
-        Me.grpEdit.Size = New System.Drawing.Size(414, 222)
-        Me.grpEdit.TabIndex = 6
-        Me.grpEdit.TabStop = False
-        Me.grpEdit.Text = "Edit Role"
-        '
-        'btnSave
-        '
-        Me.btnSave.Location = New System.Drawing.Point(212, 178)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 5
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'btnCancel
-        '
-        Me.btnCancel.Location = New System.Drawing.Point(311, 178)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(75, 23)
-        Me.btnCancel.TabIndex = 4
-        Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = True
-        '
-        'txtDesc
-        '
-        Me.txtDesc.Location = New System.Drawing.Point(118, 93)
-        Me.txtDesc.MaxLength = 100
-        Me.txtDesc.Multiline = True
-        Me.txtDesc.Name = "txtDesc"
-        Me.txtDesc.Size = New System.Drawing.Size(268, 71)
-        Me.txtDesc.TabIndex = 3
-        '
-        'txtRoleID
-        '
-        Me.txtRoleID.Location = New System.Drawing.Point(118, 40)
-        Me.txtRoleID.MaxLength = 15
-        Me.txtRoleID.Name = "txtRoleID"
-        Me.txtRoleID.Size = New System.Drawing.Size(268, 20)
-        Me.txtRoleID.TabIndex = 2
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(31, 124)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(60, 13)
-        Me.Label3.TabIndex = 1
-        Me.Label3.Text = "Description"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(31, 43)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(43, 13)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Role ID"
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tslStatus})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 360)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(800, 22)
-        Me.StatusStrip1.TabIndex = 7
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'tslStatus
-        '
-        Me.tslStatus.AutoSize = False
-        Me.tslStatus.Name = "tslStatus"
-        Me.tslStatus.Size = New System.Drawing.Size(755, 17)
-        Me.tslStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'errP
-        '
-        Me.errP.ContainerControl = Me
+        Me.ToolStripSeparator13.AutoSize = False
+        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
+        Me.ToolStripSeparator13.Size = New System.Drawing.Size(10, 50)
         '
         'frmRole
         '
@@ -419,8 +438,6 @@ Partial Class frmRole
         Me.Controls.Add(Me.ToolStrip1)
         Me.Name = "frmRole"
         Me.Text = "Member Roles"
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
         Me.grpNew.ResumeLayout(False)
         Me.grpNew.PerformLayout()
         Me.grpRoles.ResumeLayout(False)
@@ -429,11 +446,27 @@ Partial Class frmRole
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         CType(Me.errP, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
+    Friend WithEvents Label1 As Label
+    Friend WithEvents grpNew As GroupBox
+    Friend WithEvents chkNew As CheckBox
+    Friend WithEvents grpRoles As GroupBox
+    Friend WithEvents lstRoles As ListBox
+    Friend WithEvents grpEdit As GroupBox
+    Friend WithEvents btnSave As Button
+    Friend WithEvents btnCancel As Button
+    Friend WithEvents txtDesc As TextBox
+    Friend WithEvents txtRoleID As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents tslStatus As ToolStripStatusLabel
+    Friend WithEvents errP As ErrorProvider
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents tsbHome As ToolStripButton
@@ -457,19 +490,6 @@ Partial Class frmRole
     Friend WithEvents ToolStripSeparator12 As ToolStripSeparator
     Friend WithEvents tsbHelp As ToolStripButton
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents Label1 As Label
-    Friend WithEvents grpNew As GroupBox
-    Friend WithEvents chkNew As CheckBox
-    Friend WithEvents grpRoles As GroupBox
-    Friend WithEvents lstRoles As ListBox
-    Friend WithEvents grpEdit As GroupBox
-    Friend WithEvents btnSave As Button
-    Friend WithEvents btnCancel As Button
-    Friend WithEvents txtDesc As TextBox
-    Friend WithEvents txtRoleID As TextBox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents StatusStrip1 As StatusStrip
-    Friend WithEvents tslStatus As ToolStripStatusLabel
-    Friend WithEvents errP As ErrorProvider
+    Friend WithEvents tsbAdmin As ToolStripButton
+    Friend WithEvents ToolStripSeparator13 As ToolStripSeparator
 End Class

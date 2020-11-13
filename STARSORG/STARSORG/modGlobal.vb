@@ -14,9 +14,24 @@
     Public Const ACTION_TUTOR As Integer = 8
     Public Const ACTION_HELP As Integer = 9
     Public Const ACTION_LOGOUT As Integer = 10
+    Public Const ACTION_ADMIN As Integer = 11
 #End Region
 
     Public intNextAction As Integer
     Public myDB As New CDB
+
+#Region "Toolbar Stuff"
+    Public Sub ToolStripMouseEnter(sender As Object)
+        Dim tsbProxy As ToolStripButton
+        tsbProxy = DirectCast(sender, ToolStripButton)
+        tsbProxy.DisplayStyle = ToolStripItemDisplayStyle.Text
+    End Sub
+
+    Public Sub ToolStripMouseLeave(sender As Object)
+        Dim tsbProxy As ToolStripButton
+        tsbProxy = DirectCast(sender, ToolStripButton)
+        tsbProxy.DisplayStyle = ToolStripItemDisplayStyle.Image
+    End Sub
+#End Region
 
 End Module

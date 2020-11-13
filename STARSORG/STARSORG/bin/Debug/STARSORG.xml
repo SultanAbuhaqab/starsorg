@@ -22,6 +22,11 @@ STARSORG
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:STARSORG.My.Resources.Resources.admin">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:STARSORG.My.Resources.Resources.courses">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
