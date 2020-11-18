@@ -17,8 +17,16 @@
     Public Const ACTION_SECURITY As Integer = 11
 #End Region
 
+#Region "Supported Security Roles"
+    Public Const ADMIN As String = "ADMIN"
+    Public Const OFFICER As String = "OFFICER"
+    Public Const MEMBER As String = "MEMBER"
+    Public Const GUEST As String = "GUEST"
+#End Region
+
     Public intNextAction As Integer
     Public myDB As New CDB
+    Public AuthUser As New CAuthUser
 
 #Region "Toolbar Stuff"
     Public Sub ToolStripMouseEnter(sender As Object)

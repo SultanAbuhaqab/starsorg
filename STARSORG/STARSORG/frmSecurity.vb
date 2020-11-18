@@ -95,13 +95,6 @@ Public Class frmSecurity
     Private Const RESET_PASSWORD As String = "Reset Password"
 #End Region
 
-#Region "Supported Security Roles"
-    Private Const ADMIN As String = "ADMIN"
-    Private Const OFFICER As String = "OFFICER"
-    Private Const MEMBER As String = "MEMBER"
-    Private Const GUEST As String = "GUEST"
-#End Region
-
     Private Sub frmSecurity_Load(sender As Object, e As EventArgs) Handles Me.Load
         objSecurities = New CSecurities
     End Sub

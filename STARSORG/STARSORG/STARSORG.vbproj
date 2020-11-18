@@ -73,6 +73,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CAuthUser.vb" />
     <Compile Include="CDB.vb" />
     <Compile Include="CRole.vb" />
     <Compile Include="CRoles.vb" />

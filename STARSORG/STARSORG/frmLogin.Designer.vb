@@ -24,22 +24,22 @@ Partial Class frmLogin
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.grpMemberLogin = New System.Windows.Forms.GroupBox()
-        Me.btnChangePassword = New System.Windows.Forms.Button()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtConfirmPassword = New System.Windows.Forms.TextBox()
-        Me.txtNewPassword = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.btnSignIn = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtUserID = New System.Windows.Forms.TextBox()
         Me.lblPassword = New System.Windows.Forms.Label()
+        Me.btnChangePassword = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtConfirmPassword = New System.Windows.Forms.TextBox()
+        Me.txtNewPassword = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.btnGuestSignIn = New System.Windows.Forms.Button()
         Me.grpChangePassword = New System.Windows.Forms.GroupBox()
-        Me.LabelUserId = New System.Windows.Forms.Label()
-        Me.txtChangePasswordUserID = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.txtOldPassword = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtChangePasswordUserID = New System.Windows.Forms.TextBox()
+        Me.LabelUserId = New System.Windows.Forms.Label()
         Me.grpGuestLogin = New System.Windows.Forms.GroupBox()
         Me.grpMemberLogin.SuspendLayout()
         Me.grpChangePassword.SuspendLayout()
@@ -55,7 +55,7 @@ Partial Class frmLogin
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(714, 36)
         Me.Label1.TabIndex = 5
-        Me.Label1.Text = "STARSORG"
+        Me.Label1.Text = "STARSORG LOGIN"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'grpMemberLogin
@@ -71,47 +71,6 @@ Partial Class frmLogin
         Me.grpMemberLogin.TabIndex = 6
         Me.grpMemberLogin.TabStop = False
         Me.grpMemberLogin.Text = "Member Login"
-        '
-        'btnChangePassword
-        '
-        Me.btnChangePassword.Location = New System.Drawing.Point(123, 229)
-        Me.btnChangePassword.Name = "btnChangePassword"
-        Me.btnChangePassword.Size = New System.Drawing.Size(110, 23)
-        Me.btnChangePassword.TabIndex = 12
-        Me.btnChangePassword.Text = "Change Password"
-        Me.btnChangePassword.UseVisualStyleBackColor = True
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(13, 179)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(91, 13)
-        Me.Label6.TabIndex = 11
-        Me.Label6.Text = "Confirm Password"
-        '
-        'txtConfirmPassword
-        '
-        Me.txtConfirmPassword.Location = New System.Drawing.Point(123, 176)
-        Me.txtConfirmPassword.Name = "txtConfirmPassword"
-        Me.txtConfirmPassword.Size = New System.Drawing.Size(185, 20)
-        Me.txtConfirmPassword.TabIndex = 10
-        '
-        'txtNewPassword
-        '
-        Me.txtNewPassword.Location = New System.Drawing.Point(123, 128)
-        Me.txtNewPassword.Name = "txtNewPassword"
-        Me.txtNewPassword.Size = New System.Drawing.Size(185, 20)
-        Me.txtNewPassword.TabIndex = 9
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(13, 131)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(78, 13)
-        Me.Label5.TabIndex = 8
-        Me.Label5.Text = "New Password"
         '
         'txtPassword
         '
@@ -154,6 +113,47 @@ Partial Class frmLogin
         Me.lblPassword.TabIndex = 2
         Me.lblPassword.Text = "Password"
         '
+        'btnChangePassword
+        '
+        Me.btnChangePassword.Location = New System.Drawing.Point(123, 229)
+        Me.btnChangePassword.Name = "btnChangePassword"
+        Me.btnChangePassword.Size = New System.Drawing.Size(110, 23)
+        Me.btnChangePassword.TabIndex = 12
+        Me.btnChangePassword.Text = "Change Password"
+        Me.btnChangePassword.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(13, 179)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(91, 13)
+        Me.Label6.TabIndex = 11
+        Me.Label6.Text = "Confirm Password"
+        '
+        'txtConfirmPassword
+        '
+        Me.txtConfirmPassword.Location = New System.Drawing.Point(123, 176)
+        Me.txtConfirmPassword.Name = "txtConfirmPassword"
+        Me.txtConfirmPassword.Size = New System.Drawing.Size(185, 20)
+        Me.txtConfirmPassword.TabIndex = 10
+        '
+        'txtNewPassword
+        '
+        Me.txtNewPassword.Location = New System.Drawing.Point(123, 128)
+        Me.txtNewPassword.Name = "txtNewPassword"
+        Me.txtNewPassword.Size = New System.Drawing.Size(185, 20)
+        Me.txtNewPassword.TabIndex = 9
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(13, 131)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(78, 13)
+        Me.Label5.TabIndex = 8
+        Me.Label5.Text = "New Password"
+        '
         'btnGuestSignIn
         '
         Me.btnGuestSignIn.Location = New System.Drawing.Point(20, 28)
@@ -181,21 +181,12 @@ Partial Class frmLogin
         Me.grpChangePassword.TabStop = False
         Me.grpChangePassword.Text = "Change Password"
         '
-        'LabelUserId
+        'txtOldPassword
         '
-        Me.LabelUserId.AutoSize = True
-        Me.LabelUserId.Location = New System.Drawing.Point(13, 35)
-        Me.LabelUserId.Name = "LabelUserId"
-        Me.LabelUserId.Size = New System.Drawing.Size(43, 13)
-        Me.LabelUserId.TabIndex = 10
-        Me.LabelUserId.Text = "User ID"
-        '
-        'txtChangePasswordUserID
-        '
-        Me.txtChangePasswordUserID.Location = New System.Drawing.Point(123, 32)
-        Me.txtChangePasswordUserID.Name = "txtChangePasswordUserID"
-        Me.txtChangePasswordUserID.Size = New System.Drawing.Size(185, 20)
-        Me.txtChangePasswordUserID.TabIndex = 12
+        Me.txtOldPassword.Location = New System.Drawing.Point(123, 80)
+        Me.txtOldPassword.Name = "txtOldPassword"
+        Me.txtOldPassword.Size = New System.Drawing.Size(185, 20)
+        Me.txtOldPassword.TabIndex = 14
         '
         'Label4
         '
@@ -206,12 +197,21 @@ Partial Class frmLogin
         Me.Label4.TabIndex = 13
         Me.Label4.Text = "Old Password"
         '
-        'txtOldPassword
+        'txtChangePasswordUserID
         '
-        Me.txtOldPassword.Location = New System.Drawing.Point(123, 80)
-        Me.txtOldPassword.Name = "txtOldPassword"
-        Me.txtOldPassword.Size = New System.Drawing.Size(185, 20)
-        Me.txtOldPassword.TabIndex = 14
+        Me.txtChangePasswordUserID.Location = New System.Drawing.Point(123, 32)
+        Me.txtChangePasswordUserID.Name = "txtChangePasswordUserID"
+        Me.txtChangePasswordUserID.Size = New System.Drawing.Size(185, 20)
+        Me.txtChangePasswordUserID.TabIndex = 12
+        '
+        'LabelUserId
+        '
+        Me.LabelUserId.AutoSize = True
+        Me.LabelUserId.Location = New System.Drawing.Point(13, 35)
+        Me.LabelUserId.Name = "LabelUserId"
+        Me.LabelUserId.Size = New System.Drawing.Size(43, 13)
+        Me.LabelUserId.TabIndex = 10
+        Me.LabelUserId.Text = "User ID"
         '
         'grpGuestLogin
         '
@@ -233,6 +233,7 @@ Partial Class frmLogin
         Me.Controls.Add(Me.grpMemberLogin)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmLogin"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "STARSORG LOGIN"
         Me.grpMemberLogin.ResumeLayout(False)
         Me.grpMemberLogin.PerformLayout()

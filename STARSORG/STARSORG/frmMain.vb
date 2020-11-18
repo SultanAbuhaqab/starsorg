@@ -1,6 +1,7 @@
 ﻿Public Class frmMain
     Private RoleInfo As frmRole
     Private SecurityInfo As frmSecurity
+    Private LoginInfo As frmLogin
 
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter,
         tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogout.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter,
@@ -19,6 +20,7 @@
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         RoleInfo = New frmRole
         SecurityInfo = New frmSecurity
+        LoginInfo = New frmLogin
 
         Try
             myDB.OpenDB()
@@ -26,6 +28,7 @@
             MessageBox.Show("Unable to open database. Connection string = " & gstrConn, "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             EndProgram()
         End Try
+
     End Sub
 
     Private Sub EndProgram()
@@ -99,6 +102,10 @@
         SecurityInfo.ShowDialog()
         Me.Show()
         PerformNextAction()
+    End Sub
+
+    Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        LoginInfo.ShowDialog()
     End Sub
 #End Region
 End Class
