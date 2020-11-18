@@ -22,10 +22,11 @@ Partial Class frmLogin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.grpMemberLogin = New System.Windows.Forms.GroupBox()
         Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.btnSignIn = New System.Windows.Forms.Button()
+        Me.btnLogin = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtUserID = New System.Windows.Forms.TextBox()
         Me.lblPassword = New System.Windows.Forms.Label()
@@ -34,16 +35,18 @@ Partial Class frmLogin
         Me.txtConfirmPassword = New System.Windows.Forms.TextBox()
         Me.txtNewPassword = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.btnGuestSignIn = New System.Windows.Forms.Button()
+        Me.btnGuestLogin = New System.Windows.Forms.Button()
         Me.grpChangePassword = New System.Windows.Forms.GroupBox()
         Me.txtOldPassword = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtChangePasswordUserID = New System.Windows.Forms.TextBox()
         Me.LabelUserId = New System.Windows.Forms.Label()
         Me.grpGuestLogin = New System.Windows.Forms.GroupBox()
+        Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.grpMemberLogin.SuspendLayout()
         Me.grpChangePassword.SuspendLayout()
         Me.grpGuestLogin.SuspendLayout()
+        CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -61,32 +64,33 @@ Partial Class frmLogin
         'grpMemberLogin
         '
         Me.grpMemberLogin.Controls.Add(Me.txtPassword)
-        Me.grpMemberLogin.Controls.Add(Me.btnSignIn)
+        Me.grpMemberLogin.Controls.Add(Me.btnLogin)
         Me.grpMemberLogin.Controls.Add(Me.Label2)
         Me.grpMemberLogin.Controls.Add(Me.txtUserID)
         Me.grpMemberLogin.Controls.Add(Me.lblPassword)
         Me.grpMemberLogin.Location = New System.Drawing.Point(35, 74)
         Me.grpMemberLogin.Name = "grpMemberLogin"
-        Me.grpMemberLogin.Size = New System.Drawing.Size(333, 182)
+        Me.grpMemberLogin.Size = New System.Drawing.Size(333, 179)
         Me.grpMemberLogin.TabIndex = 6
         Me.grpMemberLogin.TabStop = False
         Me.grpMemberLogin.Text = "Member Login"
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(92, 90)
+        Me.txtPassword.Location = New System.Drawing.Point(92, 80)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(185, 20)
+        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtPassword.Size = New System.Drawing.Size(211, 20)
         Me.txtPassword.TabIndex = 3
         '
-        'btnSignIn
+        'btnLogin
         '
-        Me.btnSignIn.Location = New System.Drawing.Point(92, 134)
-        Me.btnSignIn.Name = "btnSignIn"
-        Me.btnSignIn.Size = New System.Drawing.Size(75, 23)
-        Me.btnSignIn.TabIndex = 4
-        Me.btnSignIn.Text = "Sign In"
-        Me.btnSignIn.UseVisualStyleBackColor = True
+        Me.btnLogin.Location = New System.Drawing.Point(92, 126)
+        Me.btnLogin.Name = "btnLogin"
+        Me.btnLogin.Size = New System.Drawing.Size(75, 23)
+        Me.btnLogin.TabIndex = 4
+        Me.btnLogin.Text = "Login"
+        Me.btnLogin.UseVisualStyleBackColor = True
         '
         'Label2
         '
@@ -101,13 +105,13 @@ Partial Class frmLogin
         '
         Me.txtUserID.Location = New System.Drawing.Point(92, 32)
         Me.txtUserID.Name = "txtUserID"
-        Me.txtUserID.Size = New System.Drawing.Size(185, 20)
+        Me.txtUserID.Size = New System.Drawing.Size(211, 20)
         Me.txtUserID.TabIndex = 1
         '
         'lblPassword
         '
         Me.lblPassword.AutoSize = True
-        Me.lblPassword.Location = New System.Drawing.Point(18, 90)
+        Me.lblPassword.Location = New System.Drawing.Point(18, 83)
         Me.lblPassword.Name = "lblPassword"
         Me.lblPassword.Size = New System.Drawing.Size(53, 13)
         Me.lblPassword.TabIndex = 2
@@ -135,14 +139,14 @@ Partial Class frmLogin
         '
         Me.txtConfirmPassword.Location = New System.Drawing.Point(123, 176)
         Me.txtConfirmPassword.Name = "txtConfirmPassword"
-        Me.txtConfirmPassword.Size = New System.Drawing.Size(185, 20)
+        Me.txtConfirmPassword.Size = New System.Drawing.Size(203, 20)
         Me.txtConfirmPassword.TabIndex = 10
         '
         'txtNewPassword
         '
         Me.txtNewPassword.Location = New System.Drawing.Point(123, 128)
         Me.txtNewPassword.Name = "txtNewPassword"
-        Me.txtNewPassword.Size = New System.Drawing.Size(185, 20)
+        Me.txtNewPassword.Size = New System.Drawing.Size(203, 20)
         Me.txtNewPassword.TabIndex = 9
         '
         'Label5
@@ -154,14 +158,14 @@ Partial Class frmLogin
         Me.Label5.TabIndex = 8
         Me.Label5.Text = "New Password"
         '
-        'btnGuestSignIn
+        'btnGuestLogin
         '
-        Me.btnGuestSignIn.Location = New System.Drawing.Point(20, 28)
-        Me.btnGuestSignIn.Name = "btnGuestSignIn"
-        Me.btnGuestSignIn.Size = New System.Drawing.Size(96, 23)
-        Me.btnGuestSignIn.TabIndex = 5
-        Me.btnGuestSignIn.Text = "Sign in as Guest"
-        Me.btnGuestSignIn.UseVisualStyleBackColor = True
+        Me.btnGuestLogin.Location = New System.Drawing.Point(20, 28)
+        Me.btnGuestLogin.Name = "btnGuestLogin"
+        Me.btnGuestLogin.Size = New System.Drawing.Size(96, 23)
+        Me.btnGuestLogin.TabIndex = 5
+        Me.btnGuestLogin.Text = "Login as Guest"
+        Me.btnGuestLogin.UseVisualStyleBackColor = True
         '
         'grpChangePassword
         '
@@ -185,7 +189,7 @@ Partial Class frmLogin
         '
         Me.txtOldPassword.Location = New System.Drawing.Point(123, 80)
         Me.txtOldPassword.Name = "txtOldPassword"
-        Me.txtOldPassword.Size = New System.Drawing.Size(185, 20)
+        Me.txtOldPassword.Size = New System.Drawing.Size(203, 20)
         Me.txtOldPassword.TabIndex = 14
         '
         'Label4
@@ -201,7 +205,7 @@ Partial Class frmLogin
         '
         Me.txtChangePasswordUserID.Location = New System.Drawing.Point(123, 32)
         Me.txtChangePasswordUserID.Name = "txtChangePasswordUserID"
-        Me.txtChangePasswordUserID.Size = New System.Drawing.Size(185, 20)
+        Me.txtChangePasswordUserID.Size = New System.Drawing.Size(203, 20)
         Me.txtChangePasswordUserID.TabIndex = 12
         '
         'LabelUserId
@@ -215,13 +219,17 @@ Partial Class frmLogin
         '
         'grpGuestLogin
         '
-        Me.grpGuestLogin.Controls.Add(Me.btnGuestSignIn)
+        Me.grpGuestLogin.Controls.Add(Me.btnGuestLogin)
         Me.grpGuestLogin.Location = New System.Drawing.Point(36, 275)
         Me.grpGuestLogin.Name = "grpGuestLogin"
         Me.grpGuestLogin.Size = New System.Drawing.Size(332, 77)
         Me.grpGuestLogin.TabIndex = 7
         Me.grpGuestLogin.TabStop = False
         Me.grpGuestLogin.Text = "Guest Login"
+        '
+        'errP
+        '
+        Me.errP.ContainerControl = Me
         '
         'frmLogin
         '
@@ -240,6 +248,7 @@ Partial Class frmLogin
         Me.grpChangePassword.ResumeLayout(False)
         Me.grpChangePassword.PerformLayout()
         Me.grpGuestLogin.ResumeLayout(False)
+        CType(Me.errP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -248,10 +257,10 @@ Partial Class frmLogin
     Friend WithEvents grpMemberLogin As GroupBox
     Friend WithEvents Label2 As Label
     Friend WithEvents txtUserID As TextBox
-    Friend WithEvents btnSignIn As Button
+    Friend WithEvents btnLogin As Button
     Friend WithEvents txtPassword As TextBox
     Friend WithEvents lblPassword As Label
-    Friend WithEvents btnGuestSignIn As Button
+    Friend WithEvents btnGuestLogin As Button
     Friend WithEvents btnChangePassword As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents txtConfirmPassword As TextBox
@@ -263,4 +272,5 @@ Partial Class frmLogin
     Friend WithEvents txtChangePasswordUserID As TextBox
     Friend WithEvents LabelUserId As Label
     Friend WithEvents grpGuestLogin As GroupBox
+    Friend WithEvents errP As ErrorProvider
 End Class

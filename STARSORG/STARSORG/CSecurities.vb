@@ -32,15 +32,52 @@ Public Class CSecurities
 
     Private Function FillObject(objDR As SqlDataReader) As CSecurity
         If objDR.Read Then
-            With _Security
-                .PID = objDR.Item("PID")
-                .UserID = objDR.Item("UserID")
-                .SecRole = objDR.Item("SecRole")
-                .Password = objDR.Item("Password")
-            End With
+            FillSecurityObject(objDR.Item("PID"), objDR.Item("UserID"), objDR.Item("SecRole"))
         End If
         objDR.Close()
         Return _Security
     End Function
+
+    Private Sub FillSecurityObject(strPID As String, strUserID As String, strSecRole As String)
+        With _Security
+            .PID = strPID
+            .UserID = strUserID
+            .SecRole = strSecRole
+            'We wont fill the password when retrieving since normally the password is 
+            'usually hashed and wont be relevant in its hashed format
+        End With
+    End Sub
+
+    Public Function LoginUser(strUserID As String, strPassword As String) As Integer
+        Dim params As New ArrayList
+        Dim objDR As SqlDataReader
+
+        params.Add(New SqlParameter("UserID", strUserID))
+        objDR = myDB.GetDataReaderBySP("sp_getSecurityByUserID", params)
+
+        If Not objDR.Read Then
+            objDR.Close()
+            Return -1   'No security record found by the supplied user id
+        End If
+
+        If objDR.Item("Password") <> strPassword Then
+            objDR.Close()
+            Return 0    'Password provided doesnt match the users password
+        End If
+
+        'Password matches the users saved password
+        FillSecurityObject(objDR.Item("PID"), objDR.Item("UserID"), objDR.Item("SecRole"))
+        objDR.Close()
+        SaveAuthUser()
+        Return 1
+
+    End Function
+
+    Private Sub SaveAuthUser()
+        With _Security
+            AuthUser.Save(.PID, .UserID, .SecRole)
+        End With
+    End Sub
+
 
 End Class

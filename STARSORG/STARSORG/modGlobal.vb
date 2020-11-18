@@ -24,6 +24,11 @@
     Public Const GUEST As String = "GUEST"
 #End Region
 
+#Region "Default Member Panther IDs"
+    Public Const GUEST_MEMBER_PID As String = "0000001"
+    Public Const UNSUCCESSFUL_LOGIN_MEMBER_PID As String = "9999999"
+#End Region
+
     Public intNextAction As Integer
     Public myDB As New CDB
     Public AuthUser As New CAuthUser
