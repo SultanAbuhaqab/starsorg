@@ -4,14 +4,14 @@ Public Class CAudit
 
     Private _mintukid As Integer
     Private _mstrPID As String
-    Private _mdatAccessTimestamp As Date
-    Private _mintSuccess As Integer
+    Private _mdatAccessTimestamp As DateTime
+    Private _mblnSuccess As Boolean
 
     Public Sub New()
         _mintukid = vbNull
         _mstrPID = ""
         _mdatAccessTimestamp = DateTime.Now
-        _mintSuccess = vbNull
+        _mblnSuccess = vbNull
     End Sub
 
 #Region "Expose Properties"
@@ -30,21 +30,21 @@ Public Class CAudit
         End Set
     End Property
 
-    Public Property AccessTimestamp As Date
+    Public Property AccessTimestamp As DateTime
         Get
             Return _mdatAccessTimestamp
         End Get
-        Set(datVal As Date)
+        Set(datVal As DateTime)
             _mdatAccessTimestamp = datVal
         End Set
     End Property
 
-    Public Property Success As Integer
+    Public Property Success As Boolean
         Get
-            Return _mintSuccess
+            Return _mblnSuccess
         End Get
-        Set(intVal As Integer)
-            _mintSuccess = intVal
+        Set(blnVal As Boolean)
+            _mblnSuccess = blnVal
         End Set
     End Property
 
@@ -54,7 +54,7 @@ Public Class CAudit
 
             params.Add(New SqlParameter("PID", _mstrPID))
             params.Add(New SqlParameter("AccessTimestamp", _mdatAccessTimestamp))
-            params.Add(New SqlParameter("Success", _mintSuccess))
+            params.Add(New SqlParameter("Success", _mblnSuccess))
 
             Return params
         End Get
@@ -62,6 +62,6 @@ Public Class CAudit
 #End Region
 
     Public Function Save() As Integer
-        Return myDB.ExecSP("sp_SaveAudit", GetSaveParameters())
+        Return myDB.ExecSP("sp_saveAudit", GetSaveParameters())
     End Function
 End Class
