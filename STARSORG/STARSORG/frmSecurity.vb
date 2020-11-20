@@ -93,6 +93,7 @@ Public Class frmSecurity
     Private Const ADD_USER As String = "Add User"
     Private Const UPDATE_ROLE As String = "Update Security Role"
     Private Const RESET_PASSWORD As String = "Reset Password"
+    Private Const NO_ACTION As String = ""
 #End Region
 
     Private Sub frmSecurity_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -191,9 +192,15 @@ Public Class frmSecurity
         Dim cboSelectedAction As ComboBox
         Dim strSelectedAction As String
         cboSelectedAction = DirectCast(sender, ComboBox)
-        strSelectedAction = cboSelectedAction.SelectedItem.ToString
+
+        If cboSelectedAction.SelectedIndex <> -1 Then
+            strSelectedAction = cboSelectedAction.SelectedItem.ToString
+        Else
+            strSelectedAction = NO_ACTION
+        End If
 
         If strSelectedAction = strSecurityAction Then
+            MessageBox.Show("Existing Sub " & strSecurityAction & strSecurityAction)
             Exit Sub
         End If
 
@@ -203,21 +210,38 @@ Public Class frmSecurity
     End Sub
 
     Private Sub UpdateManageUserForm()
-
-        grpManageUser.Enabled = True
-
         Select Case strSecurityAction
             Case ADD_USER
+                grpManageUser.Enabled = True
+                grpUsers.Enabled = False
                 ClearScreenControls(grpManageUser)
+                txtPID.Enabled = True
+                txtUserID.Enabled = True
+                cboSecRole.Enabled = True
+                cboSecRole.SelectedIndex = -1
+                txtPassword.Enabled = True
+                txtPasswordConfirm.Enabled = True
             Case UPDATE_ROLE
+                grpManageUser.Enabled = True
+                grpUsers.Enabled = True
                 txtPID.Enabled = False
+                txtUserID.Enabled = True
+                cboSecRole.Enabled = True
                 txtPassword.Enabled = False
                 txtPasswordConfirm.Enabled = False
-                txtUserID.Enabled = False
             Case RESET_PASSWORD
+                grpManageUser.Enabled = True
+                grpUsers.Enabled = True
                 txtPID.Enabled = False
-                txtUserID.Enabled = False
+                txtUserID.Enabled = True
                 cboSecRole.Enabled = False
+                cboSecRole.SelectedIndex = -1
+                txtPassword.Enabled = True
+                txtPasswordConfirm.Enabled = True
+            Case NO_ACTION
+                ClearScreenControls(grpManageUser)
+                grpManageUser.Enabled = False
+                grpUsers.Enabled = True
             Case Else
                 MessageBox.Show("Invalid security action selected : " & strSecurityAction, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Select

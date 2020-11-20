@@ -160,30 +160,4 @@ Public Class frmLogin
         End Try
         Me.Cursor = Cursors.Default
     End Sub
-
-    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        EndProgram()
-    End Sub
-
-    Private Sub EndProgram()
-        'Close each form except main
-        Dim f As Form
-        Me.Cursor = Cursors.WaitCursor
-
-        For Each f In Application.OpenForms
-            If f.Name <> Me.Name Then
-                If Not f Is Nothing Then
-                    f.Close()
-                End If
-            End If
-        Next
-
-        'Close the database connection
-        If Not objSQLConn Is Nothing Then
-            objSQLConn.Close()
-            objSQLConn.Dispose()
-        End If
-
-        Me.Cursor = Cursors.Default
-    End Sub
 End Class
