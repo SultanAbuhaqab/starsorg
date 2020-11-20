@@ -73,9 +73,64 @@ Public Class CSecurity
             Return params
         End Get
     End Property
+
+    Public ReadOnly Property GetUpdateRoleParameters() As ArrayList
+        Get
+            Dim params = New ArrayList
+
+            params.Add(New SqlParameter("UserID", _mstrUserID))
+            params.Add(New SqlParameter("SecRole", _mstrSecRole))
+
+            Return params
+        End Get
+    End Property
 #End Region
 
     Public Function UpdatePassword() As Integer
         Return myDB.ExecSP("sp_updateSecurityPassword", GetUpdatePasswordParameters())
+    End Function
+
+    Public Function UpdateRole() As Integer
+        Return myDB.ExecSP("sp_updateSecurityRole", GetUpdateRoleParameters())
+    End Function
+
+    Public Function Save() As Integer
+        Dim intSaveResult As Integer
+
+        intSaveResult = CheckPIDExists()
+
+        If intSaveResult <> 1 Then
+            Return intSaveResult
+        End If
+
+        intSaveResult = CheckUserIDExists()
+
+        If intSaveResult <> 1 Then
+            Return intSaveResult
+        End If
+
+        Return myDB.ExecSP("sp_saveSecurity", GetSaveParameters())
+    End Function
+
+    Private Function CheckPIDExists() As Integer
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("PID", _mstrPID))
+        Dim strResult As String = myDB.GetSingleValueFromSP("sp_checkPIDExists", params)
+        If strResult = 0 Then
+            Return -2 'Not present
+        End If
+
+        Return 1
+    End Function
+
+    Private Function CheckUserIDExists()
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("UserID", _mstrPID))
+        Dim strResult As String = myDB.GetSingleValueFromSP("sp_checkUserIDExists", params)
+        If Not strResult = 0 Then
+            Return -3 'Not present
+        End If
+
+        Return 1
     End Function
 End Class

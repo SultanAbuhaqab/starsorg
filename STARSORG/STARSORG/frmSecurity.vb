@@ -246,4 +246,168 @@ Public Class frmSecurity
                 MessageBox.Show("Invalid security action selected : " & strSecurityAction, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Select
     End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        tslStatus.Text = ""
+
+        If ValidateSecurityForm() Then
+            Exit Sub
+        End If
+
+        Select Case strSecurityAction
+            Case ADD_USER
+                AddUser()
+            Case UPDATE_ROLE
+                UpdateRole()
+            Case RESET_PASSWORD
+                ResetPassword()
+            Case Else
+                MessageBox.Show("Invalid security action selected", "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Select
+    End Sub
+
+    Private Function ValidateSecurityForm() As Boolean
+        Dim blnErrors As Boolean = False
+
+        errP.Clear()
+
+        If Not ValidateTextBoxLength(txtUserID, errP) Then
+            blnErrors = True
+        End If
+
+        Select Case strSecurityAction
+            Case ADD_USER
+                If Not ValidateTextBoxLength(txtPID, errP) Then
+                    blnErrors = True
+                End If
+
+                If Not ValidateCombo(cboSecRole, errP) Then
+                    blnErrors = True
+                End If
+
+                If Not ValidateTextBoxLength(txtPassword, errP) Then
+                    blnErrors = True
+                End If
+
+                If Not ValidateTextBoxLength(txtPasswordConfirm, errP) Then
+                    blnErrors = True
+                End If
+
+                If txtPassword.Text <> txtPasswordConfirm.Text Then
+                    blnErrors = True
+                    errP.SetError(txtPasswordConfirm, "The password confirmation does not match")
+                End If
+            Case RESET_PASSWORD
+                If Not ValidateTextBoxLength(txtPassword, errP) Then
+                    blnErrors = True
+                End If
+
+                If Not ValidateTextBoxLength(txtPasswordConfirm, errP) Then
+                    blnErrors = True
+                End If
+
+                If txtPassword.Text <> txtPasswordConfirm.Text Then
+                    blnErrors = True
+                    errP.SetError(txtPasswordConfirm, "The password confirmation does not match")
+                End If
+            Case UPDATE_ROLE
+                If Not ValidateCombo(cboSecRole, errP) Then
+                    blnErrors = True
+                End If
+            Case Else
+        End Select
+
+        Return blnErrors
+    End Function
+
+    Private Sub ResetPassword()
+        Dim intResetPasswordResult As Integer
+
+        With objSecurities.CurrentObject
+            .UserID = txtUserID.Text
+            .Password = txtPassword.Text
+        End With
+
+        Try
+            Me.Cursor = Cursors.WaitCursor
+
+            intResetPasswordResult = objSecurities.ResetPassword()
+
+            If intResetPasswordResult = 1 Then
+                tslStatus.Text = "Password for user " & objSecurities.CurrentObject.UserID & " reset successfully"
+            Else
+                MessageBox.Show("Password reset failed for user " & objSecurities.CurrentObject.UserID, "Reset Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                tslStatus.Text = "Password reset failed"
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Unable to reset user password : " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            tslStatus.Text = "Unable to reset user password"
+        End Try
+
+        Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub UpdateRole()
+        Dim intUpdateRoleResult As Integer
+
+        With objSecurities.CurrentObject
+            .UserID = txtUserID.Text
+            .SecRole = cboSecRole.SelectedItem.ToString
+        End With
+
+        Try
+            Me.Cursor = Cursors.WaitCursor
+
+            intUpdateRoleResult = objSecurities.UpdateRole()
+
+            If intUpdateRoleResult = 1 Then
+                tslStatus.Text = "User security role updated successfully"
+            Else
+                MessageBox.Show("Security role update failed for user " & objSecurities.CurrentObject.UserID, "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                tslStatus.Text = "Security role update failed"
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Unable to update user security role : " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            tslStatus.Text = "Unable to update user security role"
+        End Try
+
+        Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub AddUser()
+        Dim intAddUserResult As Integer
+
+        With objSecurities.CurrentObject
+            .PID = txtPID.Text
+            .UserID = txtUserID.Text
+            .SecRole = cboSecRole.SelectedItem.ToString
+            .Password = txtPassword.Text
+        End With
+
+        Try
+            Me.Cursor = Cursors.WaitCursor
+
+            intAddUserResult = objSecurities.Save()
+
+            If intAddUserResult = 1 Then
+                tslStatus.Text = "User added successfully"
+            ElseIf intAddUserResult = -2 Then
+                MessageBox.Show("No member exists with the supplied Panther ID", "Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                tslStatus.Text = "No member exists with the supplied Panther ID"
+            ElseIf intAddUserResult = -3 Then
+                MessageBox.Show("There is an existing user with the same user id", "Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                tslStatus.Text = "There is an existing user with the same user id"
+            Else
+                MessageBox.Show("Addition of new user failed", "Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                tslStatus.Text = "Addition of new user failed"
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Unable to add new user : " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            tslStatus.Text = "Unable to add new user"
+        End Try
+
+        Me.Cursor = Cursors.Default
+    End Sub
 End Class

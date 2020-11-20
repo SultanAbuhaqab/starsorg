@@ -60,7 +60,7 @@ Public Class CSecurities
 
     End Function
 
-    Public Function ValidateUserPassword(strUserID As String, strPassword As String) As Integer
+    Private Function ValidateUserPassword(strUserID As String, strPassword As String) As Integer
         Dim params As New ArrayList
         Dim objDR As SqlDataReader
 
@@ -109,5 +109,17 @@ Public Class CSecurities
         'Save the new password
         _Security.Password = strNewPassword
         Return _Security.UpdatePassword()
+    End Function
+
+    Public Function ResetPassword() As Integer
+        Return _Security.UpdatePassword()
+    End Function
+
+    Public Function UpdateRole() As Integer
+        Return _Security.UpdateRole()
+    End Function
+
+    Public Function Save() As Integer
+        Return _Security.Save()
     End Function
 End Class
