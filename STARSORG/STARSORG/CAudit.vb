@@ -60,4 +60,8 @@ Public Class CAudit
         End Get
     End Property
 #End Region
+
+    Public Function Save() As Integer
+        Return myDB.ExecSP("sp_SaveAudit", GetSaveParameters())
+    End Function
 End Class
