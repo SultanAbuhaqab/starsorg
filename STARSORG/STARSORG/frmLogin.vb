@@ -31,6 +31,8 @@ Public Class frmLogin
         Dim strAuditPatherID As String
         Dim blnLoginSuccess As Boolean
 
+        errP.Clear()
+
         If Not ValidateTextBoxLength(txtUserID, errP) Then
             blnErrors = True
         End If
@@ -101,5 +103,87 @@ Public Class frmLogin
         Else
             MessageBox.Show("Failed to login as guest", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
+    End Sub
+
+    Private Sub btnChangePassword_Click(sender As Object, e As EventArgs) Handles btnChangePassword.Click
+        Dim blnErrors As Boolean
+        Dim intChangePasswordResult As Integer
+
+        errP.Clear()
+
+        If Not ValidateTextBoxLength(txtChangePasswordUserID, errP) Then
+            blnErrors = True
+        End If
+
+        If Not ValidateTextBoxLength(txtOldPassword, errP) Then
+            blnErrors = True
+        End If
+
+        If Not ValidateTextBoxLength(txtNewPassword, errP) Then
+            blnErrors = True
+        End If
+
+        If Not ValidateTextBoxLength(txtConfirmPassword, errP) Then
+            blnErrors = True
+        End If
+
+        If txtNewPassword.Text <> txtConfirmPassword.Text Then
+            blnErrors = True
+            errP.SetError(txtConfirmPassword, "The password confirmation does not match")
+        End If
+
+        If blnErrors Then
+            Exit Sub
+        End If
+
+        Try
+            Me.Cursor = Cursors.WaitCursor
+
+            intChangePasswordResult = objSecurities.ChangePassword(txtChangePasswordUserID.Text, txtOldPassword.Text, txtNewPassword.Text)
+
+            If intChangePasswordResult = 1 Then
+                MessageBox.Show("You have successfully changed your password", "Change Password Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                'Clear the controls
+                txtChangePasswordUserID.Clear()
+                txtOldPassword.Clear()
+                txtNewPassword.Clear()
+                txtConfirmPassword.Clear()
+
+                'Give focus to the login text box
+                txtUserID.Focus()
+            Else
+                MessageBox.Show("Change password failed, The UserID or Password is incorrect", "Change Password Failed", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Unable to change user password : " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        EndProgram()
+    End Sub
+
+    Private Sub EndProgram()
+        'Close each form except main
+        Dim f As Form
+        Me.Cursor = Cursors.WaitCursor
+
+        For Each f In Application.OpenForms
+            If f.Name <> Me.Name Then
+                If Not f Is Nothing Then
+                    f.Close()
+                End If
+            End If
+        Next
+
+        'Close the database connection
+        If Not objSQLConn Is Nothing Then
+            objSQLConn.Close()
+            objSQLConn.Dispose()
+        End If
+
+        Me.Cursor = Cursors.Default
     End Sub
 End Class

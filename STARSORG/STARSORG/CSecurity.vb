@@ -32,10 +32,10 @@ Public Class CSecurity
         End Set
     End Property
 
-    Public Property Password As String
-        Get
-            Return _mstrPassword
-        End Get
+    Public WriteOnly Property Password As String
+        'Get
+        'Return _mstrPassword
+        'End Get
         Set(strVal As String)
             _mstrPassword = strVal
         End Set
@@ -63,6 +63,19 @@ Public Class CSecurity
         End Get
     End Property
 
+    Public ReadOnly Property GetUpdatePasswordParameters() As ArrayList
+        Get
+            Dim params = New ArrayList
+
+            params.Add(New SqlParameter("UserID", _mstrUserID))
+            params.Add(New SqlParameter("Password", _mstrPassword))
+
+            Return params
+        End Get
+    End Property
 #End Region
 
+    Public Function UpdatePassword() As Integer
+        Return myDB.ExecSP("sp_updateSecurityPassword", GetUpdatePasswordParameters())
+    End Function
 End Class

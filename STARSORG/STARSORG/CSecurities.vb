@@ -32,23 +32,35 @@ Public Class CSecurities
 
     Private Function FillObject(objDR As SqlDataReader) As CSecurity
         If objDR.Read Then
-            FillSecurityObject(objDR.Item("PID"), objDR.Item("UserID"), objDR.Item("SecRole"))
+            FillSecurityObject(objDR.Item("PID"), objDR.Item("UserID"), objDR.Item("Password"), objDR.Item("SecRole"))
         End If
         objDR.Close()
         Return _Security
     End Function
 
-    Private Sub FillSecurityObject(strPID As String, strUserID As String, strSecRole As String)
+    Private Sub FillSecurityObject(strPID As String, strUserID As String, strPassword As String, strSecRole As String)
         With _Security
             .PID = strPID
             .UserID = strUserID
             .SecRole = strSecRole
-            'We wont fill the password when retrieving since normally the password is 
-            'usually hashed and wont be relevant in its hashed format
+            .Password = strPassword
         End With
     End Sub
 
     Public Function LoginUser(strUserID As String, strPassword As String) As Integer
+        Dim intValidateResult As Integer
+
+        intValidateResult = ValidateUserPassword(strUserID, strPassword)
+
+        If intValidateResult = 1 Then
+            SaveAuthUser()
+        End If
+
+        Return intValidateResult
+
+    End Function
+
+    Public Function ValidateUserPassword(strUserID As String, strPassword As String) As Integer
         Dim params As New ArrayList
         Dim objDR As SqlDataReader
 
@@ -66,16 +78,14 @@ Public Class CSecurities
         End If
 
         'Password matches the users saved password
-        FillSecurityObject(objDR.Item("PID"), objDR.Item("UserID"), objDR.Item("SecRole"))
+        FillSecurityObject(objDR.Item("PID"), objDR.Item("UserID"), objDR.Item("Password"), objDR.Item("SecRole"))
         objDR.Close()
-        SaveAuthUser()
 
         Return 1
-
     End Function
 
     Public Function LoginGuest() As Integer
-        FillSecurityObject(GUEST_MEMBER_PID, GUEST_USER_ID, GUEST)
+        FillSecurityObject(GUEST_MEMBER_PID, GUEST_USER_ID, "", GUEST)
         SaveAuthUser()
 
         Return 1
@@ -86,4 +96,18 @@ Public Class CSecurities
             AuthUser.Save(.PID, .UserID, .SecRole)
         End With
     End Sub
+
+    Public Function ChangePassword(strUserID As String, strOldPassword As String, strNewPassword As String) As Integer
+        Dim intValidateResult As Integer
+
+        intValidateResult = ValidateUserPassword(strUserID, strOldPassword)
+
+        If intValidateResult <> 1 Then
+            Return intValidateResult
+        End If
+
+        'Save the new password
+        _Security.Password = strNewPassword
+        Return _Security.UpdatePassword()
+    End Function
 End Class

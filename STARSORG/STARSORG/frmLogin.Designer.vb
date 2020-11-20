@@ -43,6 +43,7 @@ Partial Class frmLogin
         Me.LabelUserId = New System.Windows.Forms.Label()
         Me.grpGuestLogin = New System.Windows.Forms.GroupBox()
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.btnExit = New System.Windows.Forms.Button()
         Me.grpMemberLogin.SuspendLayout()
         Me.grpChangePassword.SuspendLayout()
         Me.grpGuestLogin.SuspendLayout()
@@ -139,6 +140,7 @@ Partial Class frmLogin
         '
         Me.txtConfirmPassword.Location = New System.Drawing.Point(123, 176)
         Me.txtConfirmPassword.Name = "txtConfirmPassword"
+        Me.txtConfirmPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtConfirmPassword.Size = New System.Drawing.Size(203, 20)
         Me.txtConfirmPassword.TabIndex = 10
         '
@@ -146,6 +148,7 @@ Partial Class frmLogin
         '
         Me.txtNewPassword.Location = New System.Drawing.Point(123, 128)
         Me.txtNewPassword.Name = "txtNewPassword"
+        Me.txtNewPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtNewPassword.Size = New System.Drawing.Size(203, 20)
         Me.txtNewPassword.TabIndex = 9
         '
@@ -189,6 +192,7 @@ Partial Class frmLogin
         '
         Me.txtOldPassword.Location = New System.Drawing.Point(123, 80)
         Me.txtOldPassword.Name = "txtOldPassword"
+        Me.txtOldPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtOldPassword.Size = New System.Drawing.Size(203, 20)
         Me.txtOldPassword.TabIndex = 14
         '
@@ -231,11 +235,22 @@ Partial Class frmLogin
         '
         Me.errP.ContainerControl = Me
         '
+        'btnExit
+        '
+        Me.btnExit.Location = New System.Drawing.Point(675, 374)
+        Me.btnExit.Name = "btnExit"
+        Me.btnExit.Size = New System.Drawing.Size(75, 23)
+        Me.btnExit.TabIndex = 9
+        Me.btnExit.Text = "Exit"
+        Me.btnExit.UseVisualStyleBackColor = True
+        '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(786, 383)
+        Me.ClientSize = New System.Drawing.Size(786, 409)
+        Me.ControlBox = False
+        Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.grpChangePassword)
         Me.Controls.Add(Me.grpGuestLogin)
         Me.Controls.Add(Me.grpMemberLogin)
@@ -273,4 +288,5 @@ Partial Class frmLogin
     Friend WithEvents LabelUserId As Label
     Friend WithEvents grpGuestLogin As GroupBox
     Friend WithEvents errP As ErrorProvider
+    Friend WithEvents btnExit As Button
 End Class
