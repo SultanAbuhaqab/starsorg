@@ -74,11 +74,16 @@ Public Class CSecurities
 
     End Function
 
+    Public Function LoginGuest() As Integer
+        FillSecurityObject(GUEST_MEMBER_PID, GUEST_USER_ID, GUEST)
+        SaveAuthUser()
+
+        Return 1
+    End Function
+
     Private Sub SaveAuthUser()
         With _Security
             AuthUser.Save(.PID, .UserID, .SecRole)
         End With
     End Sub
-
-
 End Class

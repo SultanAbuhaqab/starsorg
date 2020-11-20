@@ -29,6 +29,7 @@
     Public Const UNSUCCESSFUL_LOGIN_MEMBER_PID As String = "9999999"
 #End Region
 
+    Public Const GUEST_USER_ID As String = "guest"
     Public intNextAction As Integer
     Public myDB As New CDB
     Public AuthUser As New CAuthUser

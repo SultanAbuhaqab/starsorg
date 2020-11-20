@@ -76,4 +76,30 @@ Public Class frmLogin
             MessageBox.Show("The UserID or Password is incorrect", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
+
+    Private Sub btnGuestLogin_Click(sender As Object, e As EventArgs) Handles btnGuestLogin.Click
+        Dim intLoginResult As Integer
+
+        Try
+            Me.Cursor = Cursors.WaitCursor()
+
+            intLoginResult = objSecurities.LoginGuest()
+
+            With objAudits.CurrentObject
+                .PID = objSecurities.CurrentObject.PID
+                .AccessTimestamp = DateTime.Now
+                .Success = True
+            End With
+
+            objAudits.Save()
+        Catch ex As Exception
+            MessageBox.Show("Unable to login user : " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        If intLoginResult = 1 Then
+            Me.Close()
+        Else
+            MessageBox.Show("Failed to login as guest", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
 End Class
