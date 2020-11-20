@@ -69,6 +69,7 @@ Public Class CSecurities
         FillSecurityObject(objDR.Item("PID"), objDR.Item("UserID"), objDR.Item("SecRole"))
         objDR.Close()
         SaveAuthUser()
+
         Return 1
 
     End Function
