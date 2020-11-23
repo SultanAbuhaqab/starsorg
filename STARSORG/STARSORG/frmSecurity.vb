@@ -250,6 +250,12 @@ Public Class frmSecurity
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         tslStatus.Text = ""
 
+        If Not AuthUser.IsAdmin() Then
+            MessageBox.Show("Access Denied : You dont have the required credentials to perform this action", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            tslStatus.Text = "Access Denied : You dont have the required credentials to perform this action"
+            Exit Sub
+        End If
+
         If ValidateSecurityForm() Then
             Exit Sub
         End If
