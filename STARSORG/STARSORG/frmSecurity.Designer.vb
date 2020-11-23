@@ -401,6 +401,7 @@ Partial Class frmSecurity
         'txtUserID
         '
         Me.txtUserID.Location = New System.Drawing.Point(136, 73)
+        Me.txtUserID.MaxLength = 15
         Me.txtUserID.Name = "txtUserID"
         Me.txtUserID.Size = New System.Drawing.Size(254, 20)
         Me.txtUserID.TabIndex = 10
@@ -408,6 +409,7 @@ Partial Class frmSecurity
         'txtPasswordConfirm
         '
         Me.txtPasswordConfirm.Location = New System.Drawing.Point(136, 215)
+        Me.txtPasswordConfirm.MaxLength = 8
         Me.txtPasswordConfirm.Name = "txtPasswordConfirm"
         Me.txtPasswordConfirm.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPasswordConfirm.Size = New System.Drawing.Size(254, 20)
@@ -416,6 +418,7 @@ Partial Class frmSecurity
         'txtPassword
         '
         Me.txtPassword.Location = New System.Drawing.Point(136, 168)
+        Me.txtPassword.MaxLength = 8
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword.Size = New System.Drawing.Size(254, 20)
@@ -424,6 +427,7 @@ Partial Class frmSecurity
         'txtPID
         '
         Me.txtPID.Location = New System.Drawing.Point(136, 30)
+        Me.txtPID.MaxLength = 7
         Me.txtPID.Name = "txtPID"
         Me.txtPID.Size = New System.Drawing.Size(254, 20)
         Me.txtPID.TabIndex = 5

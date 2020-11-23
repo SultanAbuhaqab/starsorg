@@ -103,9 +103,9 @@
         Me.Show()
         PerformNextAction()
     End Sub
+#End Region
 
     Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         LoginInfo.ShowDialog()
     End Sub
-#End Region
 End Class

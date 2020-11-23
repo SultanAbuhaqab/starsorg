@@ -79,6 +79,7 @@ Partial Class frmLogin
         'txtPassword
         '
         Me.txtPassword.Location = New System.Drawing.Point(92, 80)
+        Me.txtPassword.MaxLength = 8
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword.Size = New System.Drawing.Size(211, 20)
@@ -105,6 +106,7 @@ Partial Class frmLogin
         'txtUserID
         '
         Me.txtUserID.Location = New System.Drawing.Point(92, 32)
+        Me.txtUserID.MaxLength = 15
         Me.txtUserID.Name = "txtUserID"
         Me.txtUserID.Size = New System.Drawing.Size(211, 20)
         Me.txtUserID.TabIndex = 1
@@ -139,6 +141,7 @@ Partial Class frmLogin
         'txtConfirmPassword
         '
         Me.txtConfirmPassword.Location = New System.Drawing.Point(123, 176)
+        Me.txtConfirmPassword.MaxLength = 8
         Me.txtConfirmPassword.Name = "txtConfirmPassword"
         Me.txtConfirmPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtConfirmPassword.Size = New System.Drawing.Size(203, 20)
@@ -147,6 +150,7 @@ Partial Class frmLogin
         'txtNewPassword
         '
         Me.txtNewPassword.Location = New System.Drawing.Point(123, 128)
+        Me.txtNewPassword.MaxLength = 8
         Me.txtNewPassword.Name = "txtNewPassword"
         Me.txtNewPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtNewPassword.Size = New System.Drawing.Size(203, 20)
@@ -191,6 +195,7 @@ Partial Class frmLogin
         'txtOldPassword
         '
         Me.txtOldPassword.Location = New System.Drawing.Point(123, 80)
+        Me.txtOldPassword.MaxLength = 8
         Me.txtOldPassword.Name = "txtOldPassword"
         Me.txtOldPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtOldPassword.Size = New System.Drawing.Size(203, 20)
@@ -208,6 +213,7 @@ Partial Class frmLogin
         'txtChangePasswordUserID
         '
         Me.txtChangePasswordUserID.Location = New System.Drawing.Point(123, 32)
+        Me.txtChangePasswordUserID.MaxLength = 15
         Me.txtChangePasswordUserID.Name = "txtChangePasswordUserID"
         Me.txtChangePasswordUserID.Size = New System.Drawing.Size(203, 20)
         Me.txtChangePasswordUserID.TabIndex = 12
