@@ -334,6 +334,7 @@ Public Class frmSecurity
             intResetPasswordResult = objSecurities.ResetPassword()
 
             If intResetPasswordResult = 1 Then
+                cboActions.SelectedIndex = -1
                 tslStatus.Text = "Password for user " & objSecurities.CurrentObject.UserID & " reset successfully"
             Else
                 MessageBox.Show("Password reset failed for user " & objSecurities.CurrentObject.UserID, "Reset Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -362,6 +363,7 @@ Public Class frmSecurity
             intUpdateRoleResult = objSecurities.UpdateRole()
 
             If intUpdateRoleResult = 1 Then
+                cboActions.SelectedIndex = -1
                 tslStatus.Text = "User security role updated successfully"
             Else
                 MessageBox.Show("Security role update failed for user " & objSecurities.CurrentObject.UserID, "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -393,12 +395,17 @@ Public Class frmSecurity
 
             If intAddUserResult = 1 Then
                 tslStatus.Text = "User added successfully"
+                cboActions.SelectedIndex = -1
+                LoadUsers()
             ElseIf intAddUserResult = -2 Then
                 MessageBox.Show("No member exists with the supplied Panther ID", "Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 tslStatus.Text = "No member exists with the supplied Panther ID"
             ElseIf intAddUserResult = -3 Then
                 MessageBox.Show("There is an existing user with the same user id", "Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 tslStatus.Text = "There is an existing user with the same user id"
+            ElseIf intAddUserResult = -4 Then
+                MessageBox.Show("There is an existing user with the same panther id", "Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                tslStatus.Text = "There is an existing user with the same panther id"
             Else
                 MessageBox.Show("Addition of new user failed", "Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 tslStatus.Text = "Addition of new user failed"
@@ -409,5 +416,9 @@ Public Class frmSecurity
         End Try
 
         Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        cboActions.SelectedIndex = -1
     End Sub
 End Class

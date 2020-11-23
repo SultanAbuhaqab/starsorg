@@ -378,14 +378,14 @@ Partial Class frmSecurity
         Me.cboSecRole.Location = New System.Drawing.Point(136, 119)
         Me.cboSecRole.Name = "cboSecRole"
         Me.cboSecRole.Size = New System.Drawing.Size(253, 21)
-        Me.cboSecRole.TabIndex = 13
+        Me.cboSecRole.TabIndex = 5
         '
         'btnSave
         '
         Me.btnSave.Location = New System.Drawing.Point(201, 276)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 12
+        Me.btnSave.TabIndex = 10
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -404,7 +404,7 @@ Partial Class frmSecurity
         Me.txtUserID.MaxLength = 15
         Me.txtUserID.Name = "txtUserID"
         Me.txtUserID.Size = New System.Drawing.Size(254, 20)
-        Me.txtUserID.TabIndex = 10
+        Me.txtUserID.TabIndex = 3
         '
         'txtPasswordConfirm
         '
@@ -413,7 +413,7 @@ Partial Class frmSecurity
         Me.txtPasswordConfirm.Name = "txtPasswordConfirm"
         Me.txtPasswordConfirm.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPasswordConfirm.Size = New System.Drawing.Size(254, 20)
-        Me.txtPasswordConfirm.TabIndex = 8
+        Me.txtPasswordConfirm.TabIndex = 9
         '
         'txtPassword
         '
@@ -422,7 +422,7 @@ Partial Class frmSecurity
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword.Size = New System.Drawing.Size(254, 20)
-        Me.txtPassword.TabIndex = 6
+        Me.txtPassword.TabIndex = 7
         '
         'txtPID
         '
@@ -430,7 +430,7 @@ Partial Class frmSecurity
         Me.txtPID.MaxLength = 7
         Me.txtPID.Name = "txtPID"
         Me.txtPID.Size = New System.Drawing.Size(254, 20)
-        Me.txtPID.TabIndex = 5
+        Me.txtPID.TabIndex = 1
         '
         'Label7
         '
@@ -438,7 +438,7 @@ Partial Class frmSecurity
         Me.Label7.Location = New System.Drawing.Point(26, 218)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(91, 13)
-        Me.Label7.TabIndex = 4
+        Me.Label7.TabIndex = 8
         Me.Label7.Text = "Confirm Password"
         '
         'Label6
@@ -447,7 +447,7 @@ Partial Class frmSecurity
         Me.Label6.Location = New System.Drawing.Point(26, 76)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(43, 13)
-        Me.Label6.TabIndex = 3
+        Me.Label6.TabIndex = 2
         Me.Label6.Text = "User ID"
         '
         'Label5
@@ -456,7 +456,7 @@ Partial Class frmSecurity
         Me.Label5.Location = New System.Drawing.Point(26, 122)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(70, 13)
-        Me.Label5.TabIndex = 2
+        Me.Label5.TabIndex = 4
         Me.Label5.Text = "Security Role"
         '
         'Label4
@@ -465,7 +465,7 @@ Partial Class frmSecurity
         Me.Label4.Location = New System.Drawing.Point(26, 171)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(53, 13)
-        Me.Label4.TabIndex = 1
+        Me.Label4.TabIndex = 6
         Me.Label4.Text = "Password"
         '
         'Label3
