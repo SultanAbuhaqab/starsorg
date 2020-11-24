@@ -41,35 +41,35 @@ Public Class CEvents
     End Function
 
     Private Function FillObject(objDR As SqlDataReader) As CEvent
-        If objDR.Read Then
-            FillEventObject(objDR.Item("EventID"), objDR.Item("EventDescription"), objDR.Item("EventTypeID"), objDR.Item("SemesterID"), objDR.Item("StartDate"), objDR.Item("EndDate"), objDR.Item("Location"))
-        End If
         'If objDR.Read Then
-        '    With _Event
-        '        .EventID = objDR.Item("EventID")
-        '        .EventDescription = objDR.Item("EventDescription")
-        '        .EventTypeID = objDR.Item("EventTypeID")
-        '        .SemesterID = objDR.Item("SemesterID")
-        '        .StartDate = objDR.Item("StartDate")
-        '        .EndDate = objDR.Item("EndDate")
-        '        .Location = objDR.Item("Location")
-        '    End With
-        'Else
-        '    'No record was returned, Nothing else to do
+        '    FillEventObject(objDR.Item("EventID"), objDR.Item("EventDescription"), objDR.Item("EventTypeID"), objDR.Item("SemesterID"), objDR.Item("StartDate"), objDR.Item("EndDate"), objDR.Item("Location"))
         'End If
+        If objDR.Read Then
+            With _Event
+                .EventID = objDR.Item("EventID")
+                .EventDescription = objDR.Item("EventDescription")
+                .EventTypeID = objDR.Item("EventTypeID")
+                .SemesterID = objDR.Item("SemesterID")
+                .StartDate = objDR.Item("StartDate")
+                .EndDate = objDR.Item("EndDate")
+                .Location = objDR.Item("Location")
+            End With
+        Else
+            'No record was returned, Nothing else to do
+        End If
         objDR.Close()
         Return _Event
     End Function
 
-    Private Sub FillEventObject(strEventID As String, strEventDescription As String, strEventTypeID As String, strSemesterID As String, strStartDate As String, strEndDate As String, strLocation As String)
-        With _Event
-            .EventID = strEventID
-            .EventDescription = strEventDescription
-            .EventTypeID = strEventTypeID
-            .SemesterID = strSemesterID
-            .StartDate = strStartDate
-            .EndDate = strEndDate
-            .Location = strLocation
-        End With
-    End Sub
+    'Private Sub FillEventObject(strEventID As String, strEventDescription As String, strEventTypeID As String, strSemesterID As String, strStartDate As String, strEndDate As String, strLocation As String)
+    '    With _Event
+    '        .EventID = strEventID
+    '        .EventDescription = strEventDescription
+    '        .EventTypeID = strEventTypeID
+    '        .SemesterID = strSemesterID
+    '        .StartDate = strStartDate
+    '        .EndDate = strEndDate
+    '        .Location = strLocation
+    '    End With
+    'End Sub
 End Class

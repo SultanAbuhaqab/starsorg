@@ -204,15 +204,16 @@ Public Class frmEventManagement
         chkNew.Checked = False
 
         LoadSelectedRecord()
-        grpEdit.Enabled = True
+        'grpEdit.Enabled = True
     End Sub
 
     Private Sub LoadSelectedRecord()
+        objEvents.CurrentObject.IsNewEvent = False
         Try
             objEvents.GetEventByID(lstEvents.SelectedItem.ToString)
             With objEvents.CurrentObject
-                txtEventID.Text = .EventID.ToString
-                txtEventDescription.Text = .EventDescription.ToString
+                txtEventID.Text = .EventID
+                txtEventDescription.Text = .EventDescription
             End With
         Catch ex As Exception
             MessageBox.Show("Error loading role values: " & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -241,6 +242,7 @@ Public Class frmEventManagement
     End Sub
 
     Private Sub LoadSelectedEvent(strEventID As String)
+        objEvents.CurrentObject.IsNewEvent = False
         Try
             objEvents.GetEventByID(strEventID)
 
