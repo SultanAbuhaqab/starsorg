@@ -59,7 +59,12 @@ Public Class frmRole
         Me.Hide()
     End Sub
 
-    Private Sub tsbAdmin_Click(sender As Object, e As EventArgs) Handles tsbSecurity.Click
+    Private Sub tsbSecurity_Click(sender As Object, e As EventArgs) Handles tsbSecurity.Click
+        If Not AuthUser.IsAdmin() Then
+            MessageBox.Show("Access Denied : You dont have the required credentials to access this page", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
         intNextAction = ACTION_SECURITY
         Me.Hide()
     End Sub

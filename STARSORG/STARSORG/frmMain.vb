@@ -3,6 +3,7 @@
     Private SecurityInfo As frmSecurity
     Private LoginInfo As frmLogin
 
+#Region "Toolbar Stuff"
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter,
         tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogout.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter,
         tsbSemester.MouseEnter, tsbTutor.MouseEnter, tsbSecurity.MouseEnter
@@ -16,6 +17,38 @@
         'We need to do this only because we are not putting our images in the Image property of the toolbar buttons
         ToolStripMouseLeave(sender)
     End Sub
+
+    Private Sub tsbRole_Click(sender As Object, e As EventArgs) Handles tsbRole.Click
+        If Not AuthUser.IsAdmin() And Not AuthUser.IsOfficer() Then
+            MessageBox.Show("Access Denied : You dont have the required credentials to access this page", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        Me.Hide()
+        RoleInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+
+    Private Sub tsbLogout_Click(sender As Object, e As EventArgs) Handles tsbLogout.Click
+        EndProgram()
+    End Sub
+
+    Private Sub tsbSecurity_Click(sender As Object, e As EventArgs) Handles tsbSecurity.Click
+        If Not AuthUser.IsAdmin() Then
+            MessageBox.Show("Access Denied : You dont have the required credentials to access this page", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        Me.Hide()
+        SecurityInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+
+    Private Sub tsbHome_Click(sender As Object, e As EventArgs) Handles tsbHome.Click
+        'Do nothing since we are already at HOME form
+    End Sub
+
+#End Region
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         RoleInfo = New frmRole
@@ -53,6 +86,8 @@
         End If
 
         Me.Cursor = Cursors.Default
+
+        Application.Exit()
     End Sub
 
     Private Sub PerformNextAction()
@@ -82,36 +117,20 @@
                 tsbSemester.PerformClick()
             Case ACTION_TUTOR
                 tsbTutor.PerformClick()
+            Case ACTION_LOGIN
+                PerformLogin()
             Case Else
                 MessageBox.Show("Unexpected case value in Form Main PerformNextAction", "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Select
     End Sub
 
-#Region "Toolbar Click Handlers"
-    Private Sub tsbRole_Click(sender As Object, e As EventArgs) Handles tsbRole.Click
-        Me.Hide()
-        RoleInfo.ShowDialog()
-        Me.Show()
-        PerformNextAction()
-    End Sub
-
-    Private Sub tsbLogout_Click(sender As Object, e As EventArgs) Handles tsbLogout.Click
-        EndProgram()
-    End Sub
-
-    Private Sub tsbSecurity_Click(sender As Object, e As EventArgs) Handles tsbSecurity.Click
-        If Not AuthUser.IsAdmin() Then
-            MessageBox.Show("Access Denied : You dont have the required credentials to access this page", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
-        Me.Hide()
-        SecurityInfo.ShowDialog()
-        Me.Show()
-        PerformNextAction()
-    End Sub
-#End Region
-
     Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        intNextAction = ACTION_LOGIN
+        PerformNextAction()
+    End Sub
+
+    Private Sub PerformLogin()
         LoginInfo.ShowDialog()
+        PerformNextAction()
     End Sub
 End Class
