@@ -70,6 +70,7 @@ Partial Class frmSecurity
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.tslStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.btnReport = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.grpAction.SuspendLayout()
         Me.grpUsers.SuspendLayout()
@@ -335,10 +336,11 @@ Partial Class frmSecurity
         '
         'grpUsers
         '
+        Me.grpUsers.Controls.Add(Me.btnReport)
         Me.grpUsers.Controls.Add(Me.tvwUsers)
         Me.grpUsers.Location = New System.Drawing.Point(29, 207)
         Me.grpUsers.Name = "grpUsers"
-        Me.grpUsers.Size = New System.Drawing.Size(306, 245)
+        Me.grpUsers.Size = New System.Drawing.Size(306, 277)
         Me.grpUsers.TabIndex = 6
         Me.grpUsers.TabStop = False
         Me.grpUsers.Text = "Users"
@@ -366,7 +368,7 @@ Partial Class frmSecurity
         Me.grpManageUser.Controls.Add(Me.Label3)
         Me.grpManageUser.Location = New System.Drawing.Point(357, 129)
         Me.grpManageUser.Name = "grpManageUser"
-        Me.grpManageUser.Size = New System.Drawing.Size(412, 323)
+        Me.grpManageUser.Size = New System.Drawing.Size(412, 355)
         Me.grpManageUser.TabIndex = 7
         Me.grpManageUser.TabStop = False
         Me.grpManageUser.Text = "Manage User"
@@ -382,7 +384,7 @@ Partial Class frmSecurity
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(201, 276)
+        Me.btnSave.Location = New System.Drawing.Point(136, 270)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
         Me.btnSave.TabIndex = 10
@@ -391,7 +393,7 @@ Partial Class frmSecurity
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(315, 276)
+        Me.btnCancel.Location = New System.Drawing.Point(232, 270)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 23)
         Me.btnCancel.TabIndex = 11
@@ -480,7 +482,7 @@ Partial Class frmSecurity
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tslStatus})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 466)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 497)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(800, 22)
         Me.StatusStrip1.TabIndex = 8
@@ -497,11 +499,20 @@ Partial Class frmSecurity
         '
         Me.errP.ContainerControl = Me
         '
+        'btnReport
+        '
+        Me.btnReport.Location = New System.Drawing.Point(211, 245)
+        Me.btnReport.Name = "btnReport"
+        Me.btnReport.Size = New System.Drawing.Size(75, 23)
+        Me.btnReport.TabIndex = 1
+        Me.btnReport.Text = "Report"
+        Me.btnReport.UseVisualStyleBackColor = True
+        '
         'frmSecurity
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 488)
+        Me.ClientSize = New System.Drawing.Size(800, 519)
         Me.ControlBox = False
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.grpManageUser)
@@ -574,4 +585,5 @@ Partial Class frmSecurity
     Friend WithEvents tvwUsers As TreeView
     Friend WithEvents errP As ErrorProvider
     Friend WithEvents cboSecRole As ComboBox
+    Friend WithEvents btnReport As Button
 End Class

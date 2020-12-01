@@ -427,4 +427,13 @@ Public Class frmSecurity
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         cboActions.SelectedIndex = -1
     End Sub
+
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        Dim SecurityReport As New frmSecurityReport
+        If tvwUsers.Nodes.Count = 0 Then
+            MessageBox.Show("There are no security records to print")
+        End If
+
+        SecurityReport.Display()
+    End Sub
 End Class

@@ -29,6 +29,7 @@ Partial Class frmRole
         Me.grpRoles = New System.Windows.Forms.GroupBox()
         Me.lstRoles = New System.Windows.Forms.ListBox()
         Me.grpEdit = New System.Windows.Forms.GroupBox()
+        Me.btnReport = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.txtDesc = New System.Windows.Forms.TextBox()
@@ -63,7 +64,6 @@ Partial Class frmRole
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsbSecurity = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnReport = New System.Windows.Forms.Button()
         Me.grpNew.SuspendLayout()
         Me.grpRoles.SuspendLayout()
         Me.grpEdit.SuspendLayout()
@@ -106,10 +106,11 @@ Partial Class frmRole
         '
         'grpRoles
         '
+        Me.grpRoles.Controls.Add(Me.btnReport)
         Me.grpRoles.Controls.Add(Me.lstRoles)
         Me.grpRoles.Location = New System.Drawing.Point(29, 191)
         Me.grpRoles.Name = "grpRoles"
-        Me.grpRoles.Size = New System.Drawing.Size(306, 162)
+        Me.grpRoles.Size = New System.Drawing.Size(306, 178)
         Me.grpRoles.TabIndex = 5
         Me.grpRoles.TabStop = False
         Me.grpRoles.Text = "ROLES"
@@ -124,7 +125,6 @@ Partial Class frmRole
         '
         'grpEdit
         '
-        Me.grpEdit.Controls.Add(Me.btnReport)
         Me.grpEdit.Controls.Add(Me.btnSave)
         Me.grpEdit.Controls.Add(Me.btnCancel)
         Me.grpEdit.Controls.Add(Me.txtDesc)
@@ -133,10 +133,19 @@ Partial Class frmRole
         Me.grpEdit.Controls.Add(Me.Label2)
         Me.grpEdit.Location = New System.Drawing.Point(355, 131)
         Me.grpEdit.Name = "grpEdit"
-        Me.grpEdit.Size = New System.Drawing.Size(414, 222)
+        Me.grpEdit.Size = New System.Drawing.Size(414, 238)
         Me.grpEdit.TabIndex = 6
         Me.grpEdit.TabStop = False
         Me.grpEdit.Text = "Edit Role"
+        '
+        'btnReport
+        '
+        Me.btnReport.Location = New System.Drawing.Point(215, 147)
+        Me.btnReport.Name = "btnReport"
+        Me.btnReport.Size = New System.Drawing.Size(75, 23)
+        Me.btnReport.TabIndex = 6
+        Me.btnReport.Text = "Report"
+        Me.btnReport.UseVisualStyleBackColor = True
         '
         'btnSave
         '
@@ -194,7 +203,7 @@ Partial Class frmRole
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tslStatus})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 360)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 382)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(800, 22)
         Me.StatusStrip1.TabIndex = 7
@@ -425,21 +434,12 @@ Partial Class frmRole
         Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
         Me.ToolStripSeparator13.Size = New System.Drawing.Size(10, 50)
         '
-        'btnReport
-        '
-        Me.btnReport.Location = New System.Drawing.Point(311, 178)
-        Me.btnReport.Name = "btnReport"
-        Me.btnReport.Size = New System.Drawing.Size(75, 23)
-        Me.btnReport.TabIndex = 6
-        Me.btnReport.Text = "Report"
-        Me.btnReport.UseVisualStyleBackColor = True
-        '
         'frmRole
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ClientSize = New System.Drawing.Size(800, 382)
+        Me.ClientSize = New System.Drawing.Size(800, 404)
         Me.ControlBox = False
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.grpEdit)

@@ -3,6 +3,7 @@
 Public Class frmLogin
     Private objSecurities As CSecurities
     Private objAudits As CAudits
+    Private MainForm As frmMain
 
 #Region "Textboxes"
     Private Sub txtBoxes_GotFocus(sender As Object, e As EventArgs) Handles txtUserID.GotFocus, txtPassword.GotFocus,
@@ -73,6 +74,9 @@ Public Class frmLogin
         Me.Cursor = Cursors.Default
 
         If blnLoginSuccess Then
+            txtUserID.Clear()
+            txtPassword.Clear()
+            intNextAction = ACTION_HOME
             Me.Close()
         Else
             MessageBox.Show("The UserID or Password is incorrect", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -99,6 +103,7 @@ Public Class frmLogin
         End Try
 
         If intLoginResult = 1 Then
+            intNextAction = ACTION_HOME
             Me.Close()
         Else
             MessageBox.Show("Failed to login as guest", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -159,5 +164,10 @@ Public Class frmLogin
             MessageBox.Show("Unable to change user password : " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        intNextAction = ACTION_LOGOUT
+        Me.Close()
     End Sub
 End Class

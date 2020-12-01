@@ -124,6 +124,12 @@
     <Compile Include="frmSecurity.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSecurityReport.Designer.vb">
+      <DependentUpon>frmSecurityReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSecurityReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modDBvb.vb" />
     <Compile Include="modErrHandler.vb" />
     <Compile Include="modGlobal.vb" />
@@ -163,6 +169,9 @@
     <EmbeddedResource Include="frmSecurity.resx">
       <DependentUpon>frmSecurity.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSecurityReport.resx">
+      <DependentUpon>frmSecurityReport.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -175,6 +184,9 @@
     <EmbeddedResource Include="Reports\rptRoles.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptSecurities.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -182,6 +194,7 @@
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
     <None Include="My Project\DataSources\CRole.datasource" />
+    <None Include="My Project\DataSources\CSecurity.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
