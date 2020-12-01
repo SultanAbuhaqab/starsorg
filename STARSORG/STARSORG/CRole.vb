@@ -52,7 +52,6 @@ Public Class CRole
         End Get
     End Property
 #End Region
-
     Public Function Save() As Integer
         'Return -1 If the ID already exists (and we cannot create a new record with duplicate ID)
         If IsNewRole Then
@@ -66,5 +65,9 @@ Public Class CRole
 
         'If not a new role, or it is new and has a unique ID, then do the save (update or insert)
         Return myDB.ExecSP("sp_saveRole", GetSaveParameters())
+    End Function
+
+    Public Function GetReportData() As SqlDataAdapter
+        Return myDB.GetDataAdapterBySP("dbo.sp_getAllRoles", Nothing)
     End Function
 End Class

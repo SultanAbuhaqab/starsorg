@@ -63,6 +63,7 @@ Partial Class frmRole
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsbSecurity = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnReport = New System.Windows.Forms.Button()
         Me.grpNew.SuspendLayout()
         Me.grpRoles.SuspendLayout()
         Me.grpEdit.SuspendLayout()
@@ -123,6 +124,7 @@ Partial Class frmRole
         '
         'grpEdit
         '
+        Me.grpEdit.Controls.Add(Me.btnReport)
         Me.grpEdit.Controls.Add(Me.btnSave)
         Me.grpEdit.Controls.Add(Me.btnCancel)
         Me.grpEdit.Controls.Add(Me.txtDesc)
@@ -138,7 +140,7 @@ Partial Class frmRole
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(212, 178)
+        Me.btnSave.Location = New System.Drawing.Point(118, 178)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
         Me.btnSave.TabIndex = 5
@@ -147,7 +149,7 @@ Partial Class frmRole
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(311, 178)
+        Me.btnCancel.Location = New System.Drawing.Point(216, 178)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 23)
         Me.btnCancel.TabIndex = 4
@@ -423,6 +425,15 @@ Partial Class frmRole
         Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
         Me.ToolStripSeparator13.Size = New System.Drawing.Size(10, 50)
         '
+        'btnReport
+        '
+        Me.btnReport.Location = New System.Drawing.Point(311, 178)
+        Me.btnReport.Name = "btnReport"
+        Me.btnReport.Size = New System.Drawing.Size(75, 23)
+        Me.btnReport.TabIndex = 6
+        Me.btnReport.Text = "Report"
+        Me.btnReport.UseVisualStyleBackColor = True
+        '
         'frmRole
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -493,4 +504,5 @@ Partial Class frmRole
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents tsbSecurity As ToolStripButton
     Friend WithEvents ToolStripSeparator13 As ToolStripSeparator
+    Friend WithEvents btnReport As Button
 End Class

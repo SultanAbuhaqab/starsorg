@@ -237,4 +237,12 @@ Public Class frmRole
         grpRoles.Enabled = True
     End Sub
 
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        Dim RoleReport As New frmRoleReport
+        If lstRoles.Items.Count = 0 Then
+            MessageBox.Show("There are no records to print")
+        End If
+
+        RoleReport.Display()
+    End Sub
 End Class
