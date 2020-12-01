@@ -150,4 +150,8 @@ Public Class CSecurity
 
         Return 1
     End Function
+
+    Public Function GetReportData() As SqlDataAdapter
+        Return myDB.GetDataAdapterBySP("sp_getAllSecurities", Nothing)
+    End Function
 End Class
