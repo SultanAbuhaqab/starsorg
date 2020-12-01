@@ -67,4 +67,8 @@ Public Class CRole
         'If not a new role, or it is new and has a unique ID, then do the save (update or insert)
         Return myDB.ExecSP("sp_saveRole", GetSaveParameters())
     End Function
+
+    Public Function GetReportData() As SqlDataAdapter
+        Return myDB.GetDataAdapterBySP("dbo.sp_getAllRoles", Nothing)
+    End Function
 End Class

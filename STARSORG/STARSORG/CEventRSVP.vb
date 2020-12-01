@@ -119,4 +119,10 @@ Public Class CEventRSVP
         'If not a new role, or it is new and has a unique ID, then do the save (update or insert)
         Return myDB.ExecSP("sp_saveEventRsvp", GetSaveParameters())
     End Function
+
+    Public Function GetReportData() As SqlDataAdapter
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("EventID", _mstrEventID))
+        Return myDB.GetDataAdapterBySP("dbo.sp_GetAllEventRSVPs", params)
+    End Function
 End Class

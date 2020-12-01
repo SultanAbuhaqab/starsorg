@@ -4,6 +4,7 @@ Public Class frmRole
     Private objRoles As CRoles
     Private blnClearing As Boolean
     Private blnReloading As Boolean
+    Private RoleReport As frmReport
 
 #Region "Toolbar Stuff"
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter,
@@ -237,4 +238,14 @@ Public Class frmRole
         grpRoles.Enabled = True
     End Sub
 
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        RoleReport = New frmReport
+        If lstRoles.Items.Count = 0 Then 'Nohting to print
+            MessageBox.Show("No records to print")
+            Exit Sub
+        End If
+        Me.Cursor = Cursors.WaitCursor
+        RoleReport.Display()
+        Me.Cursor = Cursors.Default
+    End Sub
 End Class

@@ -7,6 +7,7 @@ Public Class frmEventRSVP
     Private objMembers As CMembers
     Private sqlDA As SqlDataAdapter
     Private eventStart As Date
+    Private RSVPReport As frmReportEventRSVPs
 
     Private Sub frmEventRSVP_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         objRSVPs = New CEventRSVPs
@@ -81,7 +82,10 @@ Public Class frmEventRSVP
 
     Private Sub frmEventRSVP_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         LoadEventRSVPs()
-
+        'If Not AuthUser.IsAdmin And Not AuthUser.IsOfficer Then
+        '    btnReport.Enabled = False
+        '    Exit Sub
+        'End If
     End Sub
 
     Private Sub tvwEventRSVPs_NodeMouseClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles tvwEventRSVPs.NodeMouseClick
@@ -91,11 +95,14 @@ Public Class frmEventRSVP
             txtFirstName.Enabled = False
             txtLastName.Enabled = False
             txtEmail.Enabled = False
+            btnSave.Enabled = False
         Else
             txtFirstName.Enabled = True
             txtLastName.Enabled = True
             txtEmail.Enabled = True
+            btnSave.Enabled = True
         End If
+        'for debugging purposes only
         'MessageBox.Show(eventNode.Name & "Append Click")
     End Sub
 
@@ -103,6 +110,7 @@ Public Class frmEventRSVP
         objEvents.CurrentObject.IsNewEvent = False
         Try
             objEvents.GetEventByID(strEventID)
+            'for debugging purposes only
             'MessageBox.Show(objEvents.CurrentObject.EventDescription & "Retrieved")
 
             With objEvents.CurrentObject
@@ -188,5 +196,22 @@ Public Class frmEventRSVP
         Me.Cursor = Cursors.Default
         LoadEventRSVPs()
         grpAddRSVP.Enabled = True
+    End Sub
+
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        RSVPReport = New frmReportEventRSVPs
+        If tvwEventRSVPs.Nodes.Count = 0 Then 'Nothing to print
+            MessageBox.Show("No records to print")
+            Exit Sub
+        End If
+        If Not AuthUser.IsAdmin And Not AuthUser.IsOfficer Then
+            MessageBox.Show("Access Denied. You do not have permission to view this page", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        RSVPReport.passEventID = objEvents.CurrentObject.EventID
+        'MessageBox.Show(RSVPReport.passEventID & "Retrieved") 'For debugging only
+        Me.Cursor = Cursors.WaitCursor
+        RSVPReport.Display()
+        Me.Cursor = Cursors.Default
     End Sub
 End Class
