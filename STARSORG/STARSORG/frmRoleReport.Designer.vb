@@ -29,6 +29,7 @@ Partial Class frmRoleReport
         'rpvRoleReport
         '
         Me.rpvRoleReport.AutoSize = True
+        Me.rpvRoleReport.DocumentMapWidth = 21
         Me.rpvRoleReport.Location = New System.Drawing.Point(12, 12)
         Me.rpvRoleReport.Name = "rpvRoleReport"
         Me.rpvRoleReport.ServerReport.BearerToken = Nothing
@@ -48,6 +49,7 @@ Partial Class frmRoleReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.ControlBox = False
         Me.Controls.Add(Me.btnClose)
