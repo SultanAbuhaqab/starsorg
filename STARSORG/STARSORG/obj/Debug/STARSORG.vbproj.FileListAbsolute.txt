@@ -32,3 +32,4 @@ C:\Users\Ulises\Desktop\Team1\starsorg\STARSORG\STARSORG\obj\Debug\STARSORG.vbpr
 C:\Users\Ulises\Desktop\Team1\starsorg\STARSORG\STARSORG\obj\Debug\STARSORG.exe
 C:\Users\Ulises\Desktop\Team1\starsorg\STARSORG\STARSORG\obj\Debug\STARSORG.xml
 C:\Users\Ulises\Desktop\Team1\starsorg\STARSORG\STARSORG\obj\Debug\STARSORG.pdb
+C:\Users\Ulises\Desktop\Team1\starsorg\STARSORG\STARSORG\obj\Debug\STARSORG.frmMembers.resources

@@ -27,6 +27,10 @@ Public Class CEvents
         Return _Event.Save
     End Function
 
+    Public Function UpdateEvent() As Integer
+        Return _Event.UpdateEvent()
+    End Function
+
     Public Function GetAllEvents() As SqlDataReader
         Dim objDR As SqlDataReader
         objDR = myDB.GetDataReaderBySP("sp_getAllEvents", Nothing)

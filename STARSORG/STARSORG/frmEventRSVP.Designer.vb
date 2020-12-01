@@ -22,7 +22,7 @@ Partial Class frmEventRSVP
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnExit = New System.Windows.Forms.Button()
+        Me.components = New System.ComponentModel.Container()
         Me.grpAddRSVP = New System.Windows.Forms.GroupBox()
         Me.lblEventID = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -35,7 +35,6 @@ Partial Class frmEventRSVP
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.dgrEventRSVP = New System.Windows.Forms.DataGridView()
         Me.btnRSVP = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -61,20 +60,15 @@ Partial Class frmEventRSVP
         Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
+        Me.sslStatus = New System.Windows.Forms.StatusStrip()
+        Me.tsbSecurity = New System.Windows.Forms.ToolStripButton()
+        Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.tvwEventRSVPs = New System.Windows.Forms.TreeView()
         Me.grpAddRSVP.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.dgrEventRSVP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
+        CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'btnExit
-        '
-        Me.btnExit.Location = New System.Drawing.Point(489, 502)
-        Me.btnExit.Name = "btnExit"
-        Me.btnExit.Size = New System.Drawing.Size(112, 33)
-        Me.btnExit.TabIndex = 13
-        Me.btnExit.Text = "Exit"
-        Me.btnExit.UseVisualStyleBackColor = True
         '
         'grpAddRSVP
         '
@@ -88,12 +82,12 @@ Partial Class frmEventRSVP
         Me.grpAddRSVP.Controls.Add(Me.Label6)
         Me.grpAddRSVP.Controls.Add(Me.Label4)
         Me.grpAddRSVP.Controls.Add(Me.btnSave)
-        Me.grpAddRSVP.Location = New System.Drawing.Point(345, 157)
+        Me.grpAddRSVP.Location = New System.Drawing.Point(640, 123)
         Me.grpAddRSVP.Name = "grpAddRSVP"
         Me.grpAddRSVP.Size = New System.Drawing.Size(275, 339)
         Me.grpAddRSVP.TabIndex = 12
         Me.grpAddRSVP.TabStop = False
-        Me.grpAddRSVP.Text = "Edit Members"
+        Me.grpAddRSVP.Text = "RSVP Info"
         '
         'lblEventID
         '
@@ -189,33 +183,18 @@ Partial Class frmEventRSVP
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.dgrEventRSVP)
+        Me.GroupBox3.Controls.Add(Me.tvwEventRSVPs)
         Me.GroupBox3.Controls.Add(Me.btnRSVP)
-        Me.GroupBox3.Location = New System.Drawing.Point(21, 157)
+        Me.GroupBox3.Location = New System.Drawing.Point(18, 123)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(299, 339)
+        Me.GroupBox3.Size = New System.Drawing.Size(616, 339)
         Me.GroupBox3.TabIndex = 11
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Event RSVP"
         '
-        'dgrEventRSVP
-        '
-        Me.dgrEventRSVP.AllowUserToAddRows = False
-        Me.dgrEventRSVP.AllowUserToDeleteRows = False
-        Me.dgrEventRSVP.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.dgrEventRSVP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgrEventRSVP.Location = New System.Drawing.Point(0, 18)
-        Me.dgrEventRSVP.Margin = New System.Windows.Forms.Padding(2)
-        Me.dgrEventRSVP.Name = "dgrEventRSVP"
-        Me.dgrEventRSVP.ReadOnly = True
-        Me.dgrEventRSVP.RowTemplate.Height = 28
-        Me.dgrEventRSVP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgrEventRSVP.Size = New System.Drawing.Size(299, 198)
-        Me.dgrEventRSVP.TabIndex = 8
-        '
         'btnRSVP
         '
-        Me.btnRSVP.Location = New System.Drawing.Point(149, 250)
+        Me.btnRSVP.Location = New System.Drawing.Point(243, 271)
         Me.btnRSVP.Name = "btnRSVP"
         Me.btnRSVP.Size = New System.Drawing.Size(112, 33)
         Me.btnRSVP.TabIndex = 7
@@ -229,16 +208,17 @@ Partial Class frmEventRSVP
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(12, 51)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(624, 55)
+        Me.Label3.Size = New System.Drawing.Size(903, 55)
         Me.Label3.TabIndex = 27
+        Me.Label3.Text = "RSVP"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator4, Me.tsbHome, Me.ToolStripSeparator2, Me.tsbMember, Me.ToolStripSeparator1, Me.tsbRole, Me.ToolStripSeparator6, Me.tsbEvent, Me.ToolStripSeparator7, Me.tsbRSVP, Me.ToolStripSeparator3, Me.tsbCourse, Me.ToolStripSeparator8, Me.tsbSemester, Me.ToolStripSeparator5, Me.tsbTutor, Me.ToolStripSeparator11, Me.tsbLogOut, Me.ToolStripSeparator10, Me.tsbHelp, Me.ToolStripSeparator9, Me.ToolStripSeparator12})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator4, Me.tsbHome, Me.ToolStripSeparator2, Me.tsbMember, Me.ToolStripSeparator1, Me.tsbSecurity, Me.tsbRole, Me.ToolStripSeparator6, Me.tsbEvent, Me.ToolStripSeparator7, Me.tsbRSVP, Me.ToolStripSeparator3, Me.tsbCourse, Me.ToolStripSeparator8, Me.tsbSemester, Me.ToolStripSeparator5, Me.tsbTutor, Me.ToolStripSeparator11, Me.tsbLogOut, Me.ToolStripSeparator10, Me.tsbHelp, Me.ToolStripSeparator9, Me.ToolStripSeparator12})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(648, 51)
+        Me.ToolStrip1.Size = New System.Drawing.Size(937, 51)
         Me.ToolStrip1.TabIndex = 26
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -429,16 +409,46 @@ Partial Class frmEventRSVP
         Me.ToolStripSeparator12.Name = "ToolStripSeparator12"
         Me.ToolStripSeparator12.Size = New System.Drawing.Size(10, 51)
         '
+        'sslStatus
+        '
+        Me.sslStatus.Location = New System.Drawing.Point(0, 525)
+        Me.sslStatus.Name = "sslStatus"
+        Me.sslStatus.Size = New System.Drawing.Size(937, 22)
+        Me.sslStatus.TabIndex = 28
+        Me.sslStatus.Text = "StatusStrip1"
+        '
+        'tsbSecurity
+        '
+        Me.tsbSecurity.AutoSize = False
+        Me.tsbSecurity.BackgroundImage = Global.STARSORG.My.Resources.Resources.admin
+        Me.tsbSecurity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbSecurity.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbSecurity.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbSecurity.Name = "tsbSecurity"
+        Me.tsbSecurity.Size = New System.Drawing.Size(48, 48)
+        Me.tsbSecurity.Text = "SECURITY"
+        '
+        'errP
+        '
+        Me.errP.ContainerControl = Me
+        '
+        'tvwEventRSVPs
+        '
+        Me.tvwEventRSVPs.Location = New System.Drawing.Point(7, 20)
+        Me.tvwEventRSVPs.Name = "tvwEventRSVPs"
+        Me.tvwEventRSVPs.Size = New System.Drawing.Size(603, 224)
+        Me.tvwEventRSVPs.TabIndex = 8
+        '
         'frmEventRSVP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ClientSize = New System.Drawing.Size(648, 547)
+        Me.ClientSize = New System.Drawing.Size(937, 547)
         Me.ControlBox = False
+        Me.Controls.Add(Me.sslStatus)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ToolStrip1)
-        Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.grpAddRSVP)
         Me.Controls.Add(Me.GroupBox3)
         Me.Name = "frmEventRSVP"
@@ -446,15 +456,13 @@ Partial Class frmEventRSVP
         Me.grpAddRSVP.ResumeLayout(False)
         Me.grpAddRSVP.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
-        CType(Me.dgrEventRSVP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        CType(Me.errP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btnExit As Button
     Friend WithEvents grpAddRSVP As GroupBox
     Friend WithEvents Label1 As Label
     Friend WithEvents btnCancel As Button
@@ -466,7 +474,6 @@ Partial Class frmEventRSVP
     Friend WithEvents Label4 As Label
     Friend WithEvents btnSave As Button
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents dgrEventRSVP As DataGridView
     Friend WithEvents btnRSVP As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents ToolStrip1 As ToolStrip
@@ -493,4 +500,8 @@ Partial Class frmEventRSVP
     Friend WithEvents ToolStripSeparator9 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator12 As ToolStripSeparator
     Friend WithEvents lblEventID As Label
+    Friend WithEvents sslStatus As StatusStrip
+    Friend WithEvents tsbSecurity As ToolStripButton
+    Friend WithEvents errP As ErrorProvider
+    Friend WithEvents tvwEventRSVPs As TreeView
 End Class

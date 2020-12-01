@@ -55,7 +55,7 @@
     Public Const su17 As String = "su17"
 #End Region
 
-#Region "Valid Event Typess"
+#Region "Valid Event Types"
     Public Const eBoard_Mtg As String = "eBoard Mtg"
     Public Const Gen_Mtg As String = "Gen mtg"
     Public Const Outreach As String = "Outreach"

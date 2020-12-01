@@ -29,14 +29,14 @@ Public Class CEventTypes
 
     Public Function GetAllEventTypes() As SqlDataReader
         Dim objDR As SqlDataReader
-        objDR = myDB.GetDataReaderBySP("dbo.sp_getAllEventTypes", Nothing)
+        objDR = myDB.GetDataReaderBySP("sp_getAllEventTypes", Nothing)
         Return objDR
     End Function
 
     Public Function GetEventTypeByID(strID As String) As CEventType
         Dim params As New ArrayList
         params.Add(New SqlParameter("EventTypeID", strID))
-        FillObject(myDB.GetDataReaderBySP("dbo.sp_getEventTypeByID", params))
+        FillObject(myDB.GetDataReaderBySP("sp_getEventTypeByID", params))
         Return _EventType
     End Function
 

@@ -29,21 +29,21 @@ Public Class CEventRSVPs
 
     Public Function GetAllEventRSVPs() As SqlDataReader
         Dim objDR As SqlDataReader
-        objDR = myDB.GetDataReaderBySP("dbo.GetAllEventRSVPs", Nothing)
+        objDR = myDB.GetDataReaderBySP("sp_GetAllEventRSVPs", Nothing)
         Return objDR
     End Function
 
     Public Function GetEventTypeByID(strID As String) As CEventRSVP
         Dim params As New ArrayList
-        params.Add(New SqlParameter("ukid", strID))
-        FillObject(myDB.GetDataReaderBySP("dbo.sp_getEventRSVPByID", params))
+        params.Add(New SqlParameter("Ukid", strID))
+        FillObject(myDB.GetDataReaderBySP("sp_getEventRSVPByID", params))
         Return _EventRSVP
     End Function
 
     Private Function FillObject(objDR As SqlDataReader) As CEventRSVP
         If objDR.Read() Then 'found the EventRSVP record
             With _EventRSVP
-                .ukid = objDR.Item("ukid") & ""
+                .Ukid = objDR.Item("Ukid") & ""
                 .EventID = objDR.Item("EventID") & ""
                 .FName = objDR.Item("FName") & ""
                 .LName = objDR.Item("LName") & ""

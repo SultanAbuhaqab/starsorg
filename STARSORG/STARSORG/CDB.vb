@@ -105,7 +105,7 @@ Public Class CDB
         Dim sqlDR As SqlDataReader = GetDataReaderBySP(strSP, params)
         Dim strResult As String
 
-        If Not sqlDR Is Nothing Then 'We got a dara reader
+        If Not sqlDR Is Nothing Then 'We got a data reader
             If sqlDR.Read Then 'We have some data
                 strResult = sqlDR.GetValue(0).ToString
                 sqlDR.Close()

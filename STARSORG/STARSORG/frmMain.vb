@@ -109,6 +109,10 @@
     End Sub
 
     Private Sub tsbEvents_Click(sender As Object, e As EventArgs) Handles tsbEvent.Click
+        If Not AuthUser.IsAdmin And Not AuthUser.IsOfficer Then
+            MessageBox.Show("Access Denied. You do not have permission to view this page", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         Me.Hide()
         EventInfo.ShowDialog()
         Me.Show()

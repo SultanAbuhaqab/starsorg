@@ -85,6 +85,7 @@ Public Class CEvent
     Public ReadOnly Property GetSaveParameters() As ArrayList
         Get
             Dim params As New ArrayList
+
             params.Add(New SqlParameter("EventID", _mstrEventID))
             params.Add(New SqlParameter("EventDescription", _mstrEventDescription))
             params.Add(New SqlParameter("EventTypeID", _mstrEventTypeID))
@@ -92,6 +93,23 @@ Public Class CEvent
             params.Add(New SqlParameter("StartDate", _mstrStartDate))
             params.Add(New SqlParameter("EndDate", _mstrEndDate))
             params.Add(New SqlParameter("Location", _mstrLocation))
+
+            Return params
+        End Get
+    End Property
+
+    Public ReadOnly Property GetUpdateEventParameters() As ArrayList
+        Get
+            Dim params As New ArrayList
+
+            params.Add(New SqlParameter("EventID", _mstrEventID))
+            params.Add(New SqlParameter("EventDescription", _mstrEventDescription))
+            params.Add(New SqlParameter("EventTypeID", _mstrEventTypeID))
+            params.Add(New SqlParameter("SemesterID", _mstrSemesterID))
+            params.Add(New SqlParameter("StartDate", _mstrStartDate))
+            params.Add(New SqlParameter("EndDate", _mstrEndDate))
+            params.Add(New SqlParameter("Location", _mstrLocation))
+
             Return params
         End Get
     End Property
@@ -106,6 +124,10 @@ Public Class CEvent
             End If
         End If
         Return myDB.ExecSP("sp_SaveEvent", GetSaveParameters())
+    End Function
+
+    Public Function UpdateEvent() As Integer
+        Return myDB.ExecSP("sp_updateEvent", GetUpdateEventParameters())
     End Function
 
     Private Function CheckEventIDExists() As Integer

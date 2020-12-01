@@ -24,7 +24,7 @@ Partial Class frmEventManagement
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.tssStatus = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.sslStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btnReport = New System.Windows.Forms.Button()
         Me.grpEdit = New System.Windows.Forms.GroupBox()
         Me.txtEventID = New System.Windows.Forms.TextBox()
@@ -45,7 +45,6 @@ Partial Class frmEventManagement
         Me.Label4 = New System.Windows.Forms.Label()
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.grpEvents = New System.Windows.Forms.GroupBox()
-        Me.lstEvents = New System.Windows.Forms.ListBox()
         Me.tvwEvents = New System.Windows.Forms.TreeView()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
@@ -86,7 +85,7 @@ Partial Class frmEventManagement
         'StatusStrip1
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tssStatus})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.sslStatus})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 509)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 11, 0)
@@ -94,11 +93,11 @@ Partial Class frmEventManagement
         Me.StatusStrip1.TabIndex = 23
         Me.StatusStrip1.Text = "StatusStrip1"
         '
-        'tssStatus
+        'sslStatus
         '
-        Me.tssStatus.Name = "tssStatus"
-        Me.tssStatus.Size = New System.Drawing.Size(119, 17)
-        Me.tssStatus.Text = "ToolStripStatusLabel1"
+        Me.sslStatus.Name = "sslStatus"
+        Me.sslStatus.Size = New System.Drawing.Size(119, 17)
+        Me.sslStatus.Text = "ToolStripStatusLabel1"
         '
         'btnReport
         '
@@ -132,7 +131,7 @@ Partial Class frmEventManagement
         Me.grpEdit.Size = New System.Drawing.Size(279, 312)
         Me.grpEdit.TabIndex = 22
         Me.grpEdit.TabStop = False
-        Me.grpEdit.Text = "Edit Events"
+        Me.grpEdit.Text = "Event Details"
         '
         'txtEventID
         '
@@ -168,7 +167,7 @@ Partial Class frmEventManagement
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(100, 33)
         Me.btnCancel.TabIndex = 27
-        Me.btnCancel.Text = "Clear"
+        Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'cboSemesterID
@@ -183,6 +182,7 @@ Partial Class frmEventManagement
         '
         'cboEventTypeID
         '
+        Me.cboEventTypeID.BackColor = System.Drawing.SystemColors.Window
         Me.cboEventTypeID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboEventTypeID.FormattingEnabled = True
         Me.cboEventTypeID.Location = New System.Drawing.Point(111, 86)
@@ -293,7 +293,6 @@ Partial Class frmEventManagement
         '
         'grpEvents
         '
-        Me.grpEvents.Controls.Add(Me.lstEvents)
         Me.grpEvents.Controls.Add(Me.tvwEvents)
         Me.grpEvents.Controls.Add(Me.btnReport)
         Me.grpEvents.Location = New System.Drawing.Point(12, 124)
@@ -303,19 +302,11 @@ Partial Class frmEventManagement
         Me.grpEvents.TabStop = False
         Me.grpEvents.Text = "Event Manager"
         '
-        'lstEvents
-        '
-        Me.lstEvents.FormattingEnabled = True
-        Me.lstEvents.Location = New System.Drawing.Point(7, 128)
-        Me.lstEvents.Name = "lstEvents"
-        Me.lstEvents.Size = New System.Drawing.Size(551, 121)
-        Me.lstEvents.TabIndex = 12
-        '
         'tvwEvents
         '
         Me.tvwEvents.Location = New System.Drawing.Point(7, 20)
         Me.tvwEvents.Name = "tvwEvents"
-        Me.tvwEvents.Size = New System.Drawing.Size(551, 92)
+        Me.tvwEvents.Size = New System.Drawing.Size(551, 292)
         Me.tvwEvents.TabIndex = 11
         '
         'ToolStrip1
@@ -637,12 +628,11 @@ Partial Class frmEventManagement
     Friend WithEvents grpNew As GroupBox
     Friend WithEvents chkNew As CheckBox
     Friend WithEvents btnCancel As Button
-    Friend WithEvents tssStatus As ToolStripStatusLabel
+    Friend WithEvents sslStatus As ToolStripStatusLabel
     Friend WithEvents btnSave As Button
     Friend WithEvents tvwEvents As TreeView
     Friend WithEvents ToolStripSeparator13 As ToolStripSeparator
     Friend WithEvents tsbSecurity As ToolStripButton
     Friend WithEvents txtEventID As TextBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents lstEvents As ListBox
 End Class
