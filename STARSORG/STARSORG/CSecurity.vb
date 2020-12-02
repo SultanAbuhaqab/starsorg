@@ -91,13 +91,13 @@ Public Class CSecurity
     End Function
 
     Public Function UpdateRole() As Integer
-        Return myDB.ExecSP("sp_updateSecurityRole", GetUpdateRoleParameters())
+        Return myDB.ExecSP("sp_updateSecuritySecRole", GetUpdateRoleParameters())
     End Function
 
     Public Function Save() As Integer
         Dim intSaveResult As Integer
 
-        intSaveResult = CheckPIDExists()
+        intSaveResult = CheckPIDExistsInMember()
 
         If intSaveResult <> 1 Then
             Return intSaveResult
@@ -109,15 +109,32 @@ Public Class CSecurity
             Return intSaveResult
         End If
 
+        intSaveResult = CheckPIDExistsInSecurity()
+
+        If intSaveResult <> 1 Then
+            Return intSaveResult
+        End If
+
         Return myDB.ExecSP("sp_saveSecurity", GetSaveParameters())
     End Function
 
-    Private Function CheckPIDExists() As Integer
+    Private Function CheckPIDExistsInMember() As Integer
         Dim params As New ArrayList
         params.Add(New SqlParameter("PID", _mstrPID))
-        Dim strResult As String = myDB.GetSingleValueFromSP("sp_checkPIDExists", params)
+        Dim strResult As String = myDB.GetSingleValueFromSP("sp_checkPIDExistsInMember", params)
         If strResult = 0 Then
             Return -2 'Not present
+        End If
+
+        Return 1
+    End Function
+
+    Private Function CheckPIDExistsInSecurity() As Integer
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("PID", _mstrPID))
+        Dim strResult As String = myDB.GetSingleValueFromSP("sp_checkPIDExistsInSecurity", params)
+        If Not strResult = 0 Then
+            Return -4 'Not present
         End If
 
         Return 1
@@ -132,5 +149,9 @@ Public Class CSecurity
         End If
 
         Return 1
+    End Function
+
+    Public Function GetReportData() As SqlDataAdapter
+        Return myDB.GetDataAdapterBySP("sp_getAllSecurities", Nothing)
     End Function
 End Class

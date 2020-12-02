@@ -137,7 +137,7 @@ Partial Class frmMain
         Me.tsbSecurity.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbSecurity.Name = "tsbSecurity"
         Me.tsbSecurity.Size = New System.Drawing.Size(48, 48)
-        Me.tsbSecurity.Text = "SECURITY"
+        Me.tsbSecurity.Text = "Security"
         '
         'ToolStripSeparator13
         '
@@ -241,7 +241,7 @@ Partial Class frmMain
         Me.tsbLogOut.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbLogOut.Name = "tsbLogOut"
         Me.tsbLogOut.Size = New System.Drawing.Size(48, 48)
-        Me.tsbLogOut.Text = "Log Out"
+        Me.tsbLogOut.Text = "Logout"
         '
         'ToolStripSeparator10
         '

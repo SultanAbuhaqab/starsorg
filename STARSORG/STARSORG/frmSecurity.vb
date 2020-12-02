@@ -5,14 +5,14 @@ Public Class frmSecurity
     Private strSecurityAction As String = ""
 
 #Region "Toolbar Stuff"
-    Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvents.MouseEnter,
+    Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter,
         tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogout.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter,
         tsbSemester.MouseEnter, tsbTutor.MouseEnter, tsbSecurity.MouseEnter
         'We need to do this only because we are not putting our images in the Image property of the toolbar buttons
         ToolStripMouseEnter(sender)
     End Sub
 
-    Private Sub tsbProxy_MouseLeave(sender As Object, e As EventArgs) Handles tsbCourse.MouseLeave, tsbEvents.MouseLeave,
+    Private Sub tsbProxy_MouseLeave(sender As Object, e As EventArgs) Handles tsbCourse.MouseLeave, tsbEvent.MouseLeave,
         tsbHelp.MouseLeave, tsbHome.MouseLeave, tsbLogout.MouseLeave, tsbMember.MouseLeave, tsbRole.MouseLeave, tsbRSVP.MouseLeave,
         tsbSemester.MouseLeave, tsbTutor.MouseLeave, tsbSecurity.MouseLeave
         'We need to do this only because we are not putting our images in the Image property of the toolbar buttons
@@ -24,7 +24,7 @@ Public Class frmSecurity
         Me.Hide()
     End Sub
 
-    Private Sub tsbEvents_Click(sender As Object, e As EventArgs) Handles tsbEvents.Click
+    Private Sub tsbEvents_Click(sender As Object, e As EventArgs) Handles tsbEvent.Click
         intNextAction = ACTION_EVENT
         Me.Hide()
     End Sub
@@ -250,6 +250,12 @@ Public Class frmSecurity
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         tslStatus.Text = ""
 
+        If Not AuthUser.IsAdmin() Then
+            MessageBox.Show("Access Denied : You dont have the required credentials to perform this action", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            tslStatus.Text = "Access Denied : You dont have the required credentials to perform this action"
+            Exit Sub
+        End If
+
         If ValidateSecurityForm() Then
             Exit Sub
         End If
@@ -334,6 +340,7 @@ Public Class frmSecurity
             intResetPasswordResult = objSecurities.ResetPassword()
 
             If intResetPasswordResult = 1 Then
+                cboActions.SelectedIndex = -1
                 tslStatus.Text = "Password for user " & objSecurities.CurrentObject.UserID & " reset successfully"
             Else
                 MessageBox.Show("Password reset failed for user " & objSecurities.CurrentObject.UserID, "Reset Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -362,6 +369,7 @@ Public Class frmSecurity
             intUpdateRoleResult = objSecurities.UpdateRole()
 
             If intUpdateRoleResult = 1 Then
+                cboActions.SelectedIndex = -1
                 tslStatus.Text = "User security role updated successfully"
             Else
                 MessageBox.Show("Security role update failed for user " & objSecurities.CurrentObject.UserID, "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -393,12 +401,17 @@ Public Class frmSecurity
 
             If intAddUserResult = 1 Then
                 tslStatus.Text = "User added successfully"
+                cboActions.SelectedIndex = -1
+                LoadUsers()
             ElseIf intAddUserResult = -2 Then
                 MessageBox.Show("No member exists with the supplied Panther ID", "Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 tslStatus.Text = "No member exists with the supplied Panther ID"
             ElseIf intAddUserResult = -3 Then
                 MessageBox.Show("There is an existing user with the same user id", "Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 tslStatus.Text = "There is an existing user with the same user id"
+            ElseIf intAddUserResult = -4 Then
+                MessageBox.Show("There is an existing user with the same panther id", "Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                tslStatus.Text = "There is an existing user with the same panther id"
             Else
                 MessageBox.Show("Addition of new user failed", "Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 tslStatus.Text = "Addition of new user failed"
@@ -409,5 +422,18 @@ Public Class frmSecurity
         End Try
 
         Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        cboActions.SelectedIndex = -1
+    End Sub
+
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        Dim SecurityReport As New frmSecurityReport
+        If tvwUsers.Nodes.Count = 0 Then
+            MessageBox.Show("There are no security records to print")
+        End If
+
+        SecurityReport.Display()
     End Sub
 End Class

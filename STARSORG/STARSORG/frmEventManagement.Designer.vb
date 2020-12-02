@@ -96,7 +96,7 @@ Partial Class frmEventManagement
         'sslStatus
         '
         Me.sslStatus.Name = "sslStatus"
-        Me.sslStatus.Size = New System.Drawing.Size(119, 17)
+        Me.sslStatus.Size = New System.Drawing.Size(120, 17)
         Me.sslStatus.Text = "ToolStripStatusLabel1"
         '
         'btnReport
@@ -384,7 +384,7 @@ Partial Class frmEventManagement
         Me.tsbSecurity.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbSecurity.Name = "tsbSecurity"
         Me.tsbSecurity.Size = New System.Drawing.Size(48, 48)
-        Me.tsbSecurity.Text = "SECURITY"
+        Me.tsbSecurity.Text = "Security"
         '
         'ToolStripSeparator6
         '
@@ -488,7 +488,7 @@ Partial Class frmEventManagement
         Me.tsbLogOut.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbLogOut.Name = "tsbLogOut"
         Me.tsbLogOut.Size = New System.Drawing.Size(48, 48)
-        Me.tsbLogOut.Text = "Log Out"
+        Me.tsbLogOut.Text = "Logout"
         '
         'ToolStripSeparator10
         '

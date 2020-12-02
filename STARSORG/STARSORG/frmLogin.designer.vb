@@ -79,6 +79,7 @@ Partial Class frmLogin
         'txtPassword
         '
         Me.txtPassword.Location = New System.Drawing.Point(92, 80)
+        Me.txtPassword.MaxLength = 8
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword.Size = New System.Drawing.Size(211, 20)
@@ -105,6 +106,7 @@ Partial Class frmLogin
         'txtUserID
         '
         Me.txtUserID.Location = New System.Drawing.Point(92, 32)
+        Me.txtUserID.MaxLength = 15
         Me.txtUserID.Name = "txtUserID"
         Me.txtUserID.Size = New System.Drawing.Size(211, 20)
         Me.txtUserID.TabIndex = 1
@@ -123,7 +125,7 @@ Partial Class frmLogin
         Me.btnChangePassword.Location = New System.Drawing.Point(123, 229)
         Me.btnChangePassword.Name = "btnChangePassword"
         Me.btnChangePassword.Size = New System.Drawing.Size(110, 23)
-        Me.btnChangePassword.TabIndex = 12
+        Me.btnChangePassword.TabIndex = 8
         Me.btnChangePassword.Text = "Change Password"
         Me.btnChangePassword.UseVisualStyleBackColor = True
         '
@@ -133,24 +135,26 @@ Partial Class frmLogin
         Me.Label6.Location = New System.Drawing.Point(13, 179)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(91, 13)
-        Me.Label6.TabIndex = 11
+        Me.Label6.TabIndex = 6
         Me.Label6.Text = "Confirm Password"
         '
         'txtConfirmPassword
         '
         Me.txtConfirmPassword.Location = New System.Drawing.Point(123, 176)
+        Me.txtConfirmPassword.MaxLength = 8
         Me.txtConfirmPassword.Name = "txtConfirmPassword"
         Me.txtConfirmPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtConfirmPassword.Size = New System.Drawing.Size(203, 20)
-        Me.txtConfirmPassword.TabIndex = 10
+        Me.txtConfirmPassword.TabIndex = 7
         '
         'txtNewPassword
         '
         Me.txtNewPassword.Location = New System.Drawing.Point(123, 128)
+        Me.txtNewPassword.MaxLength = 8
         Me.txtNewPassword.Name = "txtNewPassword"
         Me.txtNewPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtNewPassword.Size = New System.Drawing.Size(203, 20)
-        Me.txtNewPassword.TabIndex = 9
+        Me.txtNewPassword.TabIndex = 5
         '
         'Label5
         '
@@ -158,7 +162,7 @@ Partial Class frmLogin
         Me.Label5.Location = New System.Drawing.Point(13, 131)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(78, 13)
-        Me.Label5.TabIndex = 8
+        Me.Label5.TabIndex = 4
         Me.Label5.Text = "New Password"
         '
         'btnGuestLogin
@@ -166,7 +170,7 @@ Partial Class frmLogin
         Me.btnGuestLogin.Location = New System.Drawing.Point(20, 28)
         Me.btnGuestLogin.Name = "btnGuestLogin"
         Me.btnGuestLogin.Size = New System.Drawing.Size(96, 23)
-        Me.btnGuestLogin.TabIndex = 5
+        Me.btnGuestLogin.TabIndex = 0
         Me.btnGuestLogin.Text = "Login as Guest"
         Me.btnGuestLogin.UseVisualStyleBackColor = True
         '
@@ -191,10 +195,11 @@ Partial Class frmLogin
         'txtOldPassword
         '
         Me.txtOldPassword.Location = New System.Drawing.Point(123, 80)
+        Me.txtOldPassword.MaxLength = 8
         Me.txtOldPassword.Name = "txtOldPassword"
         Me.txtOldPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtOldPassword.Size = New System.Drawing.Size(203, 20)
-        Me.txtOldPassword.TabIndex = 14
+        Me.txtOldPassword.TabIndex = 3
         '
         'Label4
         '
@@ -202,15 +207,16 @@ Partial Class frmLogin
         Me.Label4.Location = New System.Drawing.Point(13, 83)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(72, 13)
-        Me.Label4.TabIndex = 13
+        Me.Label4.TabIndex = 2
         Me.Label4.Text = "Old Password"
         '
         'txtChangePasswordUserID
         '
         Me.txtChangePasswordUserID.Location = New System.Drawing.Point(123, 32)
+        Me.txtChangePasswordUserID.MaxLength = 15
         Me.txtChangePasswordUserID.Name = "txtChangePasswordUserID"
         Me.txtChangePasswordUserID.Size = New System.Drawing.Size(203, 20)
-        Me.txtChangePasswordUserID.TabIndex = 12
+        Me.txtChangePasswordUserID.TabIndex = 1
         '
         'LabelUserId
         '
@@ -218,7 +224,7 @@ Partial Class frmLogin
         Me.LabelUserId.Location = New System.Drawing.Point(13, 35)
         Me.LabelUserId.Name = "LabelUserId"
         Me.LabelUserId.Size = New System.Drawing.Size(43, 13)
-        Me.LabelUserId.TabIndex = 10
+        Me.LabelUserId.TabIndex = 0
         Me.LabelUserId.Text = "User ID"
         '
         'grpGuestLogin

@@ -33,7 +33,7 @@ Partial Class frmSecurity
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbSecurity = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
-        Me.tsbEvents = New System.Windows.Forms.ToolStripButton()
+        Me.tsbEvent = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbRSVP = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
@@ -53,6 +53,7 @@ Partial Class frmSecurity
         Me.cboActions = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.grpUsers = New System.Windows.Forms.GroupBox()
+        Me.btnReport = New System.Windows.Forms.Button()
         Me.tvwUsers = New System.Windows.Forms.TreeView()
         Me.grpManageUser = New System.Windows.Forms.GroupBox()
         Me.cboSecRole = New System.Windows.Forms.ComboBox()
@@ -81,7 +82,7 @@ Partial Class frmSecurity
         'ToolStrip1
         '
         Me.ToolStrip1.AutoSize = False
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator6, Me.tsbHome, Me.ToolStripSeparator5, Me.tsbMember, Me.ToolStripSeparator3, Me.tsbRole, Me.ToolStripSeparator2, Me.tsbSecurity, Me.ToolStripSeparator10, Me.tsbEvents, Me.ToolStripSeparator11, Me.tsbRSVP, Me.ToolStripSeparator4, Me.tsbCourse, Me.ToolStripSeparator9, Me.tsbSemester, Me.ToolStripSeparator7, Me.tsbTutor, Me.ToolStripSeparator13, Me.ToolStripSeparator8, Me.tsbLogout, Me.ToolStripSeparator12, Me.tsbHelp, Me.ToolStripSeparator1})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator6, Me.tsbHome, Me.ToolStripSeparator5, Me.tsbMember, Me.ToolStripSeparator3, Me.tsbRole, Me.ToolStripSeparator2, Me.tsbSecurity, Me.ToolStripSeparator10, Me.tsbEvent, Me.ToolStripSeparator11, Me.tsbRSVP, Me.ToolStripSeparator4, Me.tsbCourse, Me.ToolStripSeparator9, Me.tsbSemester, Me.ToolStripSeparator7, Me.tsbTutor, Me.ToolStripSeparator13, Me.ToolStripSeparator8, Me.tsbLogout, Me.ToolStripSeparator12, Me.tsbHelp, Me.ToolStripSeparator1})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(800, 50)
@@ -103,7 +104,7 @@ Partial Class frmSecurity
         Me.tsbHome.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbHome.Name = "tsbHome"
         Me.tsbHome.Size = New System.Drawing.Size(48, 48)
-        Me.tsbHome.Text = "HOME"
+        Me.tsbHome.Text = "Home"
         '
         'ToolStripSeparator5
         '
@@ -120,7 +121,7 @@ Partial Class frmSecurity
         Me.tsbMember.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbMember.Name = "tsbMember"
         Me.tsbMember.Size = New System.Drawing.Size(48, 48)
-        Me.tsbMember.Text = "MEMBER"
+        Me.tsbMember.Text = "Member"
         '
         'ToolStripSeparator3
         '
@@ -137,7 +138,7 @@ Partial Class frmSecurity
         Me.tsbRole.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbRole.Name = "tsbRole"
         Me.tsbRole.Size = New System.Drawing.Size(48, 48)
-        Me.tsbRole.Text = "ROLE"
+        Me.tsbRole.Text = "Role"
         '
         'ToolStripSeparator2
         '
@@ -154,7 +155,7 @@ Partial Class frmSecurity
         Me.tsbSecurity.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbSecurity.Name = "tsbSecurity"
         Me.tsbSecurity.Size = New System.Drawing.Size(48, 48)
-        Me.tsbSecurity.Text = "SECURITY"
+        Me.tsbSecurity.Text = "Security"
         '
         'ToolStripSeparator10
         '
@@ -162,16 +163,16 @@ Partial Class frmSecurity
         Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
         Me.ToolStripSeparator10.Size = New System.Drawing.Size(10, 50)
         '
-        'tsbEvents
+        'tsbEvent
         '
-        Me.tsbEvents.AutoSize = False
-        Me.tsbEvents.BackgroundImage = Global.STARSORG.My.Resources.Resources.events
-        Me.tsbEvents.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbEvents.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbEvents.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbEvents.Name = "tsbEvents"
-        Me.tsbEvents.Size = New System.Drawing.Size(48, 48)
-        Me.tsbEvents.Text = "EVENT"
+        Me.tsbEvent.AutoSize = False
+        Me.tsbEvent.BackgroundImage = Global.STARSORG.My.Resources.Resources.events
+        Me.tsbEvent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbEvent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbEvent.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbEvent.Name = "tsbEvent"
+        Me.tsbEvent.Size = New System.Drawing.Size(48, 48)
+        Me.tsbEvent.Text = "Event"
         '
         'ToolStripSeparator11
         '
@@ -188,7 +189,7 @@ Partial Class frmSecurity
         Me.tsbRSVP.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbRSVP.Name = "tsbRSVP"
         Me.tsbRSVP.Size = New System.Drawing.Size(48, 48)
-        Me.tsbRSVP.Text = "RSVP"
+        Me.tsbRSVP.Text = "Rsvp"
         '
         'ToolStripSeparator4
         '
@@ -205,7 +206,7 @@ Partial Class frmSecurity
         Me.tsbCourse.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbCourse.Name = "tsbCourse"
         Me.tsbCourse.Size = New System.Drawing.Size(48, 48)
-        Me.tsbCourse.Text = "COURSE"
+        Me.tsbCourse.Text = "Course"
         '
         'ToolStripSeparator9
         '
@@ -222,7 +223,7 @@ Partial Class frmSecurity
         Me.tsbSemester.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbSemester.Name = "tsbSemester"
         Me.tsbSemester.Size = New System.Drawing.Size(48, 48)
-        Me.tsbSemester.Text = "SEMESTER"
+        Me.tsbSemester.Text = "Semester"
         '
         'ToolStripSeparator7
         '
@@ -264,7 +265,7 @@ Partial Class frmSecurity
         Me.tsbLogout.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbLogout.Name = "tsbLogout"
         Me.tsbLogout.Size = New System.Drawing.Size(48, 48)
-        Me.tsbLogout.Text = "LOGOUT"
+        Me.tsbLogout.Text = "Logout"
         '
         'ToolStripSeparator12
         '
@@ -283,7 +284,7 @@ Partial Class frmSecurity
         Me.tsbHelp.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbHelp.Name = "tsbHelp"
         Me.tsbHelp.Size = New System.Drawing.Size(48, 48)
-        Me.tsbHelp.Text = "HELP"
+        Me.tsbHelp.Text = "Help"
         '
         'ToolStripSeparator1
         '
@@ -335,13 +336,23 @@ Partial Class frmSecurity
         '
         'grpUsers
         '
+        Me.grpUsers.Controls.Add(Me.btnReport)
         Me.grpUsers.Controls.Add(Me.tvwUsers)
         Me.grpUsers.Location = New System.Drawing.Point(29, 207)
         Me.grpUsers.Name = "grpUsers"
-        Me.grpUsers.Size = New System.Drawing.Size(306, 245)
+        Me.grpUsers.Size = New System.Drawing.Size(306, 277)
         Me.grpUsers.TabIndex = 6
         Me.grpUsers.TabStop = False
         Me.grpUsers.Text = "Users"
+        '
+        'btnReport
+        '
+        Me.btnReport.Location = New System.Drawing.Point(211, 245)
+        Me.btnReport.Name = "btnReport"
+        Me.btnReport.Size = New System.Drawing.Size(75, 23)
+        Me.btnReport.TabIndex = 1
+        Me.btnReport.Text = "Report"
+        Me.btnReport.UseVisualStyleBackColor = True
         '
         'tvwUsers
         '
@@ -366,7 +377,7 @@ Partial Class frmSecurity
         Me.grpManageUser.Controls.Add(Me.Label3)
         Me.grpManageUser.Location = New System.Drawing.Point(357, 129)
         Me.grpManageUser.Name = "grpManageUser"
-        Me.grpManageUser.Size = New System.Drawing.Size(412, 323)
+        Me.grpManageUser.Size = New System.Drawing.Size(412, 355)
         Me.grpManageUser.TabIndex = 7
         Me.grpManageUser.TabStop = False
         Me.grpManageUser.Text = "Manage User"
@@ -378,20 +389,20 @@ Partial Class frmSecurity
         Me.cboSecRole.Location = New System.Drawing.Point(136, 119)
         Me.cboSecRole.Name = "cboSecRole"
         Me.cboSecRole.Size = New System.Drawing.Size(253, 21)
-        Me.cboSecRole.TabIndex = 13
+        Me.cboSecRole.TabIndex = 5
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(201, 276)
+        Me.btnSave.Location = New System.Drawing.Point(136, 270)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 12
+        Me.btnSave.TabIndex = 10
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(315, 276)
+        Me.btnCancel.Location = New System.Drawing.Point(232, 270)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 23)
         Me.btnCancel.TabIndex = 11
@@ -401,32 +412,36 @@ Partial Class frmSecurity
         'txtUserID
         '
         Me.txtUserID.Location = New System.Drawing.Point(136, 73)
+        Me.txtUserID.MaxLength = 15
         Me.txtUserID.Name = "txtUserID"
         Me.txtUserID.Size = New System.Drawing.Size(254, 20)
-        Me.txtUserID.TabIndex = 10
+        Me.txtUserID.TabIndex = 3
         '
         'txtPasswordConfirm
         '
         Me.txtPasswordConfirm.Location = New System.Drawing.Point(136, 215)
+        Me.txtPasswordConfirm.MaxLength = 8
         Me.txtPasswordConfirm.Name = "txtPasswordConfirm"
         Me.txtPasswordConfirm.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPasswordConfirm.Size = New System.Drawing.Size(254, 20)
-        Me.txtPasswordConfirm.TabIndex = 8
+        Me.txtPasswordConfirm.TabIndex = 9
         '
         'txtPassword
         '
         Me.txtPassword.Location = New System.Drawing.Point(136, 168)
+        Me.txtPassword.MaxLength = 8
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword.Size = New System.Drawing.Size(254, 20)
-        Me.txtPassword.TabIndex = 6
+        Me.txtPassword.TabIndex = 7
         '
         'txtPID
         '
         Me.txtPID.Location = New System.Drawing.Point(136, 30)
+        Me.txtPID.MaxLength = 7
         Me.txtPID.Name = "txtPID"
         Me.txtPID.Size = New System.Drawing.Size(254, 20)
-        Me.txtPID.TabIndex = 5
+        Me.txtPID.TabIndex = 1
         '
         'Label7
         '
@@ -434,7 +449,7 @@ Partial Class frmSecurity
         Me.Label7.Location = New System.Drawing.Point(26, 218)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(91, 13)
-        Me.Label7.TabIndex = 4
+        Me.Label7.TabIndex = 8
         Me.Label7.Text = "Confirm Password"
         '
         'Label6
@@ -443,7 +458,7 @@ Partial Class frmSecurity
         Me.Label6.Location = New System.Drawing.Point(26, 76)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(43, 13)
-        Me.Label6.TabIndex = 3
+        Me.Label6.TabIndex = 2
         Me.Label6.Text = "User ID"
         '
         'Label5
@@ -452,7 +467,7 @@ Partial Class frmSecurity
         Me.Label5.Location = New System.Drawing.Point(26, 122)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(70, 13)
-        Me.Label5.TabIndex = 2
+        Me.Label5.TabIndex = 4
         Me.Label5.Text = "Security Role"
         '
         'Label4
@@ -461,7 +476,7 @@ Partial Class frmSecurity
         Me.Label4.Location = New System.Drawing.Point(26, 171)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(53, 13)
-        Me.Label4.TabIndex = 1
+        Me.Label4.TabIndex = 6
         Me.Label4.Text = "Password"
         '
         'Label3
@@ -476,7 +491,7 @@ Partial Class frmSecurity
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tslStatus})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 466)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 497)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(800, 22)
         Me.StatusStrip1.TabIndex = 8
@@ -497,7 +512,7 @@ Partial Class frmSecurity
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 488)
+        Me.ClientSize = New System.Drawing.Size(800, 519)
         Me.ControlBox = False
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.grpManageUser)
@@ -533,7 +548,7 @@ Partial Class frmSecurity
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents tsbSecurity As ToolStripButton
     Friend WithEvents ToolStripSeparator10 As ToolStripSeparator
-    Friend WithEvents tsbEvents As ToolStripButton
+    Friend WithEvents tsbEvent As ToolStripButton
     Friend WithEvents ToolStripSeparator11 As ToolStripSeparator
     Friend WithEvents tsbRSVP As ToolStripButton
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
@@ -570,4 +585,5 @@ Partial Class frmSecurity
     Friend WithEvents tvwUsers As TreeView
     Friend WithEvents errP As ErrorProvider
     Friend WithEvents cboSecRole As ComboBox
+    Friend WithEvents btnReport As Button
 End Class

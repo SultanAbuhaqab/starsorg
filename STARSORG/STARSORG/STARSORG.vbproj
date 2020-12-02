@@ -138,10 +138,10 @@
     <Compile Include="frmMembers.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmReport.Designer.vb">
-      <DependentUpon>frmReport.vb</DependentUpon>
+    <Compile Include="frmRoleReport.Designer.vb">
+      <DependentUpon>frmRoleReport.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmReport.vb">
+    <Compile Include="frmRoleReport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmReportEventRSVPs.Designer.vb">
@@ -160,6 +160,12 @@
       <DependentUpon>frmSecurity.vb</DependentUpon>
     </Compile>
     <Compile Include="frmSecurity.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSecurityReport.Designer.vb">
+      <DependentUpon>frmSecurityReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSecurityReport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modDB.vb" />
@@ -198,8 +204,8 @@
     <EmbeddedResource Include="frmMembers.resx">
       <DependentUpon>frmMembers.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReport.resx">
-      <DependentUpon>frmReport.vb</DependentUpon>
+    <EmbeddedResource Include="frmRoleReport.resx">
+      <DependentUpon>frmRoleReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportEventRSVPs.resx">
       <DependentUpon>frmReportEventRSVPs.vb</DependentUpon>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSecurity.resx">
       <DependentUpon>frmSecurity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSecurityReport.resx">
+      <DependentUpon>frmSecurityReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -220,6 +229,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptRoles.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptSecurities.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

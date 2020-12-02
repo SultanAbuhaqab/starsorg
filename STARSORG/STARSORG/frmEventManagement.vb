@@ -217,7 +217,7 @@ Public Class frmEventManagement
     Private Sub tvwEvents_NodeMouseClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles tvwEvents.NodeMouseClick
         Dim eventNode As TreeNode = DirectCast(e.Node, TreeNode)
         LoadSelectedEvent(eventNode.Name)
-        'MessageBox.Show(eventNode.Name & "Append Click")
+        MessageBox.Show(eventNode.Name & "Append Click")
         SetInputFieldsToUpdateMode()
         VerifyEventDateBR()
     End Sub
