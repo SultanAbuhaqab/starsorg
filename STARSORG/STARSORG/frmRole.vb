@@ -235,6 +235,8 @@ Public Class frmRole
             LoadSelectedRecord() 'Reload what was selected in case user has messed up the form
         Else
             grpEdit.Enabled = True
+            txtRoleID.Clear()
+            txtDesc.Clear()
         End If
 
         blnClearing = False

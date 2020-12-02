@@ -61,6 +61,11 @@ Public Class frmEventRSVP
     End Sub
 
     Private Sub tsbRole_Click(sender As Object, e As EventArgs) Handles tsbRole.Click
+        If Not AuthUser.IsAdmin() And Not AuthUser.IsOfficer() Then
+            MessageBox.Show("Access Denied : You dont have the required credentials to access this page", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
         intNextAction = ACTION_ROLE
         Me.Hide()
     End Sub
@@ -80,6 +85,11 @@ Public Class frmEventRSVP
     End Sub
 
     Private Sub tsbSecurity_Click(sender As Object, e As EventArgs) Handles tsbSecurity.Click
+        If Not AuthUser.IsAdmin() Then
+            MessageBox.Show("Access Denied : You dont have the required credentials to access this page", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
         intNextAction = ACTION_SECURITY
         Me.Hide()
     End Sub

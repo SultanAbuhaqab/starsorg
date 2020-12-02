@@ -296,7 +296,7 @@ Partial Class frmEventRSVP
         Me.tsbSecurity.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbSecurity.Name = "tsbSecurity"
         Me.tsbSecurity.Size = New System.Drawing.Size(48, 48)
-        Me.tsbSecurity.Text = "Securty"
+        Me.tsbSecurity.Text = "Security"
         '
         'ToolStripSeparator6
         '
