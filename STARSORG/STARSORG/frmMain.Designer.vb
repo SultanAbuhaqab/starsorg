@@ -32,6 +32,8 @@ Partial Class frmMain
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbRole = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbSecurity = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbEvent = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbRSVP = New System.Windows.Forms.ToolStripButton()
@@ -47,8 +49,6 @@ Partial Class frmMain
         Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
-        Me.tsbSecurity = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -127,6 +127,23 @@ Partial Class frmMain
         Me.ToolStripSeparator6.AutoSize = False
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
         Me.ToolStripSeparator6.Size = New System.Drawing.Size(10, 51)
+        '
+        'tsbSecurity
+        '
+        Me.tsbSecurity.AutoSize = False
+        Me.tsbSecurity.BackgroundImage = Global.STARSORG.My.Resources.Resources.admin
+        Me.tsbSecurity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbSecurity.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbSecurity.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbSecurity.Name = "tsbSecurity"
+        Me.tsbSecurity.Size = New System.Drawing.Size(48, 48)
+        Me.tsbSecurity.Text = "SECURITY"
+        '
+        'ToolStripSeparator13
+        '
+        Me.ToolStripSeparator13.AutoSize = False
+        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
+        Me.ToolStripSeparator13.Size = New System.Drawing.Size(10, 51)
         '
         'tsbEvent
         '
@@ -258,23 +275,6 @@ Partial Class frmMain
         Me.ToolStripSeparator12.Name = "ToolStripSeparator12"
         Me.ToolStripSeparator12.Size = New System.Drawing.Size(10, 51)
         '
-        'tsbSecurity
-        '
-        Me.tsbSecurity.AutoSize = False
-        Me.tsbSecurity.BackgroundImage = Global.STARSORG.My.Resources.Resources.admin
-        Me.tsbSecurity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbSecurity.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbSecurity.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbSecurity.Name = "tsbSecurity"
-        Me.tsbSecurity.Size = New System.Drawing.Size(48, 48)
-        Me.tsbSecurity.Text = "SECURITY"
-        '
-        'ToolStripSeparator13
-        '
-        Me.ToolStripSeparator13.AutoSize = False
-        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
-        Me.ToolStripSeparator13.Size = New System.Drawing.Size(10, 51)
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -288,6 +288,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.Label1)
         Me.DoubleBuffered = True
         Me.Name = "frmMain"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FIU STARS"
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()

@@ -5,6 +5,7 @@ Public Class frmReportEventRSVPs
     Private da As SqlDataAdapter
     Private EventRSVP As CEventRSVP
     Public Property passEventID As String
+
     Private Sub frmReportEventRSVPs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.rpvReport.RefreshReport()

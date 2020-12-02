@@ -53,13 +53,13 @@ Partial Class frmRole
         Me.grpRoles = New System.Windows.Forms.GroupBox()
         Me.lstRoles = New System.Windows.Forms.ListBox()
         Me.grpEdit = New System.Windows.Forms.GroupBox()
-        Me.btnReport = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.txtDesc = New System.Windows.Forms.TextBox()
         Me.txtRoleID = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnReport = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tslStatus = New System.Windows.Forms.StatusStrip()
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
@@ -336,15 +336,6 @@ Partial Class frmRole
         Me.grpEdit.TabStop = False
         Me.grpEdit.Text = "Edit Role"
         '
-        'btnReport
-        '
-        Me.btnReport.Location = New System.Drawing.Point(112, 356)
-        Me.btnReport.Name = "btnReport"
-        Me.btnReport.Size = New System.Drawing.Size(75, 23)
-        Me.btnReport.TabIndex = 6
-        Me.btnReport.Text = "Report"
-        Me.btnReport.UseVisualStyleBackColor = True
-        '
         'btnCancel
         '
         Me.btnCancel.Location = New System.Drawing.Point(215, 184)
@@ -398,6 +389,15 @@ Partial Class frmRole
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Role ID"
         '
+        'btnReport
+        '
+        Me.btnReport.Location = New System.Drawing.Point(112, 356)
+        Me.btnReport.Name = "btnReport"
+        Me.btnReport.Size = New System.Drawing.Size(75, 23)
+        Me.btnReport.TabIndex = 6
+        Me.btnReport.Text = "Report"
+        Me.btnReport.UseVisualStyleBackColor = True
+        '
         'Label1
         '
         Me.Label1.BackColor = System.Drawing.Color.White
@@ -437,6 +437,7 @@ Partial Class frmRole
         Me.Controls.Add(Me.grpNew)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Name = "frmRole"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Member Roles"
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()

@@ -3,6 +3,7 @@ Public Class frmEventManagement
     Private objEvents As CEvents
     Private blnReloading As Boolean
     Private blnClearing As Boolean
+    Private RSVPReport As frmReportEventRSVPs
 #Region "Toolbar stuff"
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter, tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogOut.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter, tsbSemester.MouseEnter, tsbTutor.MouseEnter
         'We need to do this only because we are not putting our images in the image property of the toolbar buttons
@@ -96,7 +97,6 @@ Public Class frmEventManagement
         LoadEvents()
         LoadComboOptions()
         SetInputFieldsToUpdateMode()
-
     End Sub
 
     Private Sub LoadComboOptions()
@@ -144,6 +144,8 @@ Public Class frmEventManagement
         cboSemesterID.Enabled = True
         dtpEventStartDate.Enabled = True
         dtpEventEndDate.Enabled = True
+        dtpEventStartDate.Value = Today()
+        dtpEventEndDate.Value = Today()
         objEvents.CreateNewEvent()
         objEvents.CurrentObject.IsNewEvent = True
     End Sub
@@ -290,6 +292,8 @@ Public Class frmEventManagement
         blnClearing = True
         ClearScreenControls(grpEdit)
         SetInputFieldsToUpdateMode()
+        dtpEventStartDate.Value = Today()
+        dtpEventEndDate.Value = Today()
         chkNew.Checked = False
         errP.Clear()
 
@@ -362,6 +366,19 @@ Public Class frmEventManagement
             sslStatus.Text = "Unable to update event details"
         End Try
 
+        Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        RSVPReport = New frmReportEventRSVPs
+        If tvwEvents.Nodes.Count = 0 Then 'Nothing to print
+            MessageBox.Show("No records to print")
+            Exit Sub
+        End If
+        RSVPReport.passEventID = objEvents.CurrentObject.EventID
+        'MessageBox.Show(RSVPReport.passEventID & "Retrieved") 'For debugging only
+        Me.Cursor = Cursors.WaitCursor
+        RSVPReport.Display()
         Me.Cursor = Cursors.Default
     End Sub
 End Class

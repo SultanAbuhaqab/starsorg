@@ -568,6 +568,7 @@ Partial Class frmEventManagement
         Me.Controls.Add(Me.grpEdit)
         Me.Controls.Add(Me.grpEvents)
         Me.Name = "frmEventManagement"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Event Management"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()

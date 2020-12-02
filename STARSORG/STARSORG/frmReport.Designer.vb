@@ -57,6 +57,7 @@ Partial Class frmReport
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.rpvReport)
         Me.Name = "frmReport"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Report"
         Me.ResumeLayout(False)
         Me.PerformLayout()

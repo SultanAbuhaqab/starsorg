@@ -4,6 +4,7 @@ Public Class frmReport
     Private ds As DataSet
     Private da As SqlDataAdapter
     Private Role As CRole
+
     Private Sub frmReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.rpvReport.RefreshReport()
