@@ -4,6 +4,13 @@ Public Class frmSecurity
     Private objSecurities As CSecurities
     Private strSecurityAction As String = ""
 
+#Region "Supported Security Actions"
+    Private Const ADD_USER As String = "Add User"
+    Private Const UPDATE_ROLE As String = "Update Security Role"
+    Private Const RESET_PASSWORD As String = "Reset Password"
+    Private Const NO_ACTION As String = ""
+#End Region
+
 #Region "Toolbar Stuff"
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter,
         tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogout.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter,
@@ -92,13 +99,6 @@ Public Class frmSecurity
         txtBox = DirectCast(sender, TextBox)
         txtBox.DeselectAll()
     End Sub
-#End Region
-
-#Region "Supported Security Actions"
-    Private Const ADD_USER As String = "Add User"
-    Private Const UPDATE_ROLE As String = "Update Security Role"
-    Private Const RESET_PASSWORD As String = "Reset Password"
-    Private Const NO_ACTION As String = ""
 #End Region
 
     Private Sub frmSecurity_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -435,8 +435,15 @@ Public Class frmSecurity
 
     Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
         Dim SecurityReport As New frmSecurityReport
+
+        If Not AuthUser.IsAdmin() Then
+            MessageBox.Show("Access Denied : You dont have the required credentials to perform this action", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            tslStatus.Text = "Access Denied : You dont have the required credentials to perform this action"
+            Exit Sub
+        End If
+
         If tvwUsers.Nodes.Count = 0 Then
-            MessageBox.Show("There are no security records to print")
+            MessageBox.Show("There are no security records to print", "No Records", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
 
         SecurityReport.Display()
