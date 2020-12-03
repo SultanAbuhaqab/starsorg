@@ -4,6 +4,7 @@
     Private LoginInfo As frmLogin
     Private EventInfo As frmEventManagement
     Private RSVPInfo As frmEventRSVP
+    Private MemberInfo As frmMembers
 
 #Region "Toolbar Stuff"
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter,
@@ -32,7 +33,17 @@
     End Sub
 
     Private Sub tsbLogout_Click(sender As Object, e As EventArgs) Handles tsbLogOut.Click
-        EndProgram()
+        Me.Cursor = Cursors.WaitCursor
+
+        'Close any open forms except main
+        CloseForms()
+
+        'Reset the Auth User object
+        AuthUser = New CAuthUser()
+
+        Me.Cursor = Cursors.Default
+
+        PerformLogin()
     End Sub
 
     Private Sub tsbSecurity_Click(sender As Object, e As EventArgs) Handles tsbSecurity.Click
@@ -67,6 +78,13 @@
     Private Sub tsbHome_Click(sender As Object, e As EventArgs) Handles tsbHome.Click
         'Do nothing since we are already at HOME form
     End Sub
+
+    Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
+        Me.Hide()
+        MemberInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
 #End Region
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -75,6 +93,7 @@
         LoginInfo = New frmLogin
         EventInfo = New frmEventManagement
         RSVPInfo = New frmEventRSVP
+        MemberInfo = New frmMembers
 
         Try
             myDB.OpenDB()
@@ -86,17 +105,10 @@
     End Sub
 
     Private Sub EndProgram()
-        'Close each form except main
-        Dim f As Form
         Me.Cursor = Cursors.WaitCursor
 
-        For Each f In Application.OpenForms
-            If f.Name <> Me.Name Then
-                If Not f Is Nothing Then
-                    f.Close()
-                End If
-            End If
-        Next
+        'Close any open forms except main
+        CloseForms()
 
         'Close the database connection
         If Not objSQLConn Is Nothing Then
@@ -107,6 +119,18 @@
         Me.Cursor = Cursors.Default
 
         Application.Exit()
+    End Sub
+
+    Private Sub CloseForms()
+        'Close each form except main
+        Dim f As Form
+        For Each f In Application.OpenForms
+            If f.Name <> Me.Name Then
+                If Not f Is Nothing Then
+                    f.Close()
+                End If
+            End If
+        Next
     End Sub
 
     Private Sub PerformNextAction()
@@ -138,6 +162,8 @@
                 tsbTutor.PerformClick()
             Case ACTION_LOGIN
                 PerformLogin()
+            Case ACTION_EXIT
+                EndProgram()
             Case Else
                 MessageBox.Show("Unexpected case value in Form Main PerformNextAction", "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Select

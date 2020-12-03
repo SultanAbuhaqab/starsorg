@@ -16,6 +16,7 @@
     Public Const ACTION_LOGOUT As Integer = 10
     Public Const ACTION_SECURITY As Integer = 11
     Public Const ACTION_LOGIN As Integer = 12
+    Public Const ACTION_EXIT As Integer = 13
 #End Region
 
 #Region "Supported Security Roles"

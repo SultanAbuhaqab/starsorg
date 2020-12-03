@@ -167,7 +167,7 @@ Public Class frmLogin
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        intNextAction = ACTION_LOGOUT
+        intNextAction = ACTION_EXIT
         Me.Close()
     End Sub
 End Class
