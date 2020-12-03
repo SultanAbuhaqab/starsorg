@@ -197,7 +197,7 @@ Partial Class frmEventManagement
         Me.dtpEventEndDate.Name = "dtpEventEndDate"
         Me.dtpEventEndDate.Size = New System.Drawing.Size(148, 20)
         Me.dtpEventEndDate.TabIndex = 29
-        Me.dtpEventEndDate.Value = New Date(2017, 12, 10, 0, 0, 0, 0)
+        Me.dtpEventEndDate.Value = New Date(2020, 12, 2, 0, 0, 0, 0)
         '
         'dtpEventStartDate
         '
@@ -206,6 +206,7 @@ Partial Class frmEventManagement
         Me.dtpEventStartDate.Name = "dtpEventStartDate"
         Me.dtpEventStartDate.Size = New System.Drawing.Size(148, 20)
         Me.dtpEventStartDate.TabIndex = 28
+        Me.dtpEventStartDate.Value = New Date(2020, 12, 2, 20, 29, 17, 0)
         '
         'txtLocation
         '

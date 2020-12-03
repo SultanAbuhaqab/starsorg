@@ -265,7 +265,7 @@ Public Class frmEventRSVP
             Exit Sub
         End If
         If lblEventID.Text = Nothing Then 'Nothing to pull report for
-            MessageBox.Show("Please seect an event from the list first", "Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Please select an event from the list first", "Nothing to generate report with", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
 
         Else
