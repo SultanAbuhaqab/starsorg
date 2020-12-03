@@ -5,14 +5,14 @@ Public Class frmEventManagement
     Private blnClearing As Boolean
     Private RSVPReport As frmReportEventRSVPs
 #Region "Toolbar stuff"
-    Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter, tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogOut.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter, tsbSemester.MouseEnter, tsbTutor.MouseEnter
+    Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter, tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogOut.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter, tsbSemester.MouseEnter, tsbTutor.MouseEnter, tsbSecurity.MouseEnter
         'We need to do this only because we are not putting our images in the image property of the toolbar buttons
         Dim tsbProxy As ToolStripButton
         tsbProxy = DirectCast(sender, ToolStripButton)
         tsbProxy.DisplayStyle = ToolStripItemDisplayStyle.Text
     End Sub
 
-    Private Sub tsbProxy_MouseLeave(sender As Object, e As EventArgs) Handles tsbCourse.MouseLeave, tsbEvent.MouseLeave, tsbHelp.MouseLeave, tsbHome.MouseLeave, tsbLogOut.MouseLeave, tsbMember.MouseLeave, tsbRole.MouseLeave, tsbRSVP.MouseLeave, tsbSemester.MouseLeave, tsbTutor.MouseLeave
+    Private Sub tsbProxy_MouseLeave(sender As Object, e As EventArgs) Handles tsbCourse.MouseLeave, tsbEvent.MouseLeave, tsbHelp.MouseLeave, tsbHome.MouseLeave, tsbLogOut.MouseLeave, tsbMember.MouseLeave, tsbRole.MouseLeave, tsbRSVP.MouseLeave, tsbSemester.MouseLeave, tsbTutor.MouseLeave, tsbSecurity.MouseLeave
         'We need to do this only because we are not putting our images in the image property of the toolbar buttons
         Dim tsbProxy As ToolStripButton
         tsbProxy = DirectCast(sender, ToolStripButton)
@@ -104,6 +104,8 @@ Public Class frmEventManagement
 
     Private Sub frmEventManagement_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         ClearScreenControls(Me)
+        dtpEventStartDate.Value = Today()
+        dtpEventEndDate.Value = Today()
         LoadEvents()
         LoadComboOptions()
         SetInputFieldsToUpdateMode()
@@ -227,7 +229,7 @@ Public Class frmEventManagement
     Private Sub tvwEvents_NodeMouseClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles tvwEvents.NodeMouseClick
         Dim eventNode As TreeNode = DirectCast(e.Node, TreeNode)
         LoadSelectedEvent(eventNode.Name)
-        MessageBox.Show(eventNode.Name & "Append Click")
+        'MessageBox.Show(eventNode.Name & "Append Click")
         SetInputFieldsToUpdateMode()
         VerifyEventDateBR()
     End Sub
@@ -385,10 +387,16 @@ Public Class frmEventManagement
             MessageBox.Show("No records to print")
             Exit Sub
         End If
-        RSVPReport.passEventID = objEvents.CurrentObject.EventID
-        'MessageBox.Show(RSVPReport.passEventID & "Retrieved") 'For debugging only
-        Me.Cursor = Cursors.WaitCursor
-        RSVPReport.Display()
-        Me.Cursor = Cursors.Default
+        If txtEventID.Text = Nothing Then 'Nothing to pull report for
+            MessageBox.Show("Please select an event from the list first", "No event selected to generate a report", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+
+        Else
+            RSVPReport.passEventID = objEvents.CurrentObject.EventID
+            'MessageBox.Show(RSVPReport.passEventID & "Retrieved") 'For debugging only
+            Me.Cursor = Cursors.WaitCursor
+            RSVPReport.Display()
+            Me.Cursor = Cursors.Default
+        End If
     End Sub
 End Class

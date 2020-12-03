@@ -16,14 +16,14 @@ Public Class frmEventRSVP
     End Sub
 
 #Region "Toolbar stuff"
-    Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter, tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogOut.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter, tsbSemester.MouseEnter, tsbTutor.MouseEnter
+    Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter, tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogOut.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter, tsbSemester.MouseEnter, tsbTutor.MouseEnter, tsbSecurity.MouseEnter
         'We need to do this only because we are not putting our images in the image property of the toolbar buttons
         Dim tsbProxy As ToolStripButton
         tsbProxy = DirectCast(sender, ToolStripButton)
         tsbProxy.DisplayStyle = ToolStripItemDisplayStyle.Text
     End Sub
 
-    Private Sub tsbProxy_MouseLeave(sender As Object, e As EventArgs) Handles tsbCourse.MouseLeave, tsbEvent.MouseLeave, tsbHelp.MouseLeave, tsbHome.MouseLeave, tsbLogOut.MouseLeave, tsbMember.MouseLeave, tsbRole.MouseLeave, tsbRSVP.MouseLeave, tsbSemester.MouseLeave, tsbTutor.MouseLeave
+    Private Sub tsbProxy_MouseLeave(sender As Object, e As EventArgs) Handles tsbCourse.MouseLeave, tsbEvent.MouseLeave, tsbHelp.MouseLeave, tsbHome.MouseLeave, tsbLogOut.MouseLeave, tsbMember.MouseLeave, tsbRole.MouseLeave, tsbRSVP.MouseLeave, tsbSemester.MouseLeave, tsbTutor.MouseLeave, tsbSecurity.MouseLeave
         'We need to do this only because we are not putting our images in the image property of the toolbar buttons
         Dim tsbProxy As ToolStripButton
         tsbProxy = DirectCast(sender, ToolStripButton)
@@ -145,6 +145,7 @@ Public Class frmEventRSVP
 
     Private Sub frmEventRSVP_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         LoadEventRSVPs()
+        ClearScreen()
         If Not AuthUser.IsAdmin And Not AuthUser.IsOfficer Then
             btnReport.Visible = False
             Exit Sub
@@ -179,6 +180,9 @@ Public Class frmEventRSVP
             With objEvents.CurrentObject
                 lblEventID.Text = .EventID
                 eventStart = .StartDate
+                lblEventType.Text = .EventTypeID
+                lblLocation.Text = .Location
+                lblStartDate.Text = .StartDate
 
             End With
 
@@ -193,17 +197,6 @@ Public Class frmEventRSVP
         Catch ex As Exception
             MessageBox.Show("Error while loading event: " & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-    Private Sub btnExit_Click(sender As Object, e As EventArgs)
-
-
-        txtEmail.Clear()
-        txtFirstName.Clear()
-        txtLastName.Clear()
-
-
-        Me.Hide()
-
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
@@ -271,10 +264,29 @@ Public Class frmEventRSVP
             MessageBox.Show("Access Denied. You do not have permission to view this page", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        RSVPReport.passEventID = objEvents.CurrentObject.EventID
-        'MessageBox.Show(RSVPReport.passEventID & "Retrieved") 'For debugging only
-        Me.Cursor = Cursors.WaitCursor
-        RSVPReport.Display()
-        Me.Cursor = Cursors.Default
+        If lblEventID.Text = Nothing Then 'Nothing to pull report for
+            MessageBox.Show("Please select an event from the list first", "Nothing to generate report with", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+
+        Else
+            RSVPReport.passEventID = objEvents.CurrentObject.EventID
+            'MessageBox.Show(RSVPReport.passEventID & "Retrieved") 'For debugging only
+            Me.Cursor = Cursors.WaitCursor
+            RSVPReport.Display()
+            Me.Cursor = Cursors.Default
+        End If
+    End Sub
+
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        ClearScreen()
+    End Sub
+
+    Private Sub ClearScreen()
+        ClearScreenControls(grpAddRSVP)
+        lblEventID.Text = ""
+        lblEventType.Text = ""
+        lblLocation.Text = ""
+        lblStartDate.Text = ""
+        errP.Clear()
     End Sub
 End Class

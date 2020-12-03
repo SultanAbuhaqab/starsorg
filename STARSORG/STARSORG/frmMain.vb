@@ -4,7 +4,6 @@
     Private LoginInfo As frmLogin
     Private EventInfo As frmEventManagement
     Private RSVPInfo As frmEventRSVP
-    Private MemberInfo As frmMembers
 
 #Region "Toolbar Stuff"
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter,
@@ -68,13 +67,6 @@
     Private Sub tsbHome_Click(sender As Object, e As EventArgs) Handles tsbHome.Click
         'Do nothing since we are already at HOME form
     End Sub
-
-    Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
-        Me.Hide()
-        MemberInfo.ShowDialog()
-        Me.Show()
-        PerformNextAction()
-    End Sub
 #End Region
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -83,7 +75,6 @@
         LoginInfo = New frmLogin
         EventInfo = New frmEventManagement
         RSVPInfo = New frmEventRSVP
-        MemberInfo = New frmMembers
 
         Try
             myDB.OpenDB()
@@ -161,4 +152,5 @@
         LoginInfo.ShowDialog()
         PerformNextAction()
     End Sub
+
 End Class

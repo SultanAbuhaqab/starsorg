@@ -65,16 +65,22 @@ Partial Class frmEventRSVP
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
         Me.sslStatus = New System.Windows.Forms.StatusStrip()
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblEventType = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblStartDate = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblLocation = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.grpAddRSVP.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpAddRSVP
         '
-        Me.grpAddRSVP.Controls.Add(Me.lblEventID)
-        Me.grpAddRSVP.Controls.Add(Me.Label1)
         Me.grpAddRSVP.Controls.Add(Me.btnCancel)
         Me.grpAddRSVP.Controls.Add(Me.txtEmail)
         Me.grpAddRSVP.Controls.Add(Me.txtLastName)
@@ -83,27 +89,27 @@ Partial Class frmEventRSVP
         Me.grpAddRSVP.Controls.Add(Me.Label6)
         Me.grpAddRSVP.Controls.Add(Me.Label4)
         Me.grpAddRSVP.Controls.Add(Me.btnSave)
-        Me.grpAddRSVP.Location = New System.Drawing.Point(640, 123)
+        Me.grpAddRSVP.Location = New System.Drawing.Point(640, 277)
         Me.grpAddRSVP.Name = "grpAddRSVP"
-        Me.grpAddRSVP.Size = New System.Drawing.Size(275, 339)
+        Me.grpAddRSVP.Size = New System.Drawing.Size(275, 185)
         Me.grpAddRSVP.TabIndex = 12
         Me.grpAddRSVP.TabStop = False
-        Me.grpAddRSVP.Text = "RSVP Info"
+        Me.grpAddRSVP.Text = "RSVP HERE"
         '
         'lblEventID
         '
         Me.lblEventID.BackColor = System.Drawing.Color.White
         Me.lblEventID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblEventID.Location = New System.Drawing.Point(108, 80)
+        Me.lblEventID.Location = New System.Drawing.Point(96, 36)
         Me.lblEventID.Name = "lblEventID"
-        Me.lblEventID.Size = New System.Drawing.Size(148, 23)
+        Me.lblEventID.Size = New System.Drawing.Size(160, 23)
         Me.lblEventID.TabIndex = 26
         Me.lblEventID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(19, 85)
+        Me.Label1.Location = New System.Drawing.Point(19, 41)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(52, 13)
@@ -112,7 +118,7 @@ Partial Class frmEventRSVP
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(155, 233)
+        Me.btnCancel.Location = New System.Drawing.Point(158, 145)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(101, 28)
         Me.btnCancel.TabIndex = 24
@@ -121,32 +127,32 @@ Partial Class frmEventRSVP
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(108, 161)
+        Me.txtEmail.Location = New System.Drawing.Point(96, 95)
         Me.txtEmail.Margin = New System.Windows.Forms.Padding(2)
         Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(148, 20)
+        Me.txtEmail.Size = New System.Drawing.Size(163, 20)
         Me.txtEmail.TabIndex = 21
         '
         'txtLastName
         '
-        Me.txtLastName.Location = New System.Drawing.Point(108, 137)
+        Me.txtLastName.Location = New System.Drawing.Point(96, 71)
         Me.txtLastName.Margin = New System.Windows.Forms.Padding(2)
         Me.txtLastName.Name = "txtLastName"
-        Me.txtLastName.Size = New System.Drawing.Size(148, 20)
+        Me.txtLastName.Size = New System.Drawing.Size(163, 20)
         Me.txtLastName.TabIndex = 20
         '
         'txtFirstName
         '
-        Me.txtFirstName.Location = New System.Drawing.Point(108, 113)
+        Me.txtFirstName.Location = New System.Drawing.Point(96, 47)
         Me.txtFirstName.Margin = New System.Windows.Forms.Padding(2)
         Me.txtFirstName.Name = "txtFirstName"
-        Me.txtFirstName.Size = New System.Drawing.Size(148, 20)
+        Me.txtFirstName.Size = New System.Drawing.Size(163, 20)
         Me.txtFirstName.TabIndex = 18
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(19, 163)
+        Me.Label7.Location = New System.Drawing.Point(19, 98)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(35, 13)
@@ -156,7 +162,7 @@ Partial Class frmEventRSVP
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(19, 139)
+        Me.Label6.Location = New System.Drawing.Point(19, 74)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(61, 13)
@@ -166,7 +172,7 @@ Partial Class frmEventRSVP
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(19, 115)
+        Me.Label4.Location = New System.Drawing.Point(19, 50)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(60, 13)
@@ -175,7 +181,7 @@ Partial Class frmEventRSVP
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(25, 233)
+        Me.btnSave.Location = New System.Drawing.Point(25, 145)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(101, 28)
         Me.btnSave.TabIndex = 5
@@ -197,12 +203,12 @@ Partial Class frmEventRSVP
         '
         Me.tvwEventRSVPs.Location = New System.Drawing.Point(7, 20)
         Me.tvwEventRSVPs.Name = "tvwEventRSVPs"
-        Me.tvwEventRSVPs.Size = New System.Drawing.Size(603, 224)
+        Me.tvwEventRSVPs.Size = New System.Drawing.Size(603, 249)
         Me.tvwEventRSVPs.TabIndex = 8
         '
         'btnReport
         '
-        Me.btnReport.Location = New System.Drawing.Point(243, 271)
+        Me.btnReport.Location = New System.Drawing.Point(264, 294)
         Me.btnReport.Name = "btnReport"
         Me.btnReport.Size = New System.Drawing.Size(112, 33)
         Me.btnReport.TabIndex = 7
@@ -446,6 +452,77 @@ Partial Class frmEventRSVP
         '
         Me.errP.ContainerControl = Me
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.lblLocation)
+        Me.GroupBox1.Controls.Add(Me.lblEventID)
+        Me.GroupBox1.Controls.Add(Me.Label8)
+        Me.GroupBox1.Controls.Add(Me.lblStartDate)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.lblEventType)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Location = New System.Drawing.Point(640, 123)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(275, 148)
+        Me.GroupBox1.TabIndex = 29
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Event Information"
+        '
+        'lblEventType
+        '
+        Me.lblEventType.Location = New System.Drawing.Point(96, 65)
+        Me.lblEventType.Margin = New System.Windows.Forms.Padding(2)
+        Me.lblEventType.Name = "lblEventType"
+        Me.lblEventType.Size = New System.Drawing.Size(160, 20)
+        Me.lblEventType.TabIndex = 20
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(19, 68)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(65, 13)
+        Me.Label2.TabIndex = 19
+        Me.Label2.Text = "Event Type:"
+        '
+        'lblStartDate
+        '
+        Me.lblStartDate.Location = New System.Drawing.Point(96, 91)
+        Me.lblStartDate.Margin = New System.Windows.Forms.Padding(2)
+        Me.lblStartDate.Name = "lblStartDate"
+        Me.lblStartDate.Size = New System.Drawing.Size(160, 20)
+        Me.lblStartDate.TabIndex = 22
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(19, 94)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(58, 13)
+        Me.Label5.TabIndex = 21
+        Me.Label5.Text = "Start Date:"
+        '
+        'lblLocation
+        '
+        Me.lblLocation.Location = New System.Drawing.Point(96, 117)
+        Me.lblLocation.Margin = New System.Windows.Forms.Padding(2)
+        Me.lblLocation.Name = "lblLocation"
+        Me.lblLocation.Size = New System.Drawing.Size(160, 20)
+        Me.lblLocation.TabIndex = 24
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(19, 120)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(54, 13)
+        Me.Label8.TabIndex = 23
+        Me.Label8.Text = "Location: "
+        '
         'frmEventRSVP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -453,6 +530,7 @@ Partial Class frmEventRSVP
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(937, 547)
         Me.ControlBox = False
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.sslStatus)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ToolStrip1)
@@ -467,6 +545,8 @@ Partial Class frmEventRSVP
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         CType(Me.errP, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -513,4 +593,11 @@ Partial Class frmEventRSVP
     Friend WithEvents errP As ErrorProvider
     Friend WithEvents tvwEventRSVPs As TreeView
     Friend WithEvents ToolStripSeparator13 As ToolStripSeparator
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents lblLocation As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents lblStartDate As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents lblEventType As TextBox
+    Friend WithEvents Label2 As Label
 End Class

@@ -91,12 +91,11 @@ Partial Class frmEventManagement
         Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 11, 0)
         Me.StatusStrip1.Size = New System.Drawing.Size(921, 22)
         Me.StatusStrip1.TabIndex = 23
-        Me.StatusStrip1.Text = "StatusStrip1"
         '
         'sslStatus
         '
         Me.sslStatus.Name = "sslStatus"
-        Me.sslStatus.Size = New System.Drawing.Size(120, 17)
+        Me.sslStatus.Size = New System.Drawing.Size(119, 17)
         Me.sslStatus.Text = "ToolStripStatusLabel1"
         '
         'btnReport
@@ -198,16 +197,16 @@ Partial Class frmEventManagement
         Me.dtpEventEndDate.Name = "dtpEventEndDate"
         Me.dtpEventEndDate.Size = New System.Drawing.Size(148, 20)
         Me.dtpEventEndDate.TabIndex = 29
-        Me.dtpEventEndDate.Value = New Date(2017, 12, 10, 0, 0, 0, 0)
+        Me.dtpEventEndDate.Value = New Date(2020, 12, 2, 0, 0, 0, 0)
         '
         'dtpEventStartDate
         '
         Me.dtpEventStartDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpEventStartDate.Location = New System.Drawing.Point(111, 159)
-        Me.dtpEventStartDate.MinDate = New Date(2020, 11, 1, 0, 0, 0, 0)
         Me.dtpEventStartDate.Name = "dtpEventStartDate"
         Me.dtpEventStartDate.Size = New System.Drawing.Size(148, 20)
         Me.dtpEventStartDate.TabIndex = 28
+        Me.dtpEventStartDate.Value = New Date(2020, 12, 2, 20, 29, 17, 0)
         '
         'txtLocation
         '

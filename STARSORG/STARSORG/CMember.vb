@@ -119,7 +119,7 @@ Public Class CMember
         If isNewMember Then
             Dim params As New ArrayList
             params.Add(New SqlParameter("PID", _mstrPID))
-            Dim strResult As String = myDB.GetSingleValueFromSP("sp_checkPIDExistsInMember", params)
+            Dim strResult As String = myDB.GetSingleValueFromSP("sp_CheckPIDExists", params)
             If Not strResult = 0 Then
                 Return -1 'Not Unique
             End If
