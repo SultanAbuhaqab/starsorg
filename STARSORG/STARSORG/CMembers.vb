@@ -57,5 +57,11 @@ Public Class CMembers
         Return _Member
     End Function
 
-
+    Public Function GetMemberByLName(strLName As String) As SqlDataReader
+        Dim objDR As SqlDataReader
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("LName", strLName))
+        objDR = myDB.GetDataReaderBySP("sp_getMembersByLName", params)
+        Return objDR
+    End Function
 End Class
