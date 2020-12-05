@@ -176,14 +176,16 @@ Public Class frmEventRSVP
 
             End With
 
-            objMembers.GetMemberByPID(AuthUser.PID.ToString)
-            With objMembers.CurrentObject
-                txtFirstName.Text = .FName
-                txtLastName.Text = .LName
-                txtEmail.Text = .Email
 
+            If Not AuthUser.IsGuest() Then
+                objMembers.GetMemberByPID(AuthUser.PID.ToString)
+                With objMembers.CurrentObject
+                    txtFirstName.Text = .FName
+                    txtLastName.Text = .LName
+                    txtEmail.Text = .Email
+                End With
+            End If
 
-            End With
         Catch ex As Exception
             MessageBox.Show("Error while loading event: " & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -192,29 +194,21 @@ Public Class frmEventRSVP
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim intResult As Integer
         Dim blnErrors As Boolean
+        errP.Clear()
         sslStatus.Text = ""
 
-        If Not modErrHandler.ValidateTextBoxLength(txtEmail, errP) Then
+        If Not modErrHandler.ValidateTextBoxLength(txtFirstName, errP) Then
             blnErrors = True
         End If
-        For Each character In txtFirstName.Text
-            If IsNumeric(character) Then
-                errP.SetError(txtFirstName, "Error, you cannot put digits here.")
-                blnErrors = True
-            End If
-            If blnErrors Then
-                Exit Sub
-            End If
-        Next
-        For Each character In txtLastName.Text
-            If IsNumeric(character) Then
-                errP.SetError(txtLastName, "Error, you cannot put digits here.")
-                blnErrors = True
-            End If
-            If blnErrors Then
-                Exit Sub
-            End If
-        Next
+        If Not modErrHandler.ValidateTextBoxLength(txtLastName, errP) Then
+            blnErrors = True
+        End If
+        If Not modErrHandler.ValidateEmail(txtEmail, errP) Then
+            blnErrors = True
+        End If
+        If blnErrors = True Then
+            Exit Sub
+        End If
 
         'if we get this far, all of the input data is acceptable
         With objRSVPs.CurrentObject

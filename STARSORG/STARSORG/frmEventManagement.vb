@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmEventManagement
     Private objEvents As CEvents
+    Private objEventTypes As CEventTypes
     Private blnReloading As Boolean
     Private blnClearing As Boolean
     Private RSVPReport As frmReportEventRSVPs
@@ -90,6 +91,7 @@ Public Class frmEventManagement
 
     Private Sub frmEventManagement_Load(sender As Object, e As EventArgs) Handles Me.Load
         objEvents = New CEvents
+        objEventTypes = New CEventTypes
     End Sub
 
     Private Sub frmEventManagement_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -102,13 +104,23 @@ Public Class frmEventManagement
     End Sub
 
     Private Sub LoadComboOptions()
-        If cboEventTypeID.Items.Count = 0 Then
-            cboEventTypeID.Items.Add(eBoard_Mtg)
-            cboEventTypeID.Items.Add(Gen_Mtg)
-            cboEventTypeID.Items.Add(Outreach)
-            cboEventTypeID.Items.Add(RISE_Mtg)
-            cboEventTypeID.Items.Add(Special)
-        End If
+        Dim objDR As SqlDataReader
+        Dim strEventTypeID As String
+
+
+        Try
+            objDR = objEventTypes.GetAllEventTypes()
+
+            Do While objDR.Read
+                strEventTypeID = objDR.Item("EventTypeID")
+                cboEventTypeID.Items.Add(strEventTypeID)
+            Loop
+
+            objDR.Close()
+
+        Catch ex As Exception
+            MessageBox.Show("Error occured while loading events " & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
         If cboSemesterID.Items.Count = 0 Then
             cboSemesterID.Items.Add(fa16)
@@ -266,18 +278,23 @@ Public Class frmEventManagement
         If Not modErrHandler.ValidateTextBoxLength(txtEventDescription, errP) Then
             blnErrors = True
         End If
-        For Each character In txtLocation.Text
-            If IsNumeric(character) Then
-                errP.SetError(txtLocation, "Error, you cannot put digits here.")
-                blnErrors = True
-            End If
-            If blnErrors Then
-                Exit Sub
-            End If
-        Next
+        If Not modErrHandler.ValidateTextBoxLength(txtEventID, errP) Then
+            blnErrors = True
+        End If
+        If Not modErrHandler.ValidateTextBoxLength(txtLocation, errP) Then
+            blnErrors = True
+        End If
+        If Not modErrHandler.ValidateCombo(cboEventTypeID, errP) Then
+            blnErrors = True
+        End If
+        If Not modErrHandler.ValidateCombo(cboSemesterID, errP) Then
+            blnErrors = True
+        End If
+        If blnErrors = True Then
+            Exit Sub
+        End If
 
         'if we get this far, all of the input data is acceptable
-
         If chkNew.Checked Then
             AddEvent()
         Else

@@ -4,6 +4,7 @@
     Private LoginInfo As frmLogin
     Private EventInfo As frmEventManagement
     Private RSVPInfo As frmEventRSVP
+    Private MemberInfo As frmMembers
 
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvent.MouseEnter,
         tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogOut.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter,
@@ -19,12 +20,82 @@
         ToolStripMouseLeave(sender)
     End Sub
 
+<<<<<<< Updated upstream
+=======
+    Private Sub tsbRole_Click(sender As Object, e As EventArgs) Handles tsbRole.Click
+        If Not AuthUser.IsAdmin() And Not AuthUser.IsOfficer() Then
+            MessageBox.Show("Access Denied : You dont have the required credentials to access this page", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        Me.Hide()
+        RoleInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+
+    Private Sub tsbLogout_Click(sender As Object, e As EventArgs) Handles tsbLogOut.Click
+        Me.Cursor = Cursors.WaitCursor
+
+        'Close any open forms except main
+        CloseForms()
+
+        'Reset the Auth User object
+        AuthUser = New CAuthUser()
+
+        Me.Cursor = Cursors.Default
+
+        PerformLogin()
+    End Sub
+
+    Private Sub tsbSecurity_Click(sender As Object, e As EventArgs) Handles tsbSecurity.Click
+        If Not AuthUser.IsAdmin() Then
+            MessageBox.Show("Access Denied : You dont have the required credentials to access this page", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        Me.Hide()
+        SecurityInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+
+    Private Sub tsbEvents_Click(sender As Object, e As EventArgs) Handles tsbEvent.Click
+        If Not AuthUser.IsAdmin And Not AuthUser.IsOfficer Then
+            MessageBox.Show("Access Denied. You do not have permission to view this page", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        Me.Hide()
+        EventInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+
+    Private Sub tsbEventRSVP_Click(sender As Object, e As EventArgs) Handles tsbRSVP.Click
+        Me.Hide()
+        RSVPInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+
+    Private Sub tsbHome_Click(sender As Object, e As EventArgs) Handles tsbHome.Click
+        'Do nothing since we are already at HOME form
+    End Sub
+
+    Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
+        Me.Hide()
+        MemberInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+#End Region
+
+>>>>>>> Stashed changes
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         RoleInfo = New frmRole
         SecurityInfo = New frmSecurity
         LoginInfo = New frmLogin
         EventInfo = New frmEventManagement
         RSVPInfo = New frmEventRSVP
+        MemberInfo = New frmMembers
 
         Try
             myDB.OpenDB()
@@ -36,17 +107,10 @@
     End Sub
 
     Private Sub EndProgram()
-        'Close each form except main
-        Dim f As Form
         Me.Cursor = Cursors.WaitCursor
 
-        For Each f In Application.OpenForms
-            If f.Name <> Me.Name Then
-                If Not f Is Nothing Then
-                    f.Close()
-                End If
-            End If
-        Next
+        'Close any open forms except main
+        CloseForms()
 
         'Close the database connection
         If Not objSQLConn Is Nothing Then
@@ -55,6 +119,18 @@
         End If
 
         Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub CloseForms()
+        'Close each form except main
+        Dim f As Form
+        For Each f In Application.OpenForms
+            If f.Name <> Me.Name Then
+                If Not f Is Nothing Then
+                    f.Close()
+                End If
+            End If
+        Next
     End Sub
 
     Private Sub PerformNextAction()
@@ -84,6 +160,13 @@
                 tsbSemester.PerformClick()
             Case ACTION_TUTOR
                 tsbTutor.PerformClick()
+<<<<<<< Updated upstream
+=======
+            Case ACTION_LOGIN
+                PerformLogin()
+            Case ACTION_EXIT
+                EndProgram()
+>>>>>>> Stashed changes
             Case Else
                 MessageBox.Show("Unexpected case value in Form Main PerformNextAction", "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Select

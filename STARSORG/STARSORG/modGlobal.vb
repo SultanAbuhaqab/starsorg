@@ -15,6 +15,11 @@
     Public Const ACTION_HELP As Integer = 9
     Public Const ACTION_LOGOUT As Integer = 10
     Public Const ACTION_SECURITY As Integer = 11
+<<<<<<< Updated upstream
+=======
+    Public Const ACTION_LOGIN As Integer = 12
+    Public Const ACTION_EXIT As Integer = 13
+>>>>>>> Stashed changes
 #End Region
 
 #Region "Supported Security Roles"
@@ -55,11 +60,4 @@
     Public Const su17 As String = "su17"
 #End Region
 
-#Region "Valid Event Types"
-    Public Const eBoard_Mtg As String = "eBoard Mtg"
-    Public Const Gen_Mtg As String = "Gen mtg"
-    Public Const Outreach As String = "Outreach"
-    Public Const RISE_Mtg As String = "RISE Mtg"
-    Public Const Special As String = "Special"
-#End Region
 End Module

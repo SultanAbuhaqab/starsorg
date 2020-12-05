@@ -100,10 +100,10 @@ Partial Class frmEventManagement
         '
         'btnReport
         '
-        Me.btnReport.Location = New System.Drawing.Point(228, 343)
+        Me.btnReport.Location = New System.Drawing.Point(197, 328)
         Me.btnReport.Name = "btnReport"
         Me.btnReport.Size = New System.Drawing.Size(112, 33)
-        Me.btnReport.TabIndex = 10
+        Me.btnReport.TabIndex = 1
         Me.btnReport.Text = "RSVP Report"
         Me.btnReport.UseVisualStyleBackColor = True
         '
@@ -128,7 +128,7 @@ Partial Class frmEventManagement
         Me.grpEdit.Location = New System.Drawing.Point(610, 194)
         Me.grpEdit.Name = "grpEdit"
         Me.grpEdit.Size = New System.Drawing.Size(279, 312)
-        Me.grpEdit.TabIndex = 22
+        Me.grpEdit.TabIndex = 2
         Me.grpEdit.TabStop = False
         Me.grpEdit.Text = "Event Details"
         '
@@ -139,7 +139,7 @@ Partial Class frmEventManagement
         Me.txtEventID.MaxLength = 100
         Me.txtEventID.Name = "txtEventID"
         Me.txtEventID.Size = New System.Drawing.Size(148, 20)
-        Me.txtEventID.TabIndex = 34
+        Me.txtEventID.TabIndex = 2
         '
         'Label8
         '
@@ -148,7 +148,7 @@ Partial Class frmEventManagement
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(55, 13)
-        Me.Label8.TabIndex = 33
+        Me.Label8.TabIndex = 0
         Me.Label8.Text = "Event ID: "
         '
         'btnSave
@@ -156,7 +156,7 @@ Partial Class frmEventManagement
         Me.btnSave.Location = New System.Drawing.Point(168, 273)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(100, 33)
-        Me.btnSave.TabIndex = 32
+        Me.btnSave.TabIndex = 9
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -165,7 +165,7 @@ Partial Class frmEventManagement
         Me.btnCancel.Location = New System.Drawing.Point(6, 273)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(100, 33)
-        Me.btnCancel.TabIndex = 27
+        Me.btnCancel.TabIndex = 10
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
@@ -177,7 +177,7 @@ Partial Class frmEventManagement
         Me.cboSemesterID.MaxLength = 4
         Me.cboSemesterID.Name = "cboSemesterID"
         Me.cboSemesterID.Size = New System.Drawing.Size(148, 21)
-        Me.cboSemesterID.TabIndex = 31
+        Me.cboSemesterID.TabIndex = 5
         '
         'cboEventTypeID
         '
@@ -188,7 +188,7 @@ Partial Class frmEventManagement
         Me.cboEventTypeID.MaxLength = 15
         Me.cboEventTypeID.Name = "cboEventTypeID"
         Me.cboEventTypeID.Size = New System.Drawing.Size(148, 21)
-        Me.cboEventTypeID.TabIndex = 30
+        Me.cboEventTypeID.TabIndex = 4
         '
         'dtpEventEndDate
         '
@@ -196,8 +196,13 @@ Partial Class frmEventManagement
         Me.dtpEventEndDate.Location = New System.Drawing.Point(111, 192)
         Me.dtpEventEndDate.Name = "dtpEventEndDate"
         Me.dtpEventEndDate.Size = New System.Drawing.Size(148, 20)
+<<<<<<< Updated upstream
         Me.dtpEventEndDate.TabIndex = 29
         Me.dtpEventEndDate.Value = New Date(2017, 12, 10, 0, 0, 0, 0)
+=======
+        Me.dtpEventEndDate.TabIndex = 7
+        Me.dtpEventEndDate.Value = New Date(2020, 12, 2, 0, 0, 0, 0)
+>>>>>>> Stashed changes
         '
         'dtpEventStartDate
         '
@@ -205,7 +210,12 @@ Partial Class frmEventManagement
         Me.dtpEventStartDate.Location = New System.Drawing.Point(111, 159)
         Me.dtpEventStartDate.Name = "dtpEventStartDate"
         Me.dtpEventStartDate.Size = New System.Drawing.Size(148, 20)
+<<<<<<< Updated upstream
         Me.dtpEventStartDate.TabIndex = 28
+=======
+        Me.dtpEventStartDate.TabIndex = 6
+        Me.dtpEventStartDate.Value = New Date(2020, 12, 2, 20, 29, 17, 0)
+>>>>>>> Stashed changes
         '
         'txtLocation
         '
@@ -214,7 +224,7 @@ Partial Class frmEventManagement
         Me.txtLocation.MaxLength = 30
         Me.txtLocation.Name = "txtLocation"
         Me.txtLocation.Size = New System.Drawing.Size(148, 20)
-        Me.txtLocation.TabIndex = 27
+        Me.txtLocation.TabIndex = 8
         '
         'Label2
         '
@@ -223,7 +233,7 @@ Partial Class frmEventManagement
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(51, 13)
-        Me.Label2.TabIndex = 26
+        Me.Label2.TabIndex = 0
         Me.Label2.Text = "Location:"
         '
         'Label1
@@ -233,7 +243,7 @@ Partial Class frmEventManagement
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(55, 13)
-        Me.Label1.TabIndex = 24
+        Me.Label1.TabIndex = 0
         Me.Label1.Text = "End Date:"
         '
         'txtEventDescription
@@ -243,7 +253,7 @@ Partial Class frmEventManagement
         Me.txtEventDescription.MaxLength = 100
         Me.txtEventDescription.Name = "txtEventDescription"
         Me.txtEventDescription.Size = New System.Drawing.Size(148, 20)
-        Me.txtEventDescription.TabIndex = 18
+        Me.txtEventDescription.TabIndex = 3
         '
         'Label7
         '
@@ -252,7 +262,7 @@ Partial Class frmEventManagement
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(58, 13)
-        Me.Label7.TabIndex = 12
+        Me.Label7.TabIndex = 0
         Me.Label7.Text = "Start Date:"
         '
         'Label6
@@ -262,7 +272,7 @@ Partial Class frmEventManagement
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(68, 13)
-        Me.Label6.TabIndex = 11
+        Me.Label6.TabIndex = 0
         Me.Label6.Text = "Semester ID:"
         '
         'Label5
@@ -272,7 +282,7 @@ Partial Class frmEventManagement
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(79, 13)
-        Me.Label5.TabIndex = 10
+        Me.Label5.TabIndex = 0
         Me.Label5.Text = "Event Type ID:"
         '
         'Label4
@@ -282,7 +292,7 @@ Partial Class frmEventManagement
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(94, 13)
-        Me.Label4.TabIndex = 9
+        Me.Label4.TabIndex = 0
         Me.Label4.Text = "Event Description:"
         '
         'errP
@@ -296,7 +306,7 @@ Partial Class frmEventManagement
         Me.grpEvents.Location = New System.Drawing.Point(12, 124)
         Me.grpEvents.Name = "grpEvents"
         Me.grpEvents.Size = New System.Drawing.Size(577, 382)
-        Me.grpEvents.TabIndex = 20
+        Me.grpEvents.TabIndex = 3
         Me.grpEvents.TabStop = False
         Me.grpEvents.Text = "Event Manager"
         '
@@ -305,7 +315,8 @@ Partial Class frmEventManagement
         Me.tvwEvents.Location = New System.Drawing.Point(7, 20)
         Me.tvwEvents.Name = "tvwEvents"
         Me.tvwEvents.Size = New System.Drawing.Size(551, 292)
-        Me.tvwEvents.TabIndex = 11
+        Me.tvwEvents.TabIndex = 0
+        Me.tvwEvents.TabStop = False
         '
         'ToolStrip1
         '
@@ -528,7 +539,7 @@ Partial Class frmEventManagement
         Me.Label3.Location = New System.Drawing.Point(12, 51)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(897, 55)
-        Me.Label3.TabIndex = 25
+        Me.Label3.TabIndex = 0
         Me.Label3.Text = "Event Management"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -538,7 +549,7 @@ Partial Class frmEventManagement
         Me.grpNew.Location = New System.Drawing.Point(621, 124)
         Me.grpNew.Name = "grpNew"
         Me.grpNew.Size = New System.Drawing.Size(268, 52)
-        Me.grpNew.TabIndex = 26
+        Me.grpNew.TabIndex = 1
         Me.grpNew.TabStop = False
         Me.grpNew.Text = "New Event"
         '
@@ -548,7 +559,7 @@ Partial Class frmEventManagement
         Me.chkNew.Location = New System.Drawing.Point(19, 20)
         Me.chkNew.Name = "chkNew"
         Me.chkNew.Size = New System.Drawing.Size(113, 17)
-        Me.chkNew.TabIndex = 0
+        Me.chkNew.TabIndex = 1
         Me.chkNew.Text = "Create New Event"
         Me.chkNew.UseVisualStyleBackColor = True
         '
@@ -567,7 +578,7 @@ Partial Class frmEventManagement
         Me.Controls.Add(Me.grpEvents)
         Me.Name = "frmEventManagement"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Event Management"
+        Me.Text = "warewa"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.grpEdit.ResumeLayout(False)

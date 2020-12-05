@@ -1,69 +1,71 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient, System.IO
+
 Public Class frmMembers
     Private objMembers As CMembers
     Private blnClearing As Boolean
     Private blnReloading As Boolean
+    Private strFilePath As String
 #Region "Toolbar Stuff"
-    Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) 
+    Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbCourse.MouseEnter, tsbEvents.MouseEnter, tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbLogOut.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter, tsbSemester.MouseEnter, tsbTutor.MouseEnter
         ' We need to do this only because we are not putting our images in the Image property of the toolbar buttons
         Dim tsbProxy As ToolStripButton
         tsbProxy = DirectCast(sender, ToolStripButton)
         tsbProxy.DisplayStyle = ToolStripItemDisplayStyle.Text
     End Sub
 
-    Private Sub tsbProxy_MouseLeave(sender As Object, e As EventArgs) 
+    Private Sub tsbProxy_MouseLeave(sender As Object, e As EventArgs) Handles tsbCourse.MouseLeave, tsbEvents.MouseLeave, tsbHelp.MouseLeave, tsbHome.MouseLeave, tsbLogOut.MouseLeave, tsbMember.MouseLeave, tsbRole.MouseLeave, tsbRSVP.MouseLeave, tsbSemester.MouseLeave, tsbTutor.MouseLeave
         ' We need to do this only because we are not putting our images in the Image property of the toolbar buttons
         Dim tsbProxy As ToolStripButton
         tsbProxy = DirectCast(sender, ToolStripButton)
         tsbProxy.DisplayStyle = ToolStripItemDisplayStyle.Image
     End Sub
 
-    Private Sub tsbCourse_Click(sender As Object, e As EventArgs) 
+    Private Sub tsbCourse_Click(sender As Object, e As EventArgs) Handles tsbCourse.Click
         intNextAction = ACTION_COURSE
         Me.Hide()
     End Sub
 
-    Private Sub tsbEvents_Click(sender As Object, e As EventArgs) 
+    Private Sub tsbEvents_Click(sender As Object, e As EventArgs) Handles tsbEvents.Click
         intNextAction = ACTION_EVENT
         Me.Hide()
     End Sub
 
-    Private Sub tsbHelp_Click(sender As Object, e As EventArgs) 
+    Private Sub tsbHelp_Click(sender As Object, e As EventArgs) Handles tsbHelp.Click
         intNextAction = ACTION_HELP
         Me.Hide()
     End Sub
 
-    Private Sub tsbHome_Click(sender As Object, e As EventArgs) 
+    Private Sub tsbHome_Click(sender As Object, e As EventArgs) Handles tsbHome.Click
         intNextAction = ACTION_HOME
         Me.Hide()
     End Sub
 
-    Private Sub tsbLogOut_Click(sender As Object, e As EventArgs) 
+    Private Sub tsbLogOut_Click(sender As Object, e As EventArgs) Handles tsbLogOut.Click
         intNextAction = ACTION_LOGOUT
         Me.Hide()
     End Sub
 
-    Private Sub tsbMember_Click(sender As Object, e As EventArgs) 
+    Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
         ' Nothing to do here, because we are on this form
         ' Copy and modify to respective 
     End Sub
 
-    Private Sub tsbRole_Click(sender As Object, e As EventArgs) 
+    Private Sub tsbRole_Click(sender As Object, e As EventArgs) Handles tsbRole.Click
         intNextAction = ACTION_ROLE
         Me.Hide()
     End Sub
 
-    Private Sub tsbRSVP_Click(sender As Object, e As EventArgs) 
+    Private Sub tsbRSVP_Click(sender As Object, e As EventArgs) Handles tsbRSVP.Click
         intNextAction = ACTION_RSVP
         Me.Hide()
     End Sub
 
-    Private Sub tsbSemester_Click(sender As Object, e As EventArgs) 
+    Private Sub tsbSemester_Click(sender As Object, e As EventArgs) Handles tsbSemester.Click
         intNextAction = ACTION_SEMESTER
         Me.Hide()
     End Sub
 
-    Private Sub tsbTutor_Click(sender As Object, e As EventArgs) 
+    Private Sub tsbTutor_Click(sender As Object, e As EventArgs) Handles tsbTutor.Click
         intNextAction = ACTION_TUTOR
         Me.Hide()
     End Sub
@@ -139,7 +141,11 @@ Public Class frmMembers
                 txtEmail.Text = .Email
                 mtbPhone.Text = .Phone
                 ' UPDATE LOAD PATH BEFORE RELEASE - ASK PROFESSOR
-                pbMember.Load("G:\My Drive\Academics\Fall 2020\COP 4005 - Win Prog IT\project-amota012\STARTSOrg\STARTSOrg\Resources" & .PhotoPath)
+                Try
+                    pbMember.Load(.PhotoPath)
+                Catch ex As Exception
+                    pbMember.Load("Resources\default.jpg")
+                End Try
                 pbMember.SizeMode = PictureBoxSizeMode.StretchImage
 
             End With
@@ -183,7 +189,7 @@ Public Class frmMembers
             .MI = txtMI.Text
             .Email = txtEmail.Text
             .Phone = mtbPhone.Text
-            .PhotoPath = pbMember.ImageLocation.ToString.Remove(0, 101)
+            .PhotoPath = pbMember.ImageLocation
         End With
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -207,5 +213,57 @@ Public Class frmMembers
         'grpRoles.Enabled = True ' In case it was disabled for a new record
     End Sub
 
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        Dim blnErrors As Boolean
+        Dim params As New ArrayList
+        Dim objReader As SqlDataReader
+        If txtSearch.Text.Length = 0 Then ' Missing search value
+            errP.SetError(txtSearch, "You must enter a search value here")
+            blnErrors = True
+        End If
+        If blnErrors Then
+            Exit Sub
+        End If
+        lstMembers.Items.Clear()
+        Try
+            objReader = objMembers.GetMemberByLName(txtSearch.Text)
 
+            Do While objReader.Read
+                lstMembers.Items.Add(objReader.Item("PID") & " - " & objReader.Item("FName") & " " & objReader.Item("LName"))
+            Loop
+            objReader.Close()
+        Catch ex As Exception
+            ' CBD might throw the error and trap it here
+        End Try
+    End Sub
+
+    Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
+        Dim intResult As Integer
+        ofdOpen.InitialDirectory = Application.StartupPath
+        ofdOpen.Filter = "All Files (*.*)|*.*|JPG files (*.jpg)|*.jpg|JPEG files (*.jpeg)|*.jpeg|PNG files (*.png)|*.png"
+        ofdOpen.FilterIndex = 2
+        intResult = ofdOpen.ShowDialog
+        If intResult = DialogResult.Cancel Then 'user canceled the open
+            Exit Sub
+        End If
+        strFilePath = ofdOpen.FileName
+        Try
+            pbMember.Load(strFilePath)
+            pbMember.SizeMode = PictureBoxSizeMode.StretchImage
+        Catch
+
+        End Try
+    End Sub
+
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        LoadMembers()
+        txtPID.Clear()
+        txtFName.Clear()
+        txtMI.Clear()
+        txtLName.Clear()
+        txtEmail.Clear()
+        mtbPhone.Clear()
+        pbMember.Image = Nothing
+        strFilePath = ""
+    End Sub
 End Class

@@ -160,4 +160,12 @@ Public Class frmLogin
         End Try
         Me.Cursor = Cursors.Default
     End Sub
+<<<<<<< Updated upstream
+=======
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        intNextAction = ACTION_EXIT
+        Me.Close()
+    End Sub
+>>>>>>> Stashed changes
 End Class
